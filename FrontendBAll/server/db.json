@@ -1,0 +1,33 @@
+{
+    "eventos": [
+      {
+        "id": 1,
+        "name": "Morat Tour",
+        "image": "https://cdn.teleticket.com.pe/especiales/morat-per22/images/event-artista-res.jpg",
+        "date": "15-10-2023",
+        "location": "Lima"
+      },
+      {
+        "id": 2,
+        "name": "Grupo 5",
+        "image": "https://cdn.teleticket.com.pe/especiales/morat-per22/images/event-artista-res.jpg",
+        "date": "15-10-2023",
+        "location": "Lima"
+      },
+      {
+        "id": 3,
+        "name": "Morat Tour",
+        "image": "https://cdn.teleticket.com.pe/especiales/morat-per22/images/event-artista-res.jpg",
+        "date": "15-10-2023",
+        "location": "Lima"
+      },
+      {
+        "id": 4,
+        "name": "Grupo 5",
+        "image": "https://cdn.teleticket.com.pe/especiales/morat-per22/images/event-artista-res.jpg",
+        "date": "15-10-2023",
+        "location": "Lima"
+      }
+      
+    ]
+  }
