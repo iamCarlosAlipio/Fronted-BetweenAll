@@ -1,6 +1,7 @@
 <div class="body">
     <div class="login">
-        <form [formGroup]="form" (ngSubmit)="getIntoDash()">
+      <mat-spinner *ngIf="loading" class="spinner" diameter="50"></mat-spinner>
+        <form *ngIf="!loading" [formGroup]="form" (ngSubmit)="getIntoDash()">
             <img src="./assets/img/BetweenAll-logo.png" alt="BA-icon" width="50%">
         <h1 style="color:#A32DE3;">Bienvenido a BetweenAll</h1>
         <mat-form-field class="inputLogin" appearance="fill">
@@ -12,7 +13,7 @@
             <input matInput type="password" autocomplete="off" formControlName="password">
           </mat-form-field>
           <br>
-          <button mat-raised-button routerLink="/Home" type="submit"  class="inputLogin button" id="inputJoin" [disabled]="form.invalid">Ingresar</button>
+          <button mat-raised-button  type="submit"  class="inputLogin button" id="inputJoin" [disabled]="form.invalid">Ingresar</button>
           <br>
           <br>
           <button mat-raised-button routerLink="/insertUser" style=" background-color:white; color: #A32DE3; border-style: solid; border-color: #A32DE3;background-color: white;" class="inputLogin button">Registrar</button>

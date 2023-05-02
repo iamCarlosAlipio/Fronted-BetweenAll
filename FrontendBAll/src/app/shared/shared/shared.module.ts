@@ -15,6 +15,7 @@ import { MatCheckboxModule } from '@angular/material/checkbox';
 import { MatSelectModule } from '@angular/material/select';
 import {MatTabsModule} from '@angular/material/tabs';
 import {MatGridListModule} from '@angular/material/grid-list';
+import {MatProgressSpinnerModule} from '@angular/material/progress-spinner';
 
 @NgModule({
   declarations: [],
@@ -34,7 +35,8 @@ import {MatGridListModule} from '@angular/material/grid-list';
     MatCheckboxModule,
     MatSelectModule,
     MatTabsModule,
-    MatGridListModule
+    MatGridListModule,
+    MatProgressSpinnerModule
   ],
 
   exports: [
@@ -52,7 +54,8 @@ import {MatGridListModule} from '@angular/material/grid-list';
     MatCheckboxModule,
     MatSelectModule,
     MatTabsModule,
-    MatGridListModule
+    MatGridListModule,
+    MatProgressSpinnerModule
   ]
 })
 export class SharedModule { }
