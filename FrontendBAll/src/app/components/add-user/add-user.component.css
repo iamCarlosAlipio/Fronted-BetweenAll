@@ -1,0 +1,86 @@
+@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@400;800&display=swap');
+
+.registrarse {
+  height: 100%;
+  width: 100%;
+  display: flex; 
+}
+
+.text-2 {
+  text-align: left;
+  vertical-align: middle;
+  font-size: 30px;
+  font-family: Poppins, sans-serif;
+  font-weight: 800;
+  line-height: auto;
+  color: #a32de3;
+
+}
+.text-3 {
+  text-align: left;
+  vertical-align: middle;
+  font-size: 13px;
+  font-family: Poppins, sans-serif;
+  font-weight: 800;
+  line-height: auto;
+  color: #a32de3;
+}
+
+.text-4 {
+  text-align: left;
+  vertical-align: middle;
+  font-size: 13px;
+  font-family: Poppins,sans-serif;
+  font-weight: 400;
+  line-height: auto;
+}
+
+.space {
+  margin-left: 10%;
+  margin-right: 10%;
+}
+.full{
+  width: 100%;
+  height: 10%;
+}
+.form-container-1 {
+  width: 49%;
+}
+.form-container-2 {
+  padding-left: 2%;
+  width: 49%;
+}
+
+button{
+  width: 100%;
+  margin-top: 2%;
+}
+
+.imgs{
+  height: 99.4%;
+  width: 100%;
+}
+
+.container1{
+  width: 50%;
+  height: 100%; 
+}
+
+.condition{
+  font-family: Poppins,sans-serif;
+  font-weight: 400;
+  font-size: 13px;
+}
+
+.Encabezado{
+  display: flex;
+  margin-top: 3%;
+}
+
+.img2{
+  width: 15%;
+  left: 10%;
+}
+.space2{
+  display: flex;
+}

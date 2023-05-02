@@ -29,5 +29,22 @@
         "location": "Lima"
       }
       
-    ]
-  }
+    ],
+    "user": [
+    {
+      "id": 1,
+      "name": "Carlos",
+      "lastname": "Sanchez",
+      "phone": 957049668,
+      "email": "alipiosanchez0@gmail.com",
+      "password": "1234567",
+      "city": "Lima",
+      "idCard": 1,
+      "categoryEvent": "Rock",
+      "type": "DNI",
+      "number": "72556278"
+    
+    }
+  ]
+}
+  
