@@ -1,5 +1,5 @@
-import { EventoService } from './../../services/evento.service';
-import { Evento } from './../../models/evento';
+import { SocialEventsService } from 'src/app/services/social-events.service';
+import { SocialEvent } from 'src/app/models/socialevent';
 import { Component } from '@angular/core';
 import {MatTableDataSource} from '@angular/material/table';
 import { MatPaginator } from '@angular/material/paginator';
@@ -12,18 +12,18 @@ import { ViewChild} from '@angular/core'
 })
 export class HomeComponent {
 
-  events: Evento[] = [];
-  constructor(private eventoService: EventoService){
+  events: SocialEvent[] = [];
+  constructor(private socialEventsService: SocialEventsService){
 
   }
   
   ngOnInit(){
-    this.ListaEventos();
+    this.ListSocialEvents();
   }
 
-  ListaEventos():void{
-    this.eventoService.getList().subscribe({
-      next: (data:Evento[]) => {
+  ListSocialEvents():void{
+    this.socialEventsService.getList().subscribe({
+      next: (data:SocialEvent[]) => {
         this.events=data;
         console.log(data);
       },

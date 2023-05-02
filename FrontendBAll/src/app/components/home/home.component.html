@@ -11,7 +11,7 @@
         </div>
         <div class="col-md-6 text-end">
             <br>
-            <button mat-fab extended style=" background-color:#A32DE3;" class="text-white">CREAR EVENTO</button>
+            <button routerLink="/AddSocialEvent" mat-fab extended style=" background-color:#A32DE3;" class="text-white">CREAR EVENTO</button>
         </div>
     </div>
     <div class="row mt-4">
@@ -21,8 +21,6 @@
                 <mat-card-content>
                   <br> 
                   <p>Nombre: {{item.name}}</p>
-                  <br> 
-                  <p>Fecha: {{item.date}} </p>
                   <br> 
                   <p>Lugar: {{item.location}} </p>
                 </mat-card-content>
