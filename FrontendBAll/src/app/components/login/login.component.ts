@@ -18,4 +18,11 @@ export class LoginComponent {
   ngOnInit():void{
 
   }
+  getIntoDash(){
+    console.log(this.form);
+    const userForm=this.form.value.user;
+    const passwordForm=this.form.value.password;
+    console.log(userForm);
+    console.log(passwordForm);
+  }
 }

@@ -4,6 +4,7 @@
     height: 100%;
     align-items: center;
 }
+
 .login{
     width: 100%;
     max-width: 330px;
@@ -14,4 +15,8 @@
 }
 .button{
     height:50px ;
+}
+#inputJoin{
+    background-color:#A32DE3;
+    color: white;
 }
