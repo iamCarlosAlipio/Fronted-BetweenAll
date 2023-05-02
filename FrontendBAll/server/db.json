@@ -45,6 +45,150 @@
       "number": "72556278"
     
     }
+  ],
+  
+  "socialevents": [
+    {
+      "id": 1,
+      "name": "Morat Tour",
+      "image": "https://cdn.teleticket.com.pe/especiales/morat-per22/images/event-artista-res.jpg",
+      "date": "15-10-2023",
+      "location": "Lima"
+    },
+    {
+      "id": 2,
+      "name": "Grupo 5",
+      "image": "https://cdn.teleticket.com.pe/especiales/morat-per22/images/event-artista-res.jpg",
+      "date": "15-10-2023",
+      "location": "Lima"
+    },
+    {
+      "id": 3,
+      "name": "Morat Tour",
+      "image": "https://cdn.teleticket.com.pe/especiales/morat-per22/images/event-artista-res.jpg",
+      "date": "15-10-2023",
+      "location": "Lima"
+    },
+    {
+      "id": 4,
+      "name": "Grupo 5",
+      "image": "https://cdn.teleticket.com.pe/especiales/morat-per22/images/event-artista-res.jpg",
+      "date": "15-10-2023",
+      "location": "Lima"
+    },
+    {
+      "id": 5,
+      "name": "Bahia",
+      "image": "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQSXQ7yOWtYHdCQ-zsQLgnXFs-ctXabW6Y6NWScg8w-&s",
+      "location": "Los olivos"
+    },
+    {
+      "id": 6,
+      "name": "DIEGOEVENT",
+      "image": "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTdQm62JfUzQeTWyHc_L1A8MM11MZqwwViqek59UBwP1hvwiMi5JYHsNrmOgF_YBvSyOYU&usqp=CAU",
+      "location": "SAN MIGUEL"
+    }
+  ],
+  "datesocialevents": [
+    {
+      "id": 1,
+      "idSocialEvent": 1,
+      "date": "14/12/10",
+      "startTime": "12",
+      "endTime": "11"
+    },
+    {
+      "id": 2,
+      "idSocialEvent": 2,
+      "date": "2023-05-03T05:00:00.000Z",
+      "startTime": "1",
+      "endTime": "2"
+    },
+    {
+      "id": 3,
+      "idSocialEvent": 1,
+      "date": "2023-05-06T05:00:00.000Z",
+      "startTime": "1",
+      "endTime": "3"
+    },
+    {
+      "id": 4,
+      "idSocialEvent": 1,
+      "date": "2023-05-07T05:00:00.000Z",
+      "startTime": "1",
+      "endTime": "2"
+    },
+    {
+      "id": 5,
+      "idSocialEvent": 1,
+      "date": "2023-05-14T05:00:00.000Z",
+      "startTime": "1",
+      "endTime": "2"
+    },
+    {
+      "id": 6,
+      "idSocialEvent": 1,
+      "date": "2023-05-21T05:00:00.000Z",
+      "startTime": "1",
+      "endTime": "2"
+    },
+    {
+      "id": 7,
+      "idSocialEvent": 1,
+      "date": "2023-05-07T05:00:00.000Z",
+      "startTime": "12",
+      "endTime": "13"
+    },
+    {
+      "id": 8,
+      "idSocialEvent": 1,
+      "date": "2023-05-21T05:00:00.000Z",
+      "startTime": "12",
+      "endTime": "13"
+    },
+    {
+      "id": 9,
+      "idSocialEvent": 1,
+      "date": "2023-05-27T05:00:00.000Z",
+      "startTime": "12",
+      "endTime": "13"
+    },
+    {
+      "id": 10,
+      "idSocialEvent": 10,
+      "date": "2023-05-02T05:00:00.000Z",
+      "startTime": "12",
+      "endTime": "13"
+    },
+    {
+      "id": 11,
+      "idSocialEvent": 10,
+      "date": "2023-05-04T05:00:00.000Z",
+      "startTime": "12",
+      "endTime": "13"
+    },
+    {
+      "id": 12,
+      "idSocialEvent": 10,
+      "date": "2023-05-06T05:00:00.000Z",
+      "startTime": "12",
+      "endTime": "13"
+    },
+    {
+      "id": 13,
+      "idSocialEvent": 10,
+      "date": "2023-05-08T05:00:00.000Z",
+      "startTime": "12",
+      "endTime": "13"
+    }
+  ],
+  "zone": [
+    {
+      "id": 1,
+      "name": "Plata",
+      "price": 120,
+      "idDateSocialEvent": 1,
+      "capacity": 1000
+    }
   ]
 }
-  

@@ -11,6 +11,7 @@ import { NavbarComponent } from './components/navbar/navbar.component';
 import { HttpClientModule } from '@angular/common/http';
 import { LoginComponent } from './components/login/login.component';
 import { AddUserComponent } from './components/add-user/add-user.component';
+import { AddSocialEventComponent } from './components/add-social-event/add-social-event.component';
 
 @NgModule({
   declarations: [
@@ -18,7 +19,8 @@ import { AddUserComponent } from './components/add-user/add-user.component';
     HomeComponent,
     NavbarComponent,
     LoginComponent,
-    AddUserComponent
+    AddUserComponent,
+    AddSocialEventComponent
   ],
   imports: [
     BrowserModule,
