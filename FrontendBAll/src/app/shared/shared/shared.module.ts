@@ -13,6 +13,8 @@ import {MatPaginatorModule} from '@angular/material/paginator';
 import {MatInputModule} from '@angular/material/input';
 import { MatCheckboxModule } from '@angular/material/checkbox';
 import { MatSelectModule } from '@angular/material/select';
+import {MatTabsModule} from '@angular/material/tabs';
+import {MatGridListModule} from '@angular/material/grid-list';
 
 @NgModule({
   declarations: [],
@@ -30,7 +32,9 @@ import { MatSelectModule } from '@angular/material/select';
     MatSnackBarModule,
     MatInputModule,
     MatCheckboxModule,
-    MatSelectModule
+    MatSelectModule,
+    MatTabsModule,
+    MatGridListModule
   ],
 
   exports: [
@@ -46,7 +50,9 @@ import { MatSelectModule } from '@angular/material/select';
     MatSnackBarModule,
     MatInputModule,
     MatCheckboxModule,
-    MatSelectModule
+    MatSelectModule,
+    MatTabsModule,
+    MatGridListModule
   ]
 })
 export class SharedModule { }

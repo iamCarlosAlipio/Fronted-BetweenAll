@@ -1,13 +1,18 @@
-import { NgModule, Component } from '@angular/core';
+import { NgModule} from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
 import { AddUserComponent } from './components/add-user/add-user.component';
 import { HomeComponent } from './components/home/home.component';
 import { AddSocialEventComponent } from './components/add-social-event/add-social-event.component';
+import { GroupsComponent } from './components/groups/groups.component';
+import { AddEditGroupsComponent } from './components/add-edit-groups/add-edit-groups.component';
+
 const routes: Routes = [
   {path: '', component:HomeComponent},
   {path: 'Home', component:HomeComponent},
   {path:'insertUser',component:AddUserComponent},
-  {path: 'AddSocialEvent', component:AddSocialEventComponent}
+  {path: 'AddSocialEvent', component:AddSocialEventComponent},
+  {path: 'grupos', component:GroupsComponent},
+  {path: 'add-edit-groups', component:AddEditGroupsComponent}
 ];
 
 @NgModule({

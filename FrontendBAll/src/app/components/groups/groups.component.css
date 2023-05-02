@@ -1,0 +1,28 @@
+.filterbutt {
+  align-items: center;
+  display: flex;
+  justify-content: space-between;
+}
+
+.tablepag {
+  width: 90%;
+  margin: auto;
+}
+
+th {
+  width: 10%;
+}
+
+img {
+  max-width: 100px;
+  margin-bottom: 8px;
+  margin-top: 8px;
+}
+
+.mat-tab-group {
+  margin-bottom: 48px;
+}
+
+button {
+  margin-left: 10px;
+}

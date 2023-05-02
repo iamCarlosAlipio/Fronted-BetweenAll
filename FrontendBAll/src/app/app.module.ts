@@ -12,6 +12,8 @@ import { HttpClientModule } from '@angular/common/http';
 import { LoginComponent } from './components/login/login.component';
 import { AddUserComponent } from './components/add-user/add-user.component';
 import { AddSocialEventComponent } from './components/add-social-event/add-social-event.component';
+import { GroupsComponent } from './components/groups/groups.component';
+import { AddEditGroupsComponent } from './components/add-edit-groups/add-edit-groups.component';
 
 @NgModule({
   declarations: [
@@ -20,7 +22,9 @@ import { AddSocialEventComponent } from './components/add-social-event/add-socia
     NavbarComponent,
     LoginComponent,
     AddUserComponent,
-    AddSocialEventComponent
+    AddSocialEventComponent,
+    GroupsComponent,
+    AddEditGroupsComponent
   ],
   imports: [
     BrowserModule,
@@ -28,7 +32,8 @@ import { AddSocialEventComponent } from './components/add-social-event/add-socia
     SharedModule,
     ReactiveFormsModule,
     BrowserAnimationsModule,
-    HttpClientModule,
+    HttpClientModule
+
   ],
   providers: [],
   bootstrap: [AppComponent]
