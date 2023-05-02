@@ -9,6 +9,7 @@ import { AddEditGroupsComponent } from './components/add-edit-groups/add-edit-gr
 
 const routes: Routes = [
   {path: '', component:LoginComponent},
+  {path: 'Login', component:LoginComponent},
   {path: 'Home', component:HomeComponent},
   {path:'insertUser',component:AddUserComponent},
   {path: 'AddSocialEvent', component:AddSocialEventComponent},

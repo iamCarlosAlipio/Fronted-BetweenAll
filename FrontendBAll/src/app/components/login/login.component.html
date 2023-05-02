@@ -12,10 +12,10 @@
             <input matInput type="password" autocomplete="off" formControlName="password">
           </mat-form-field>
           <br>
-          <button mat-raised-button type="submit"  class="inputLogin button" id="inputJoin" [disabled]="form.invalid">Ingresar</button>
+          <button mat-raised-button routerLink="/Home" type="submit"  class="inputLogin button" id="inputJoin" [disabled]="form.invalid">Ingresar</button>
           <br>
           <br>
-          <button mat-raised-button style=" background-color:white; color: #A32DE3; border-style: solid; border-color: #A32DE3;background-color: white;" class="inputLogin button">Registrar</button>
+          <button mat-raised-button routerLink="/insertUser" style=" background-color:white; color: #A32DE3; border-style: solid; border-color: #A32DE3;background-color: white;" class="inputLogin button">Registrar</button>
         </form>
     </div>
 </div>
