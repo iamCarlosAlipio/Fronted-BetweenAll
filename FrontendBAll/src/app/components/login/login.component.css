@@ -1,0 +1,17 @@
+.body{
+    display: flex;
+    justify-content:center;
+    height: 100%;
+    align-items: center;
+}
+.login{
+    width: 100%;
+    max-width: 330px;
+    text-align: center;
+}
+.inputLogin{
+    width: 80%;
+}
+.button{
+    height:50px ;
+}
