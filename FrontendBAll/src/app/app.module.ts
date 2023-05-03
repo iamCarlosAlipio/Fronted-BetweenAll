@@ -14,6 +14,7 @@ import { AddUserComponent } from './components/add-user/add-user.component';
 import { AddSocialEventComponent } from './components/add-social-event/add-social-event.component';
 import { GroupsComponent } from './components/groups/groups.component';
 import { AddEditGroupsComponent } from './components/add-edit-groups/add-edit-groups.component';
+import { EventCreate1Component } from './components/event-create1/event-create1.component';
 
 @NgModule({
   declarations: [
@@ -24,7 +25,8 @@ import { AddEditGroupsComponent } from './components/add-edit-groups/add-edit-gr
     AddUserComponent,
     AddSocialEventComponent,
     GroupsComponent,
-    AddEditGroupsComponent
+    AddEditGroupsComponent,
+    EventCreate1Component
   ],
   imports: [
     BrowserModule,

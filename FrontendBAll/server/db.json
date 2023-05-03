@@ -328,5 +328,42 @@
       "category": "Teatro",
       "image": "https://www.mincetur.gob.pe/wp-content/uploads/2017/11/foto.jpg"
     }
+  ],
+  "category":[
+    {
+      "id":1,
+      "name":"Teatro",
+      "state":"Activo"
+    },
+    {
+      "id":2,
+      "name":"Concierto",
+      "state":"Activo"
+    },
+    {
+      "id":3,
+      "name":"Conferencia",
+      "state":"Activo"
+    },
+    {
+      "id":4,
+      "name":"Festivales",
+      "state":"Activo"
+    },
+    {
+      "id":5,
+      "name":"Cine y Peliculas",
+      "state":"Activo"
+    },
+    {
+      "id":6,
+      "name":"Eventos especiales",
+      "state":"Activo"
+    },
+    {
+      "id":7,
+      "name":"E-sport",
+      "state":"Activo"
+    }
   ]
 }
