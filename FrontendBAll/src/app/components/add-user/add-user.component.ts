@@ -1,9 +1,12 @@
-import { Component } from '@angular/core';
+import { Component, ElementRef, ViewChild } from '@angular/core';
 import {FormBuilder, FormControl, FormGroup, Validators} from '@angular/forms';
 import { ActivatedRoute, Router } from '@angular/router';
 import { User } from 'src/app/models/user';
 import { UserServiceService } from 'src/app/services/user-service.service';
-
+import {COMMA, ENTER} from '@angular/cdk/keycodes';
+import {Observable} from 'rxjs';
+import {map, startWith} from 'rxjs/operators';
+import { Category } from 'src/app/models/category';
 
 @Component({
   selector: 'app-add-user',
@@ -14,11 +17,15 @@ export class AddUserComponent {
 
   addUserForm1!:FormGroup;
   addUserForm2!:FormGroup;
+  addUserForm3!:FormGroup;
   id!:number;
   fristPart:boolean=true;
-
+  hide:boolean= true;
+  
   constructor(private FormBuilder:FormBuilder, private userService:UserServiceService, 
-    private router: Router, private stardRouter: ActivatedRoute){}
+    private router: Router, private stardRouter: ActivatedRoute){
+
+    }
 
     reactiveForm():void {
     
@@ -35,8 +42,16 @@ export class AddUserComponent {
         numberDocument:["",[Validators.required]],
         phone:["",[Validators.required]],
         city:["",[Validators.required]],
-    });
-      this.id=0;
+     });
+
+     this.addUserForm2 = this.FormBuilder.group({
+        typeDocument:["",[Validators.required]],
+        numberDocument:["",[Validators.required]],
+        phone:["",[Validators.required]],
+        city:["",[Validators.required]],
+     });
+     
+     this.id=0;
     }
 
     saveUser():void {
@@ -57,7 +72,7 @@ export class AddUserComponent {
         
         next: (data)  => {
           this.fristPart=true; 
-          this.router.navigate(["/insertUser"]);
+          this.router.navigate(["/Login"]);
         },
         error: (err) => {
           console.log(err);
@@ -70,4 +85,13 @@ export class AddUserComponent {
     changeScreen():void{
       this.fristPart=!this.fristPart;
     }
+
+    changeToLogin():void{
+      this.router.navigate(["/Login"]);
+    }
+
+    changeVisivility():void{
+      this.hide=!this.hide;
+    }
+
 }

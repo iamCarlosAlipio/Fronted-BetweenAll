@@ -2,20 +2,20 @@
   
   <div class="container1">
     <div *ngIf="fristPart">
-    <form [formGroup]="addUserForm2" class="space" (submit)="changeScreen()">
+    <form [formGroup]="addUserForm1" class="space">
         <div class="Encabezado">
-          <img class="img2" src="./assets/img/logo.png" alt="logo" />
+          <img src="./assets/img/logo.png" alt="logo" width="15%" />
           <p class="text-2">Bienvenido a BetweenAll</p>
         </div>
       <div class="text-3">
-        <p><u>INICIAR SESION</u></p>
+        <p><u (click)="changeToLogin()">INICIAR SESION</u></p>
       </div>
       <div>
         <div>
-          <mat-form-field  class="form-container-1">
+          <mat-form-field class="form-container-1">
             <input matInput placeholder="Nombre" formControlName="name">
           </mat-form-field>
-          <mat-form-field class="form-container-2">
+          <mat-form-field class="form-container-1" style="margin-left: 2%;">
             <input matInput placeholder="Apellido" formControlName="lastname">
           </mat-form-field>
         </div>
@@ -26,29 +26,36 @@
         </div>
         <div>
           <mat-form-field class="full">
-            <input matInput placeholder="contraseña" formControlName="password">
+            <input matInput [type]="hide ? 'password' : 'text'" formControlName="password">
+            <button mat-icon-button matSuffix (click)="hide = !hide" [attr.aria-label]="'Hide password'" [attr.aria-pressed]="hide">
+            <mat-icon>{{hide ? 'visibility_off' : 'visibility'}}</mat-icon>
+            </button>
           </mat-form-field>
+          
         </div>
         <div>
             <p class="text-4">Confirma tu contraseña</p>
             <mat-form-field class="full">
-              <input matInput placeholder="contraseña" formControlName="password">
+              <input matInput [type]="hide ? 'password' : 'text'" formControlName="password">
+            <button mat-icon-button matSuffix (click)="hide = !hide" [attr.aria-label]="'Hide password'" [attr.aria-pressed]="hide">
+            <mat-icon>{{hide ? 'visibility_off' : 'visibility'}}</mat-icon>
+            </button>
             </mat-form-field>
         </div>
         <div class="condition">
-              <mat-checkbox class="">He leído y acepto los Terminos y Condiciones</mat-checkbox>
+              <mat-checkbox>He leído y acepto los Terminos y Condiciones</mat-checkbox>
               <mat-checkbox>¿Usted ha leído y acepta los términos y condiciones para el tratamiento de sus datos personales contenidos en la Politicas de privacidad Web?</mat-checkbox>
               <mat-checkbox>¿Desea que BetweenAll use su información para enviarle ofertas o promociones de eventos</mat-checkbox>
         </div>
       </div>
         <div>
-          <button mat-raised-button style="background-color:#A32DE3; color:white" type="submit" >Siguiente</button>
+          <button mat-raised-button style="background-color:#A32DE3; color:white" (click)="changeScreen()">Siguiente</button>
         </div>
       </form>
     </div>
 
     <div *ngIf="!fristPart">
-      <form [formGroup]="addUserForm1" class="space" >
+      <form [formGroup]="addUserForm2" class="space" >
           <div class="Encabezado">
             <p class="text-2">Datos personales</p>
           </div>
@@ -61,7 +68,7 @@
                   <mat-option value="Tarjeta de extrangeria">Tarjeta de extrangeria</mat-option>
                 </mat-select>
               </mat-form-field>
-              <mat-form-field class="form-container-2">
+              <mat-form-field class="form-container-1" style="margin-left: 2%;">
                 <input matInput placeholder="Numero" formControlName="numberDocument">
               </mat-form-field>
           </div>
@@ -77,19 +84,42 @@
               <input matInput placeholder="Lima" formControlName="city">
             </mat-form-field>
           </div>
-            <div class="condition">
-                <mat-checkbox class="">Estoy de acuerdo en mostrar mi información a los demas usuarios</mat-checkbox>
+          <div >
+            <p class="text-4">Elige tus categorias</p>
+            <div style="display: flex;">
+              <mat-form-field class="form-container-1">
+                <mat-select placeholder="Categoria" formControlName = "category">
+                  <mat-option value="DNI">pop</mat-option>
+                  <mat-option value="Tarjeta de extrangeria">kpop</mat-option>
+                </mat-select>
+              </mat-form-field>
+              <button mat-raised-button style="background-color:#A32DE3; color:white; width: 20%; margin-left: 10%;" >Agregar</button>
+              <button mat-raised-button style="background-color:white; color:black; width: 20%; margin-left: 10%;" >Quitar</button>
             </div>
           </div>
-          <div>
-            <button mat-raised-button style="background-color:white; color:black," (click)="changeScreen()">Regresar</button>
-            <button mat-raised-button mat-raised-button style="background-color:#A32DE3; color:white" color="primary" type="submit" >Siguiente</button>
-          </div>
+        </div>
         </form>
       </div>
   </div>
-  <div class="container1">
-    <img class="imgs" src="https://thumbs.dreamstime.com/b/hombre-tocando-guitarra-el%C3%A9ctrica-apasionado-por-su-afici%C3%B3n-musical-emocionalmente-222761734.jpg">
+  <div class="container1" style=" overflow: hidden;">
+    <div *ngIf="fristPart">
+      <img  src="https://thumbs.dreamstime.com/b/hombre-tocando-guitarra-el%C3%A9ctrica-apasionado-por-su-afici%C3%B3n-musical-emocionalmente-222761734.jpg" width="100%">
+    </div>
+    <form [formGroup]="addUserForm3" class="space" >
+      <div class="Encabezado">
+        <p class="text-2">Categorias que te gustan</p>
+      </div>
+      <div>
+        <div class="condition">
+          <mat-checkbox class="">Estoy de acuerdo en mostrar mi información a los demas usuarios</mat-checkbox>
+        </div>
+      </div>
+
+      <div>
+        <button mat-raised-button style="background-color:white; color:black," (click)="changeScreen()">Regresar</button>
+        <button mat-raised-button mat-raised-button style="background-color:#A32DE3; color:white">Siguiente</button>
+      </div>
+    </form>
   </div>
 </div>
 
