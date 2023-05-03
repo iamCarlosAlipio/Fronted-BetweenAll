@@ -1,36 +1,5 @@
 {
-    "eventos": [
-      {
-        "id": 1,
-        "name": "Morat Tour",
-        "image": "https://cdn.teleticket.com.pe/especiales/morat-per22/images/event-artista-res.jpg",
-        "date": "15-10-2023",
-        "location": "Lima"
-      },
-      {
-        "id": 2,
-        "name": "Grupo 5",
-        "image": "https://cdn.teleticket.com.pe/especiales/morat-per22/images/event-artista-res.jpg",
-        "date": "15-10-2023",
-        "location": "Lima"
-      },
-      {
-        "id": 3,
-        "name": "Morat Tour",
-        "image": "https://cdn.teleticket.com.pe/especiales/morat-per22/images/event-artista-res.jpg",
-        "date": "15-10-2023",
-        "location": "Lima"
-      },
-      {
-        "id": 4,
-        "name": "Grupo 5",
-        "image": "https://cdn.teleticket.com.pe/especiales/morat-per22/images/event-artista-res.jpg",
-        "date": "15-10-2023",
-        "location": "Lima"
-      }
-
-    ],
-    "user": [
+  "user": [
     {
       "id": 1,
       "name": "Carlos",
@@ -43,50 +12,73 @@
       "categoryEvent": "Rock",
       "type": "DNI",
       "number": "72556278"
-
     }
   ],
-
   "socialevents": [
     {
       "id": 1,
       "name": "Morat Tour",
       "image": "https://cdn.teleticket.com.pe/especiales/morat-per22/images/event-artista-res.jpg",
-      "date": "15-10-2023",
-      "location": "Lima"
+      "location": "Lima",
+      "description": "Somos un grupo de musica"
     },
     {
       "id": 2,
       "name": "Grupo 5",
       "image": "https://cdn.teleticket.com.pe/especiales/morat-per22/images/event-artista-res.jpg",
       "date": "15-10-2023",
-      "location": "Lima"
+      "location": "Lima",
+      "description": "Somos un grupo de musica"
     },
     {
       "id": 3,
       "name": "Morat Tour",
       "image": "https://cdn.teleticket.com.pe/especiales/morat-per22/images/event-artista-res.jpg",
       "date": "15-10-2023",
-      "location": "Lima"
+      "location": "Lima",
+      "description": "Somos un grupo de musica"
     },
     {
       "id": 4,
       "name": "Grupo 5",
       "image": "https://cdn.teleticket.com.pe/especiales/morat-per22/images/event-artista-res.jpg",
       "date": "15-10-2023",
-      "location": "Lima"
+      "location": "Lima",
+      "description": "Somos un grupo de musica"
     },
     {
       "id": 5,
       "name": "Bahia",
       "image": "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQSXQ7yOWtYHdCQ-zsQLgnXFs-ctXabW6Y6NWScg8w-&s",
-      "location": "Los olivos"
+      "location": "Los olivos",
+      "description": "Somos un grupo de musica"
     },
     {
       "id": 6,
       "name": "DIEGOEVENT",
       "image": "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTdQm62JfUzQeTWyHc_L1A8MM11MZqwwViqek59UBwP1hvwiMi5JYHsNrmOgF_YBvSyOYU&usqp=CAU",
-      "location": "SAN MIGUEL"
+      "location": "SAN MIGUEL",
+      "description": "Somos un grupo de musica"
+    },
+    {
+      "id": 7
+    },
+    {
+      "id": 8
+    },
+    {
+      "id": 9,
+      "name": "Diego",
+      "image": "as",
+      "location": "as",
+      "description": "as"
+    },
+    {
+      "id": 10,
+      "name": "Diego",
+      "image": "imagenprueba",
+      "location": "Los Olivos",
+      "description": "vengan todos"
     }
   ],
   "datesocialevents": [
