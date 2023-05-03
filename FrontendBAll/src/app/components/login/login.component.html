@@ -1,0 +1,21 @@
+<div class="body">
+    <div class="login">
+        <form [formGroup]="form">
+            <img src="./assets/img/BetweenAll-logo.png" alt="BA-icon" width="50%">
+        <h1 style="color:#A32DE3;">Bienvenido a BetweenAll</h1>
+        <mat-form-field class="inputLogin" appearance="fill">
+            <mat-label >Usuario</mat-label>
+            <input matInput autocomplete="off" formControlName="email">
+          </mat-form-field>
+          <mat-form-field class="inputLogin" appearance="fill">
+            <mat-label>Contraseña</mat-label>
+            <input matInput type="password" autocomplete="off" formControlName="password">
+          </mat-form-field>
+          <br>
+          <button mat-raised-button class="inputLogin button" id="inputJoin" (click)="verificarUsuario()">Ingresar</button>
+          <br>
+          <br>
+          <button mat-raised-button routerLink="/insertUser" style=" background-color:white; color: #A32DE3; border-style: solid; border-color: #A32DE3;background-color: white;" class="inputLogin button">Registrar</button>
+        </form>
+    </div>
+</div>
