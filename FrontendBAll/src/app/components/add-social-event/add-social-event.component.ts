@@ -10,6 +10,9 @@ import { ActivatedRoute, Router } from '@angular/router';
 import {MatSnackBar} from '@angular/material/snack-bar';
 import {MatDatepickerInputEvent} from '@angular/material/datepicker';
 import {MatChipEditedEvent, MatChipInputEvent} from '@angular/material/chips';
+import { MatTableDataSource } from '@angular/material/table';
+import { identity } from 'rxjs';
+
 
 @Component({
   selector: 'app-add-social-event',
@@ -29,7 +32,6 @@ export class AddSocialEventComponent {
 
   ngOnInit(){
       this.reactiveForm();
-      this.reactiveForm2();
   }
   
   //REACTIVE FORM PARA CREAR LOS DETALLES DEL EVENTO
@@ -37,27 +39,22 @@ export class AddSocialEventComponent {
   reactiveForm():void {
     this.myForm = this.formBuilder.group({
         id:[""],
-        name:["",[Validators.maxLength(60)]],
-        image:["",[Validators.maxLength(200)]],
-        location:[""],
-        description:[""],
+        nameDetail:[""],
+        imageDetail:[""],
+        locationDetail:[""],
+        descriptionDetail:[""],
     });
     
-    
-    //Obtener el Id que esta llegando por la ruta del browser en casos de Editar
-    // Si (id = a  un numero ) entonces debo cargar los datos de ese empleado para editarlos y cambiar el EsInsertar a falso
-    // sino 
-
     this.id = this.activatedRouter.snapshot.params["id"];
     if (this.id!=0 && this.id!=undefined) {
       this.EsInsertar = false;
       this.socialEventsService.getSocialEvent(this.id).subscribe({
         next: (data:SocialEvent) => {
           this.myForm.get("id")?.setValue(data.id);
-          this.myForm.get("nombre")?.setValue(data.name);
-          this.myForm.get("imagen")?.setValue(data.image);
-          this.myForm.get("locacion")?.setValue(data.location);       
-          this.myForm.get("descripcion")?.setValue(data.description);       
+          this.myForm.get("nameDetail")?.setValue(data.name);
+          this.myForm.get("imageDetail")?.setValue(data.image);
+          this.myForm.get("locationDetail")?.setValue(data.location);       
+          this.myForm.get("descriptionDetail")?.setValue(data.description);       
         },
         error: (err) => {
           console.log(err);
@@ -75,11 +72,11 @@ export class AddSocialEventComponent {
 
   reactiveForm2():void {
     this.myForm = this.formBuilder.group({  
-        iddate:[""],
-        idsv:["",[Validators.required, Validators.maxLength(60)]],
-        datesv:["",[Validators.required, Validators.maxLength(50)]],
-        inicio:["",[Validators.required]],
-        fin:["",[Validators.required]]
+        id:[""],
+        idSEDate:["",[Validators.maxLength(60)]],
+        dateDate:["",[Validators.maxLength(50)]],
+        startDate:[""],
+        endDate:[""]
     }
     );
     this.id = this.activatedRouter.snapshot.params["id"];
@@ -87,11 +84,11 @@ export class AddSocialEventComponent {
         this.EsInsertar = false;
         this.datesocialeventsService.getDateSocialEvent(this.id).subscribe({
           next: (data:DateSocialEvent) => { 
-            this.myForm.get("iddate")?.setValue(data.id);
-            this.myForm.get("idsv")?.setValue(data.idSocialEvent);
-            this.myForm.get("datesv")?.setValue(data.date);
-            this.myForm.get("inicio")?.setValue(data.startTime);
-            this.myForm.get("fin")?.setValue(data.endTime);       
+            this.myForm.get("id")?.setValue(data.id);
+            this.myForm.get("idSEDate")?.setValue(data.idSocialEvent);
+            this.myForm.get("dateDate")?.setValue(data.date);
+            this.myForm.get("startDate")?.setValue(data.startTime);
+            this.myForm.get("endDate")?.setValue(data.endTime);       
           },
           error: (err) => {
             console.log(err);
@@ -103,16 +100,16 @@ export class AddSocialEventComponent {
         this.EsInsertar = true;
       }
   }
-
+ 
   //REACTIVE FORM PARA CREAR LAS ZONAS DEL EVENTO
 
   reactiveForm3():void {
     this.myForm = this.formBuilder.group({  
-        idZone:[""],
-        nameZone:["",[Validators.required, Validators.maxLength(60)]],
-        priceZone:["",[Validators.required, Validators.maxLength(50)]],
-        idDateSocialEvent:["",[Validators.required]],
-        capacityZone:["",[Validators.required]]
+        id:[""],
+        nameZone:["",[Validators.maxLength(60)]],
+        priceZone:["",[Validators.maxLength(50)]],
+        idDateSocialEvent:[""],
+        capacityZone:[""]
     }
     );
     this.id = this.activatedRouter.snapshot.params["id"];
@@ -120,7 +117,7 @@ export class AddSocialEventComponent {
         this.EsInsertar = false;
         this.zoneeventsService.getZoneEvent(this.id).subscribe({
           next: (data:ZoneEvent) => { 
-            this.myForm.get("idZone")?.setValue(data.id);
+            this.myForm.get("id")?.setValue(data.id);
             this.myForm.get("nameZone")?.setValue(data.name);
             this.myForm.get("priceZone")?.setValue(data.price);
             this.myForm.get("idDateSocialEvent")?.setValue(data.idDateSocialEvent);
@@ -138,6 +135,7 @@ export class AddSocialEventComponent {
   }
 
   //GUARDAR DETALLES DE EVENTO SOCIAL
+
   //GUARDAR DETALLES DE EVENTO SOCIAL
   //GUARDAR DETALLES DE EVENTO SOCIAL
 
@@ -145,10 +143,10 @@ export class AddSocialEventComponent {
 
     const socialEvent:SocialEvent = {
       id: parseInt(this.myForm.get("id")!.value),
-      name: this.myForm.get("name")!.value,
-      image: this.myForm.get("image")!.value,
-      location: this.myForm.get("location")!.value,
-      description: this.myForm.get("description")!.value,
+      name: this.myForm.get("nameDetail")!.value,
+      image: this.myForm.get("imageDetail")!.value,
+      location: this.myForm.get("locationDetail")!.value,
+      description: this.myForm.get("descriptionDetail")!.value,
     }
 
     //Si EsInsertar entonces 
@@ -189,11 +187,11 @@ export class AddSocialEventComponent {
 
     for(let i:number=0;i<this.events.length;i++){
       const dateSocialEvent:DateSocialEvent = {
-        id: parseInt(this.myForm.get("iddate")!.value),
-        idSocialEvent: parseInt(this.myForm.get("idsv")!.value),
+        id: parseInt(this.myForm.get("id")!.value),
+        idSocialEvent: parseInt(this.myForm.get("idSEDate")!.value),
         date: this.events[i],
-        startTime: this.myForm.get("inicio")!.value,
-        endTime: this.myForm.get("fin")!.value
+        startTime: this.myForm.get("startDate")!.value,
+        endTime: this.myForm.get("endDate")!.value
       }
   
       //Si EsInsertar entonces 
@@ -216,13 +214,46 @@ export class AddSocialEventComponent {
   //GUARDAR ZONAS DE EVENTO
   //GUARDAR ZONAS DE EVENTO
 
+  //TABLA DE ZONAS
+  displayedColumns: string[] = ['nameZone', 'priceZone', 'capacityZone','actions'];
+  NumberZone: ZoneEvent[]=[];
+  dataSource = new MatTableDataSource<ZoneEvent>();
+
+  idNumberZone:number=0;
+  
+
+  agregarZone(){
+    this.NumberZone.push(
+      {
+        id: this.idNumberZone,
+        name: this.myForm.get("nameZone")!.value,
+        price: parseInt(this.myForm.get("priceZone")!.value),
+        idDateSocialEvent: parseInt(this.myForm.get("idDateSocialEvent")!.value),
+        capacity: parseInt(this.myForm.get("capacityZone")!.value)
+      }
+    );
+    this.cargarZonas();
+    this.idNumberZone++;
+    console.log(this.NumberZone);
+  }
+  cargarZonas(): void{
+    this.dataSource=new MatTableDataSource(this.NumberZone);
+    console.log(this.dataSource.data);
+  }
+  
+  deleteZone(id: number):void {
+    this.NumberZone.splice(id,1);
+    this.cargarZonas();
+    console.log(this.NumberZone);
+  }
+
   saveZoneEvent():void {
 
     for(let i:number=0;i<this.events.length;i++){
       const zoneEvent:ZoneEvent = {
-        id: parseInt(this.myForm.get("idZone")!.value),
+        id: parseInt(this.myForm.get("id")!.value),
         name: this.myForm.get("nameZone")!.value,
-        price: parseInt(this.myForm.get("nameZone")!.value),
+        price: parseInt(this.myForm.get("priceZone")!.value),
         idDateSocialEvent: parseInt(this.myForm.get("idDateSocialEvent")!.value),
         capacity: parseInt(this.myForm.get("capacityZone")!.value)
       }
@@ -242,5 +273,8 @@ export class AddSocialEventComponent {
       }
     }
   }
+
+  
+
 
 } 
