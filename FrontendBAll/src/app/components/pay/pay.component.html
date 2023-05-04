@@ -1,0 +1,38 @@
+<div class="container">
+    <div class="row">
+        <div class="col-md-6">
+            <br>
+            <label>Datos del pago</label>
+            <br>
+            <mat-form-field class="w-100">
+                <mat-label>Número de Tarjeta</mat-label>
+                <input matInput>
+            </mat-form-field>
+            <div class="d-flex">
+                <mat-form-field appearance="fill" class="w-50 me-2">
+                    <mat-label>MM/YYYY</mat-label>
+                    <input matInput>
+                  </mat-form-field>
+                <mat-form-field appearance="fill" class="w-50 ms-2">
+                    <mat-label>CVV</mat-label>
+                    <input matInput>
+                  </mat-form-field>
+            </div>
+            <div class="condition">
+                <mat-checkbox>He leído y acepto los Terminos y Condiciones</mat-checkbox>
+                <mat-checkbox>¿Usted ha leído y acepta los términos y condiciones para el tratamiento de sus datos personales contenidos en la Politicas de privacidad Web?</mat-checkbox>
+                <mat-checkbox>¿Desea que BetweenAll use su información para enviarle ofertas o promociones de eventos</mat-checkbox>
+          </div>
+          <div >
+            <br>
+            <button routerLink="/pay" mat-fab extended style=" background-color:#A32DE3;" class="text-white w-100">PAGAR</button>
+        </div>
+        </div>
+        <div class="col-md-6">
+            <div class="text-center">
+                <img class="w-100" mat-card-image src= "https://cdn.teleticket.com.pe/especiales/morat-per22/images/event-artista-res.jpg">
+
+            </div>
+        </div>
+    </div>
+</div>

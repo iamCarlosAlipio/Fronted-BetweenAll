@@ -15,10 +15,15 @@ import { AddSocialEventComponent } from './components/add-social-event/add-socia
 import { GroupsComponent } from './components/groups/groups.component';
 import { AddEditGroupsComponent } from './components/add-edit-groups/add-edit-groups.component';
 import { EventCreate1Component } from './components/event-create1/event-create1.component';
+import { EditUserComponent } from './components/edit-user/edit-user.component';
+import { PurchaseComponent } from './components/purchase/purchase.component';
+
+import { PayComponent } from './components/pay/pay.component';
 
 @NgModule({
   declarations: [
     AppComponent,
+    AddUserComponent,
     HomeComponent,
     NavbarComponent,
     LoginComponent,
@@ -26,7 +31,11 @@ import { EventCreate1Component } from './components/event-create1/event-create1.
     AddSocialEventComponent,
     GroupsComponent,
     AddEditGroupsComponent,
-    EventCreate1Component
+    EventCreate1Component,
+    AddEditGroupsComponent,
+    EditUserComponent,
+    PurchaseComponent,
+    PayComponent
   ],
   imports: [
     BrowserModule,

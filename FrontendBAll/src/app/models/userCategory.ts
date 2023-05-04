@@ -1,7 +1,6 @@
-export interface UserCategory{
+export interface userCategory{
+
     id:number;
     idUser:number;
     idCategory:number;
-
-    
 }

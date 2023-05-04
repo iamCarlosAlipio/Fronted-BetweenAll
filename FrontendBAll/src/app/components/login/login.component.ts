@@ -1,8 +1,10 @@
+import { User } from './../../models/user';
 import { Component } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
-import { MatSnackBar } from '@angular/material/snack-bar';
-import { Router } from '@angular/router';
 import { timeout } from 'rxjs';
+import { ActivatedRoute, Router } from '@angular/router';
+import { UserServiceService } from 'src/app/services/user-service.service';
+import { MatSnackBar } from '@angular/material/snack-bar';
 
 @Component({
   selector: 'app-login',
@@ -10,45 +12,46 @@ import { timeout } from 'rxjs';
   styleUrls: ['./login.component.css']
 })
 export class LoginComponent {
+
+  idUser!:number;
+  email!: string;
+  password!: string;
+  form!:FormGroup;
+  mensaje = false;
+
+  constructor(private FormBuilder:FormBuilder,private fb:FormBuilder,private user:UserServiceService, private router:Router,
+    private snack: MatSnackBar){}
   
-  form:FormGroup;
-  loading=false;
-  constructor(private fb:FormBuilder,private _snackBar: MatSnackBar, private router:Router){
-    this.form=this.fb.group({
-      user:['',Validators.required],
-      password:['',Validators.required],
-    })
-  }
   ngOnInit():void{
-
-  }
-  getIntoDash(){
-    console.log(this.form);
-    const userForm=this.form.value.user;
-    const passwordForm=this.form.value.password;
-    console.log(userForm);
-    console.log(passwordForm);
-    if(userForm=='adm' && passwordForm=='123'){
-      this.fakeLoading();
-    }else{
-      this.error();
-      this.form.reset();
-    }
+    this.reactiveForm();
   }
 
-  error(){
-    this._snackBar.open('Usuario o contraseña ingresado son inválidos','',{
-      duration:3000,
-      horizontalPosition:'center',
-      verticalPosition:'bottom'
-    })
+  reactiveForm():void {
+    
+    this.form = this.FormBuilder.group({
+        email:["",[Validators.required, Validators.maxLength(10)]],
+        password:["",[Validators.required, Validators.maxLength(10)]],
+    });
   }
 
-  fakeLoading(){
-    this.loading=true;
-    setTimeout(()=>{
-      this.router.navigate(['Home']);
-      this.loading=false;
-    },1500)
+  verificarUsuario(): void {
+
+    this.mensaje = true;
+    this.email = this.form.get('email')?.value;
+    this.password = this.form.get('password')?.value;
+    this.user.getUsers().subscribe(
+      (data: User[]) => {
+        let auxUser = data.find(x => x.email == this.email && x.password == this.password);
+        if (auxUser) {
+          this.router.navigate(["home/" + auxUser.id]);
+        }
+        else{
+          this.snack.open('El usuario no existe', 'OK', { duration: 5000 })
+        }
+    });
+    this.mensaje = false;
+  }
+  getIdUser():number{
+    return this.idUser;
   }
 }
