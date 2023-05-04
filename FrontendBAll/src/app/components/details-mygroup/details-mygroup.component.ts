@@ -5,13 +5,12 @@ import { GroupsService } from './../../services/groups.service';
 import { Group } from 'src/app/models/group';
 import {FormBuilder, FormGroup, Validators} from '@angular/forms';
 
-
 @Component({
-  selector: 'app-details-group',
-  templateUrl: './details-group.component.html',
-  styleUrls: ['./details-group.component.css']
+  selector: 'app-details-mygroup',
+  templateUrl: './details-mygroup.component.html',
+  styleUrls: ['./details-mygroup.component.css']
 })
-export class DetailsGroupComponent implements OnInit {
+export class DetailsMygroupComponent implements OnInit {
   constructor(private formBuilder:FormBuilder, private groupService: GroupsService, private router: Router,
     private activatedRouter: ActivatedRoute) {
   }

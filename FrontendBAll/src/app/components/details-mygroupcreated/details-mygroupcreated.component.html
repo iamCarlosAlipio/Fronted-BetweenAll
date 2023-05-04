@@ -37,7 +37,7 @@
             </mat-form-field>
           </mat-grid-tile>
           <mat-grid-tile [colspan]="4" [rowspan]="1">
-            <button routerLink="/groups" mat-raised-button color="primary" style="background-color: #A32DE3;">JOIN GROUP</button>
+            <button routerLink="/groups" (click)="deleteGroup(id)" mat-raised-button color="primary" style="background-color: #A32DE3;">LEAVE GROUP</button>
           </mat-grid-tile>
         </mat-grid-list>
       </form>

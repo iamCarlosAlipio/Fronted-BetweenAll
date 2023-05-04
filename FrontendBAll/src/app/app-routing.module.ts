@@ -11,6 +11,8 @@ import { EditUserComponent } from './components/edit-user/edit-user.component';
 import { PurchaseComponent } from './components/purchase/purchase.component';
 import { PayComponent } from './components/pay/pay.component';
 import { DetailsGroupComponent } from './components/details-group/details-group.component';
+import { DetailsMygroupComponent } from './components/details-mygroup/details-mygroup.component';
+import { DetailsMygroupcreatedComponent } from './components/details-mygroupcreated/details-mygroupcreated.component';
 
 const routes: Routes = [
   {path: '', component:LoginComponent},
@@ -25,7 +27,9 @@ const routes: Routes = [
   {path: 'pay/:id', component:PayComponent},
   {path: 'add-group', component:AddEditGroupsComponent},
   {path: 'edit-groups/:id', component:AddEditGroupsComponent},
-  {path: 'details-group/:id', component: DetailsGroupComponent}
+  {path: 'details-group/:id', component: DetailsGroupComponent},
+  {path: 'details-mygroup/:id', component: DetailsMygroupComponent},
+  {path: 'details-mygroupcreated/:id', component: DetailsMygroupcreatedComponent}
 
 ];
 

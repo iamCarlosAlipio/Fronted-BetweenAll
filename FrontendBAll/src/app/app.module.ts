@@ -20,6 +20,8 @@ import { PurchaseComponent } from './components/purchase/purchase.component';
 
 import { PayComponent } from './components/pay/pay.component';
 import { DetailsGroupComponent } from './components/details-group/details-group.component';
+import { DetailsMygroupComponent } from './components/details-mygroup/details-mygroup.component';
+import { DetailsMygroupcreatedComponent } from './components/details-mygroupcreated/details-mygroupcreated.component';
 
 @NgModule({
   declarations: [
@@ -37,7 +39,9 @@ import { DetailsGroupComponent } from './components/details-group/details-group.
     EditUserComponent,
     PurchaseComponent,
     PayComponent,
-    DetailsGroupComponent
+    DetailsGroupComponent,
+    DetailsMygroupComponent,
+    DetailsMygroupcreatedComponent
   ],
   imports: [
     BrowserModule,
