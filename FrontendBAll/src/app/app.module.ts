@@ -19,6 +19,7 @@ import { EditUserComponent } from './components/edit-user/edit-user.component';
 import { PurchaseComponent } from './components/purchase/purchase.component';
 
 import { PayComponent } from './components/pay/pay.component';
+import { DetailsGroupComponent } from './components/details-group/details-group.component';
 
 @NgModule({
   declarations: [
@@ -35,7 +36,8 @@ import { PayComponent } from './components/pay/pay.component';
     AddEditGroupsComponent,
     EditUserComponent,
     PurchaseComponent,
-    PayComponent
+    PayComponent,
+    DetailsGroupComponent
   ],
   imports: [
     BrowserModule,

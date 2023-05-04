@@ -14,7 +14,7 @@
           <mat-label>Filtro</mat-label>
           <input placeholder="Ingrese filtro..." matInput (keyup)="filterGroups($event)" #input>
         </mat-form-field>
-        <button routerLink="/add-edit-groups" mat-raised-button color="primary">CREAR GRUPO</button>
+        <button routerLink="/add-group" mat-raised-button color="primary" style="background-color: #A32DE3;">CREAR GRUPO</button>
       </div>
 
       <div class="tablepag">
@@ -52,22 +52,12 @@
             <td mat-cell *matCellDef="let item"> <img mat-card-image src= {{item.image}}></td>
           </ng-container>
 
-            <!-- <mat-text-column name="category"></mat-text-column>-->
-            <!-- <mat-text-column name="sueldo"></mat-text-column> -->
-
             <ng-container matColumnDef="actions">
               <th mat-header-cell *matHeaderCellDef>Acciones</th>
               <td mat-cell *matCellDef="let item">
-                  <a style="cursor: pointer;" routerLink="/edit/{{item.id}}">
-                    <mat-icon>edit</mat-icon>
+                  <a>
+                    <button routerLink="/details-group/{{item.id}}" mat-raised-button color="primary" style="background-color: #A32DE3;">SEE DETAILS</button>
                   </a>
-                  <a style="cursor: pointer;" (click)="deleteGroups(item.id)">
-                    <mat-icon>input</mat-icon>
-                  </a>
-                  <button routerLink="/details/{{item.id}}" mat-raised-button color="primary">SEE DETAILS</button>
-                  <!--<a style="cursor: pointer;" routerLink="/details/{{item.id}}"> creo que aca podria hacer la opcion ver detalles
-                    <mat-icon>search</mat-icon>
-                  </a>-->
               </td>
             </ng-container>
 
@@ -91,7 +81,7 @@
           <mat-label>Filtro</mat-label>
           <input placeholder="Ingrese filtro..." matInput (keyup)="filterGroups($event)" #input>
         </mat-form-field>
-        <button routerLink="/add-edit-groups" mat-raised-button color="primary">CREAR GRUPO</button>
+        <button routerLink="/add-group" mat-raised-button color="primary" style="background-color: #A32DE3;">CREAR GRUPO</button>
       </div>
 
       <div class="tablepag">
@@ -129,20 +119,11 @@
             <td mat-cell *matCellDef="let item"> <img mat-card-image src= {{item.image}}></td>
           </ng-container>
 
-            <!-- <mat-text-column name="category"></mat-text-column>-->
-            <!-- <mat-text-column name="sueldo"></mat-text-column> -->
-
             <ng-container matColumnDef="actions">
               <th mat-header-cell *matHeaderCellDef>Acciones</th>
               <td mat-cell *matCellDef="let item">
-                  <a style="cursor: pointer;" routerLink="/edit/{{item.id}}">
-                    <mat-icon>edit</mat-icon>
-                  </a>
-                  <a style="cursor: pointer;" (click)="deleteGroups(item.id)">
-                    <mat-icon>input</mat-icon>
-                  </a>
-                  <a style="cursor: pointer;" routerLink="/details/{{item.id}}"> <!--creo que aca podria hacer la opcion ver detalles-->
-                    <mat-icon>search</mat-icon>
+                  <a>
+                    <button routerLink="/details-group/{{item.id}}" mat-raised-button color="primary" style="background-color: #A32DE3;">SEE DETAILS</button>
                   </a>
               </td>
             </ng-container>

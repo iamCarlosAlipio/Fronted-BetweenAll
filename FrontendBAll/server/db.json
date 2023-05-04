@@ -295,14 +295,6 @@
       "image": "https://i.blogs.es/7ddff1/alex-bracken-rzulpgwqcue-unsplash/1366_2000.jpg"
     },
     {
-      "id": 7,
-      "name": "Reales",
-      "amountParticipants": 20,
-      "description": "Somos un grupo de musica",
-      "category": "Musica",
-      "image": "https://i.blogs.es/7ddff1/alex-bracken-rzulpgwqcue-unsplash/1366_2000.jpg"
-    },
-    {
       "id": 8,
       "name": "Reales",
       "amountParticipants": 20,
@@ -397,6 +389,14 @@
       "description": "Somos un grupo de musica",
       "category": "Teatro",
       "image": "https://www.mincetur.gob.pe/wp-content/uploads/2017/11/foto.jpg"
+    },
+    {
+      "id": 20,
+      "name": "Nation of Electronic",
+      "amountParticipants": "20",
+      "description": "Fans of Electronical Music",
+      "category": "Musica",
+      "image": "https://imagenes.elpais.com/resizer/lts_jw-C3WPFJfgMQHXbcYDfcos=/414x0/arc-anglerfish-eu-central-1-prod-prisa.s3.amazonaws.com/public/XKHAIPAIUDWTDEVLE3ETK7SB7I.jpg"
     }
   ],
   "category": [

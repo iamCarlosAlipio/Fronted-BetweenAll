@@ -1,0 +1,47 @@
+<app-navbar></app-navbar>
+<div class="container">
+  <mat-toolbar>
+    <span>DETAILS</span>
+  </mat-toolbar>
+
+  <mat-card style="margin-top: 10px;">
+    <form [formGroup] = "detailsForm">
+      <mat-grid-list cols="4" rowHeight="70px">
+        <mat-grid-tile [colspan]="3" [rowspan]="5">
+          <img mat-card-image [src]="TheGroup.image" *ngIf="TheGroup">
+        </mat-grid-tile>
+        <mat-grid-tile [colspan]="1" [rowspan]="1">
+          <mat-form-field class="ancho">
+            <mat-label>Name</mat-label>
+            <input matInput formControlName="name" readonly="true">
+          </mat-form-field>
+        </mat-grid-tile>
+        <mat-grid-tile [colspan]="1" [rowspan]="1">
+          <mat-form-field class="ancho">
+            <mat-label>Amount of Participants</mat-label>
+            <input matInput formControlName="amountParticipants" readonly="true">
+          </mat-form-field>
+        </mat-grid-tile>
+        <mat-grid-tile [colspan]="1" [rowspan]="1">
+          <mat-form-field class="ancho">
+            <mat-label>Description</mat-label>
+            <input matInput formControlName="description" readonly="true">
+          </mat-form-field>
+        </mat-grid-tile>
+        <mat-grid-tile [colspan]="1" [rowspan]="1">
+          <mat-form-field class="ancho">
+            <mat-label>Category</mat-label>
+            <input matInput formControlName="category" readonly="true">
+          </mat-form-field>
+        </mat-grid-tile>
+        <mat-grid-tile [colspan]="4" [rowspan]="1">
+          <button routerLink="/groups" (click)="deleteGroup(id)" mat-raised-button color="primary" style="background-color: #A32DE3;">DELETE GROUP</button>
+          <button mat-raised-button color="secondary" routerLink="/edit-groups/{{id}}">EDIT GROUP</button>
+        </mat-grid-tile>
+      </mat-grid-list>
+    </form>
+  </mat-card>
+
+
+
+</div>

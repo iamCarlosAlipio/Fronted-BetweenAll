@@ -10,6 +10,7 @@ import { EventCreate1Component } from './components/event-create1/event-create1.
 import { EditUserComponent } from './components/edit-user/edit-user.component';
 import { PurchaseComponent } from './components/purchase/purchase.component';
 import { PayComponent } from './components/pay/pay.component';
+import { DetailsGroupComponent } from './components/details-group/details-group.component';
 
 const routes: Routes = [
   {path: '', component:LoginComponent},
@@ -17,11 +18,15 @@ const routes: Routes = [
   {path: 'home/:id', component:HomeComponent},
   {path:'insertUser',component:AddUserComponent},
   {path: 'addSocialEvent/:id', component:AddSocialEventComponent},
-  {path: 'groups/:id', component:GroupsComponent},
+  {path: 'groups', component:GroupsComponent},
   {path: 'addEditGroups/:id', component:AddEditGroupsComponent},
   {path: 'eventConfirm1', component:EventCreate1Component},
   {path: 'purchase/:id', component:PurchaseComponent},
-  {path: 'pay/:id', component:PayComponent}
+  {path: 'pay/:id', component:PayComponent},
+  {path: 'add-group', component:AddEditGroupsComponent},
+  {path: 'edit-groups/:id', component:AddEditGroupsComponent},
+  {path: 'details-group/:id', component: DetailsGroupComponent}
+
 ];
 
 @NgModule({
