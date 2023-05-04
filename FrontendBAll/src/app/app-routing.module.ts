@@ -7,6 +7,7 @@ import { AddSocialEventComponent } from './components/add-social-event/add-socia
 import { GroupsComponent } from './components/groups/groups.component';
 import { AddEditGroupsComponent } from './components/add-edit-groups/add-edit-groups.component';
 import { EditUserComponent } from './components/edit-user/edit-user.component';
+import { PurchaseComponent } from './components/purchase/purchase.component';
 
 const routes: Routes = [
   {path: '', component:LoginComponent},
@@ -16,8 +17,8 @@ const routes: Routes = [
   {path: 'addSocialEvent/:id', component:AddSocialEventComponent},
   {path: 'groups/:id', component:GroupsComponent},
   {path: 'addEditGroups/:id', component:AddEditGroupsComponent},
-  {path: 'editProfile/:id', component:EditUserComponent}
-
+  {path: 'editProfile/:id', component:EditUserComponent},
+  {path: 'purchase/:id', component:PurchaseComponent}
 ];
 
 @NgModule({

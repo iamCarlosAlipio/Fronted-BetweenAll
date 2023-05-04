@@ -1,0 +1,78 @@
+<div class="container">
+    <div class="row">
+        <div class="col-md-6" style="padding: 10%;">
+            <div class="text-center">
+                
+                <div class="d-flex justify-content-center">
+                    <table class="table w-50">
+                        <thead>
+                            <tr>
+                                <td>Zone</td>
+                                <td>Price</td>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            
+                        </tbody>
+                        
+                    </table>
+                </div>
+            </div>
+            <div>
+
+            </div>
+        </div>
+        <div class="col-md-6">
+            <br>
+            <label>Datos del evento</label>
+            <mat-form-field class="w-100">
+                <mat-label>Fecha</mat-label>
+                <mat-select>
+                  
+                </mat-select>
+            </mat-form-field>
+
+            <mat-form-field class="w-100">
+                <mat-label>Zona</mat-label>
+                <mat-select>
+                  
+                </mat-select>
+            </mat-form-field>
+            <div class="d-flex">
+                <mat-form-field appearance="fill" class="w-50 me-2">
+                    <mat-label>Cantidad</mat-label>
+                    <input type="number" matInput>
+                  </mat-form-field>
+                <mat-form-field appearance="fill" class="w-50 ms-2">
+                    <mat-label>Monto</mat-label>
+                    <input type="text" matInput readonly="true" value=0>
+                  </mat-form-field>
+            </div>
+            <br>
+            <label>Datos de Facturación</label>
+            <br>
+            <div class="d-flex">
+                <mat-form-field appearance="fill" class="w-50 me-2">
+                    <mat-label>Nombre</mat-label>
+                    <input type="string" matInput readonly="true">
+                  </mat-form-field>
+                  <mat-form-field appearance="fill" class="w-50 ms-2">
+                    <mat-label>Apellido</mat-label>
+                    <input type="string" matInput readonly="true">
+                  </mat-form-field>
+            </div>
+            <mat-form-field appearance="fill" class="w-100">
+                <mat-label>Numero de Documento Registrado</mat-label>
+                <input type="string" matInput readonly="true">
+              </mat-form-field>
+              <mat-form-field appearance="fill" class="w-100">
+                <mat-label>Correo electronico</mat-label>
+                <input type="string" matInput readonly="true">
+              </mat-form-field>
+            <div >
+                <br>
+                <button routerLink="/pay" mat-fab extended style=" background-color:#A32DE3;" class="text-white w-100">IR A PAGAR</button>
+            </div>
+        </div>
+    </div>
+</div>

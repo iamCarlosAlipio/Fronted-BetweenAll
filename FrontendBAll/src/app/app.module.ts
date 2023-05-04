@@ -15,6 +15,7 @@ import { AddSocialEventComponent } from './components/add-social-event/add-socia
 import { GroupsComponent } from './components/groups/groups.component';
 import { AddEditGroupsComponent } from './components/add-edit-groups/add-edit-groups.component';
 import { EditUserComponent } from './components/edit-user/edit-user.component';
+import { PurchaseComponent } from './components/purchase/purchase.component';
 
 
 @NgModule({
@@ -29,7 +30,8 @@ import { EditUserComponent } from './components/edit-user/edit-user.component';
     GroupsComponent,
     AddEditGroupsComponent,
     AddEditGroupsComponent,
-    EditUserComponent
+    EditUserComponent,
+    PurchaseComponent
   ],
   imports: [
     BrowserModule,
