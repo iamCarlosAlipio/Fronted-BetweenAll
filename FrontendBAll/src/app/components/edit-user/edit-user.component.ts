@@ -71,8 +71,6 @@ export class EditUserComponent {
 
   changeButton(event:MatSelectChange):void{
 
-    console.log(this.editUserForm1.get("category")!.value)
-
     this.snack.open(this.editUserForm1.get("category")!.value, 'OK', { duration: 5000 })
     let auxCategory = this.categories.find(x => x.name == this.editUserForm1.get("category")!.value);
     if(auxCategory){
