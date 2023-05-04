@@ -13,6 +13,9 @@ import { PayComponent } from './components/pay/pay.component';
 import { ConfirmBuy1Component } from './components/page/confirm-buy1/confirm-buy1.component';
 import { ConfirmEventComponent } from './components/page/confirm-event/confirm-event.component';
 import { LogoutComponent } from './components/page/logout/logout.component';
+import { DetailsGroupComponent } from './components/details-group/details-group.component';
+import { DetailsMygroupComponent } from './components/details-mygroup/details-mygroup.component';
+import { DetailsMygroupcreatedComponent } from './components/details-mygroupcreated/details-mygroupcreated.component';
 
 const routes: Routes = [
   {path: '', component:LoginComponent},
@@ -20,14 +23,20 @@ const routes: Routes = [
   {path: 'home/:id', component:HomeComponent},
   {path:'insertUser',component:AddUserComponent},
   {path: 'addSocialEvent/:id', component:AddSocialEventComponent},
-  {path: 'groups/:id', component:GroupsComponent},
+  {path: 'groups', component:GroupsComponent},
   {path: 'addEditGroups/:id', component:AddEditGroupsComponent},
   {path: 'eventConfirm1', component:EventCreate1Component},
   {path: 'purchase/:id', component:PurchaseComponent},
   {path: 'pay/:id', component:PayComponent},
   {path: 'confirmPage1', component:ConfirmBuy1Component},
   {path: 'confirmEvent', component:ConfirmEventComponent},
-  {path: 'logout', component:LogoutComponent}
+  {path: 'logout', component:LogoutComponent},
+  {path: 'add-group', component:AddEditGroupsComponent},
+  {path: 'edit-groups/:id', component:AddEditGroupsComponent},
+  {path: 'details-group/:id', component: DetailsGroupComponent},
+  {path: 'details-mygroup/:id', component: DetailsMygroupComponent},
+  {path: 'details-mygroupcreated/:id', component: DetailsMygroupcreatedComponent}
+
 ];
 
 @NgModule({

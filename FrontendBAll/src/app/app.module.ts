@@ -22,6 +22,9 @@ import { PayComponent } from './components/pay/pay.component';
 import { ConfirmBuy1Component } from './components/page/confirm-buy1/confirm-buy1.component';
 import { ConfirmEventComponent } from './components/page/confirm-event/confirm-event.component';
 import { LogoutComponent } from './components/page/logout/logout.component';
+import { DetailsGroupComponent } from './components/details-group/details-group.component';
+import { DetailsMygroupComponent } from './components/details-mygroup/details-mygroup.component';
+import { DetailsMygroupcreatedComponent } from './components/details-mygroupcreated/details-mygroupcreated.component';
 
 @NgModule({
   declarations: [
@@ -41,7 +44,10 @@ import { LogoutComponent } from './components/page/logout/logout.component';
     PayComponent,
     ConfirmBuy1Component,
     ConfirmEventComponent,
-    LogoutComponent
+    LogoutComponent,
+    DetailsGroupComponent,
+    DetailsMygroupComponent,
+    DetailsMygroupcreatedComponent
   ],
   imports: [
     BrowserModule,

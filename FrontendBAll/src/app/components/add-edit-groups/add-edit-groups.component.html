@@ -57,17 +57,18 @@
         <mat-grid-tile [colspan]="1" [rowspan]="1">
           <mat-form-field class="ancho">
             <mat-label>Category</mat-label>
-            <mat-select>
-              <mat-option *ngFor="let item of category" [value]="item">
-                {{item}}
-              </mat-option>
-            </mat-select>
+              <mat-select placeholder="Select category" matInput formControlName = "category">
+                <mat-option value="Teatro">Teatro</mat-option>
+                <mat-option value="Musica">Musica</mat-option>
+                <mat-option value="Rap">Rap</mat-option>
+                <mat-option value="Arte">Arte</mat-option>
+              </mat-select>
           </mat-form-field>
         </mat-grid-tile>
 
         <mat-grid-tile [colspan]="1" [rowspan]="1">
           <button mat-raised-button style="margin-right: 20px;" color="primary" (click)="saveGroup()" [disabled]="myForm.invalid">Save</button>
-          <button mat-raised-button color="secondary" (click)="backHome()">Cancelar</button>
+          <button mat-raised-button color="secondary" (click)="backGroups()">Cancelar</button>
         </mat-grid-tile>
       </mat-grid-list>
 
