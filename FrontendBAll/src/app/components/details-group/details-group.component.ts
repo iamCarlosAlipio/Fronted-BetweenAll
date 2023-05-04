@@ -4,6 +4,9 @@ import { GroupsComponent } from '../groups/groups.component';
 import { GroupsService } from './../../services/groups.service';
 import { Group } from 'src/app/models/group';
 import {FormBuilder, FormGroup, Validators} from '@angular/forms';
+import { Category } from 'src/app/models/category';
+import { CategoryService } from 'src/app/services/category.service';
+import { MatSnackBar } from '@angular/material/snack-bar';
 
 
 @Component({
@@ -13,13 +16,15 @@ import {FormBuilder, FormGroup, Validators} from '@angular/forms';
 })
 export class DetailsGroupComponent implements OnInit {
   constructor(private formBuilder:FormBuilder, private groupService: GroupsService, private router: Router,
-    private activatedRouter: ActivatedRoute) {
+    private activatedRouter: ActivatedRoute,private categoryService:CategoryService,private snack: MatSnackBar) {
   }
 
   group!: Group;
   detailsForm!:FormGroup;
   id!:number;
   TheGroup!: Group;
+  categories!:Category[]
+  idCatg!:number
 
   ngOnInit() {
     this.reactiveForm();
@@ -42,15 +47,20 @@ export class DetailsGroupComponent implements OnInit {
             this.detailsForm.get("name")?.setValue(data.name);;
             this.detailsForm.get("amountParticipants")?.setValue(data.amountParticipants);;
             this.detailsForm.get("description")?.setValue(data.description);;
-            this.detailsForm.get("category")?.setValue(data.category);;
             this.detailsForm.get("image")?.setValue(data.image);;
+            this.idCatg=data.id;;
+            this.categoryService.getCategory(this.idCatg).subscribe({
+              next: (dato:Category)=>{
+                this.detailsForm.get("category")?.setValue(dato.name);;
+              }
+            });
           },
           error: (err) => {
             console.log(err);
           }
         });
-
       }
+
 
       this.id = this.activatedRouter.snapshot.params["id"];
       this.groupService.getGroup(this.id).subscribe(

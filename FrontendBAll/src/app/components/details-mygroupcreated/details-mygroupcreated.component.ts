@@ -41,7 +41,7 @@ export class DetailsMygroupcreatedComponent {
             this.detailsForm.get("name")?.setValue(data.name);;
             this.detailsForm.get("amountParticipants")?.setValue(data.amountParticipants);;
             this.detailsForm.get("description")?.setValue(data.description);;
-            this.detailsForm.get("category")?.setValue(data.category);;
+            this.detailsForm.get("category")?.setValue(data.idCategory);;
             this.detailsForm.get("image")?.setValue(data.image);;
           },
           error: (err) => {
