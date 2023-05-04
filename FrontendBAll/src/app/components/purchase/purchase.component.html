@@ -2,7 +2,7 @@
     <div class="row">
         <div class="col-md-6" style="padding: 10%;">
             <div class="text-center">
-                
+                <img class="w-100" mat-card-image [src]="TheEvent.image" *ngIf="TheEvent">
                 <div class="d-flex justify-content-center">
                     <table class="table w-50">
                         <thead>
@@ -12,7 +12,10 @@
                             </tr>
                         </thead>
                         <tbody>
-                            
+                            <tr *ngFor="let item of TheZoneEvents">
+                                <td>{{item.name}}</td>
+                                <td>S/. {{item.price}}</td>
+                            </tr>
                         </tbody>
                         
                     </table>
@@ -25,17 +28,21 @@
         <div class="col-md-6">
             <br>
             <label>Datos del evento</label>
-            <mat-form-field class="w-100">
+            <mat-form-field class="w-100" >
                 <mat-label>Fecha</mat-label>
                 <mat-select>
-                  
+                  <mat-option *ngFor="let item of TheDatesEvent" [value]="item.date" (click)="ListZoneEvents(item.id)">
+                    {{item.date}}
+                  </mat-option>
                 </mat-select>
             </mat-form-field>
 
             <mat-form-field class="w-100">
                 <mat-label>Zona</mat-label>
                 <mat-select>
-                  
+                  <mat-option *ngFor="let item of ZoneEvents" [value]="item.name">
+                    {{item.name}}
+                  </mat-option>
                 </mat-select>
             </mat-form-field>
             <div class="d-flex">

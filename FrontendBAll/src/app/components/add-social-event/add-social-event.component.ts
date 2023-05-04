@@ -31,7 +31,7 @@ export class AddSocialEventComponent {
     private snackBar:MatSnackBar){}
 
   ngOnInit(){
-      this.reactiveForm();
+      this.reactiveForm3();
   }
   
   //REACTIVE FORM PARA CREAR LOS DETALLES DEL EVENTO
@@ -181,7 +181,38 @@ export class AddSocialEventComponent {
     if (date instanceof Date) {
       this.events.push(date);
     }
+    this.cargarFecha();
   }
+
+  displayedColumns2: string[] = ['dateDate', 'actions'];
+  dataSource2 = new MatTableDataSource<Date>();
+
+  agregarFecha(){
+    this.NumberZone.push(
+      {
+        id: this.idNumberZone,
+        name: this.myForm.get("nameZone")!.value,
+        price: parseInt(this.myForm.get("priceZone")!.value),
+        idDateSocialEvent: parseInt(this.myForm.get("idDateSocialEvent")!.value),
+        capacity: parseInt(this.myForm.get("capacityZone")!.value)
+      }
+    );
+    this.cargarZonas();
+    this.idNumberZone++;
+    console.log(this.NumberZone);
+  }
+
+  cargarFecha(): void{
+    this.dataSource2=new MatTableDataSource(this.events);
+    console.log(this.events);
+  }
+  
+  deleteFecha(id: number):void {
+    this.events.splice(id,1);
+    this.cargarFecha();
+    console.log(this.events);
+  }
+
 
   saveDateSocialEvent():void {
 
@@ -236,6 +267,7 @@ export class AddSocialEventComponent {
     this.idNumberZone++;
     console.log(this.NumberZone);
   }
+
   cargarZonas(): void{
     this.dataSource=new MatTableDataSource(this.NumberZone);
     console.log(this.dataSource.data);

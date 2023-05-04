@@ -72,26 +72,6 @@
       "image": "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTdQm62JfUzQeTWyHc_L1A8MM11MZqwwViqek59UBwP1hvwiMi5JYHsNrmOgF_YBvSyOYU&usqp=CAU",
       "location": "SAN MIGUEL",
       "description": "Somos un grupo de musica"
-    },
-    {
-      "id": 7
-    },
-    {
-      "id": 8
-    },
-    {
-      "id": 9,
-      "name": "Diego",
-      "image": "as",
-      "location": "as",
-      "description": "as"
-    },
-    {
-      "id": 10,
-      "name": "Diego",
-      "image": "imagenprueba",
-      "location": "Los Olivos",
-      "description": "vengan todos"
     }
   ],
   "datesocialevents": [
@@ -111,100 +91,113 @@
     },
     {
       "id": 3,
-      "idSocialEvent": 1,
+      "idSocialEvent": 2,
       "date": "2023-05-06T05:00:00.000Z",
       "startTime": "1",
       "endTime": "3"
     },
     {
       "id": 4,
-      "idSocialEvent": 1,
+      "idSocialEvent": 3,
       "date": "2023-05-07T05:00:00.000Z",
       "startTime": "1",
       "endTime": "2"
     },
     {
       "id": 5,
-      "idSocialEvent": 1,
+      "idSocialEvent": 3,
       "date": "2023-05-14T05:00:00.000Z",
       "startTime": "1",
       "endTime": "2"
     },
     {
       "id": 6,
-      "idSocialEvent": 1,
+      "idSocialEvent": 3,
       "date": "2023-05-21T05:00:00.000Z",
       "startTime": "1",
       "endTime": "2"
     },
     {
       "id": 7,
-      "idSocialEvent": 1,
+      "idSocialEvent": 4,
       "date": "2023-05-07T05:00:00.000Z",
       "startTime": "12",
       "endTime": "13"
     },
     {
       "id": 8,
-      "idSocialEvent": 1,
+      "idSocialEvent": 4,
       "date": "2023-05-21T05:00:00.000Z",
       "startTime": "12",
       "endTime": "13"
     },
     {
       "id": 9,
-      "idSocialEvent": 1,
+      "idSocialEvent": 4,
       "date": "2023-05-27T05:00:00.000Z",
       "startTime": "12",
       "endTime": "13"
     },
     {
       "id": 10,
-      "idSocialEvent": 10,
+      "idSocialEvent": 4,
       "date": "2023-05-02T05:00:00.000Z",
       "startTime": "12",
       "endTime": "13"
     },
     {
       "id": 11,
-      "idSocialEvent": 10,
+      "idSocialEvent": 5,
       "date": "2023-05-04T05:00:00.000Z",
       "startTime": "12",
       "endTime": "13"
     },
     {
       "id": 12,
-      "idSocialEvent": 10,
+      "idSocialEvent": 5,
       "date": "2023-05-06T05:00:00.000Z",
       "startTime": "12",
       "endTime": "13"
     },
     {
       "id": 13,
-      "idSocialEvent": 10,
+      "idSocialEvent": 5,
       "date": "2023-05-08T05:00:00.000Z",
       "startTime": "12",
       "endTime": "13"
     }
   ],
-  "zone": [
+  "zoneevents": [
     {
       "id": 1,
       "name": "Plata",
       "price": 120,
       "idDateSocialEvent": 1,
       "capacity": 1000
+    },
+    {
+      "id": 2,
+      "name": "VIP",
+      "price": 120,
+      "idDateSocialEvent": 2,
+      "capacity": 1000
+    },
+    {
+      "id": 3,
+      "name": "Plata - 2",
+      "price": 120,
+      "idDateSocialEvent": 1,
+      "capacity": 1000
+    },
+    {
+      "id": 3,
+      "name": "VIP - 1",
+      "price": 120,
+      "idDateSocialEvent": 2,
+      "capacity": 1000
     }
   ],
   "groups": [
-    {
-      "id": 1,
-      "name": "Reales",
-      "amountParticipants": 30,
-      "description": "Somos un grupo de musica",
-      "category": "Musica",
-      "image": "https://i.blogs.es/7ddff1/alex-bracken-rzulpgwqcue-unsplash/1366_2000.jpg"
-    },
     {
       "id": 2,
       "name": "Reales",
