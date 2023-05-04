@@ -21,7 +21,8 @@ const routes: Routes = [
   {path: 'addEditGroups/:id', component:AddEditGroupsComponent},
   {path: 'eventConfirm1', component:EventCreate1Component},
   {path: 'purchase/:id', component:PurchaseComponent},
-  {path: 'pay/:id', component:PayComponent}
+  {path: 'pay/:id', component:PayComponent},
+  {path: 'editProfile/:id', component:EditUserComponent}
 ];
 
 @NgModule({

@@ -18,6 +18,7 @@ import {MatGridListModule} from '@angular/material/grid-list';
 import {MatProgressSpinnerModule} from '@angular/material/progress-spinner';
 import {MatAutocompleteSelectedEvent} from '@angular/material/autocomplete';
 import {MatChipInputEvent} from '@angular/material/chips';
+import { FormsModule } from '@angular/forms';
 
 @NgModule({
   declarations: [],
@@ -39,7 +40,8 @@ import {MatChipInputEvent} from '@angular/material/chips';
     MatSelectModule,
     MatTabsModule,
     MatGridListModule,
-    MatProgressSpinnerModule
+    MatProgressSpinnerModule,
+    FormsModule
   ],
 
   exports: [
@@ -59,7 +61,8 @@ import {MatChipInputEvent} from '@angular/material/chips';
     MatTabsModule,
     MatGridListModule,
     MatProgressSpinnerModule,
-    MatDatepickerModule
+    MatDatepickerModule,
+    FormsModule
   ]
 })
 export class SharedModule { }
