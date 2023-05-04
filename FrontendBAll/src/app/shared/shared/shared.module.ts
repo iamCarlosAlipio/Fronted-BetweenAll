@@ -16,8 +16,12 @@ import { MatSelectModule } from '@angular/material/select';
 =======
 import {MatTabsModule} from '@angular/material/tabs';
 import {MatGridListModule} from '@angular/material/grid-list';
+<<<<<<< Updated upstream
 import {MatAutocompleteSelectedEvent} from '@angular/material/autocomplete';
 import {MatChipInputEvent} from '@angular/material/chips';
+>>>>>>> Stashed changes
+=======
+import {MatDatepickerModule} from '@angular/material/datepicker';
 >>>>>>> Stashed changes
 
 @NgModule({
@@ -34,8 +38,15 @@ import {MatChipInputEvent} from '@angular/material/chips';
     MatPaginatorModule,
     MatInputModule,
     MatCheckboxModule,
+<<<<<<< Updated upstream
     MatSelectModule
     
+=======
+    MatSelectModule,
+    MatGridListModule,
+    MatTabsModule,
+    MatDatepickerModule
+>>>>>>> Stashed changes
   ],
   exports: [
     MatToolbarModule,
@@ -48,7 +59,14 @@ import {MatChipInputEvent} from '@angular/material/chips';
     MatPaginatorModule,
     MatInputModule,
     MatCheckboxModule,
+<<<<<<< Updated upstream
     MatSelectModule
+=======
+    MatSelectModule,
+    MatGridListModule,
+    MatTabsModule,
+    MatDatepickerModule
+>>>>>>> Stashed changes
   ]
 })
 export class SharedModule { }

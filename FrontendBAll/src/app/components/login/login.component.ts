@@ -42,8 +42,7 @@ export class LoginComponent {
       (data: User[]) => {
         let auxUser = data.find(x => x.email == this.email && x.password == this.password);
         if (auxUser) {
-          this.idUser=auxUser.id;
-          this.router.navigate(["/Home"]);
+          this.router.navigate(["home/" + auxUser.id]);
         }
         else{
           this.snack.open('El usuario no existe', 'OK', { duration: 5000 })

@@ -16,7 +16,7 @@ export class CategoryService {
     return this.Http.get<Category[]>(this.rutaServer+"/"+this.recurso)
   }
 
-  getUser(id:number){
+  getCategory(id:number){
     return this.Http.get<Category>(this.rutaServer+"/"+this.recurso+ "/" + id.toString());
   }
 

@@ -57,7 +57,7 @@
     <div *ngIf="!fristPart">
       <form [formGroup]="addUserForm2" class="space" >
           <div class="Encabezado">
-            <p class="text-2">Datos personales</p>
+            <p class="text-2" style="margin-top: 0.5%;">Datos personales</p>
           </div>
         <div>
           <p class="text-4">Identificación</p>
@@ -88,13 +88,23 @@
             <p class="text-4">Elige tus categorias</p>
             <div style="display: flex;">
               <mat-form-field class="form-container-1">
-                <mat-select placeholder="Categoria" formControlName = "category">
-                  <mat-option value="DNI">pop</mat-option>
-                  <mat-option value="Tarjeta de extrangeria">kpop</mat-option>
+                <mat-select placeholder="Categoria" formControlName="category" (selectionChange)="changeButton($event)">
+                  <mat-option *ngFor="let category of categories" [value]="category.name">
+                    {{category.name}}
+                  </mat-option>
                 </mat-select>
               </mat-form-field>
-              <button mat-raised-button style="background-color:#A32DE3; color:white; width: 20%; margin-left: 10%;" >Agregar</button>
-              <button mat-raised-button style="background-color:white; color:black; width: 20%; margin-left: 10%;" >Quitar</button>
+              <button mat-raised-button [disabled]="insert" style="background-color:#A32DE3; color:white; width: 20%; margin-left: 10%;" (click)="saveUserCategory()" >Agregar</button>
+              <button mat-raised-button [disabled]="delete" style="background-color:white; color:black; width: 20%; margin-left: 10%;" (click)="deleteUserCategory()">Quitar</button>
+            </div>
+            <div>
+              <div class="condition">
+                <mat-checkbox class="">Estoy de acuerdo en mostrar mi información a los demas usuarios</mat-checkbox>
+              </div>
+            </div>
+            <div>
+              <button mat-raised-button style="background-color:white; color:black," (click)="changeScreen()">Regresar</button>
+              <button mat-raised-button mat-raised-button style="background-color:#A32DE3; color:white" (click)="saveUser()">Crear cuenta</button>
             </div>
           </div>
         </div>
@@ -102,27 +112,9 @@
       </div>
   </div>
   <div class="container1" style=" overflow: hidden;">
-    <div *ngIf="fristPart">
-      <img  src="https://thumbs.dreamstime.com/b/hombre-tocando-guitarra-el%C3%A9ctrica-apasionado-por-su-afici%C3%B3n-musical-emocionalmente-222761734.jpg" width="100%">
+    <div>
+      <img  src="https://thumbs.dreamstime.com/b/hombre-tocando-guitarra-el%C3%A9ctrica-apasionado-por-su-afici%C3%B3n-musical-emocionalmente-222761734.jpg" width="100%" height="100%">
     </div>
-    <form [formGroup]="addUserForm3" class="space" >
-      <div class="Encabezado">
-        <p class="text-2">Categorias que te gustan</p>
-      </div>
-      <div>
-
-
-      </div>  
-      <div>
-        <div class="condition">
-          <mat-checkbox class="">Estoy de acuerdo en mostrar mi información a los demas usuarios</mat-checkbox>
-        </div>
-      </div>
-      <div>
-        <button mat-raised-button style="background-color:white; color:black," (click)="changeScreen()">Regresar</button>
-        <button mat-raised-button mat-raised-button style="background-color:#A32DE3; color:white">Siguiente</button>
-      </div>
-    </form>
   </div>
 </div>
 

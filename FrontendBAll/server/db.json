@@ -12,8 +12,370 @@
       "categoryEvent": "Rock",
       "type": "DNI",
       "number": "72556278"
+<<<<<<< Updated upstream
     
     }
   ]
   
+=======
+    },
+    {
+      "id": 2,
+      "name": "carlos",
+      "lastname": "sanchez",
+      "email": "alipiosanchez@gmail.com",
+      "password": "123",
+      "phone": "956275080",
+      "city": "lima",
+      "numberDocument": 72556278,
+      "typeDocument": "DNI",
+      "image": "src/assets/img/PERFIL-VACIO.png"
+    }
+  ],
+  "category": [
+    {
+      "id": 1,
+      "name": "Teatro",
+      "state": "Activo"
+    },
+    {
+      "id": 2,
+      "name": "Concierto",
+      "state": "Activo"
+    },
+    {
+      "id": 3,
+      "name": "Conferencia",
+      "state": "Activo"
+    },
+    {
+      "id": 4,
+      "name": "Festivales",
+      "state": "Activo"
+    },
+    {
+      "id": 5,
+      "name": "Cine y Peliculas",
+      "state": "Activo"
+    },
+    {
+      "id": 6,
+      "name": "Eventos especiales",
+      "state": "Activo"
+    },
+    {
+      "id": 7,
+      "name": "E-sport",
+      "state": "Activo"
+    }
+  ],
+  "socialevents": [
+    {
+      "id": 1,
+      "name": "Morat Tour",
+      "image": "https://cdn.teleticket.com.pe/especiales/morat-per22/images/event-artista-res.jpg",
+      "location": "Lima",
+      "description": "Somos un grupo de musica"
+    },
+    {
+      "id": 2,
+      "name": "Grupo 5",
+      "image": "https://cdn.teleticket.com.pe/especiales/morat-per22/images/event-artista-res.jpg",
+      "date": "15-10-2023",
+      "location": "Lima",
+      "description": "Somos un grupo de musica"
+    },
+    {
+      "id": 3,
+      "name": "Morat Tour",
+      "image": "https://cdn.teleticket.com.pe/especiales/morat-per22/images/event-artista-res.jpg",
+      "date": "15-10-2023",
+      "location": "Lima",
+      "description": "Somos un grupo de musica"
+    },
+    {
+      "id": 4,
+      "name": "Grupo 5",
+      "image": "https://cdn.teleticket.com.pe/especiales/morat-per22/images/event-artista-res.jpg",
+      "date": "15-10-2023",
+      "location": "Lima",
+      "description": "Somos un grupo de musica"
+    },
+    {
+      "id": 5,
+      "name": "Bahia",
+      "image": "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQSXQ7yOWtYHdCQ-zsQLgnXFs-ctXabW6Y6NWScg8w-&s",
+      "location": "Los olivos",
+      "description": "Somos un grupo de musica"
+    },
+    {
+      "id": 6,
+      "name": "DIEGOEVENT",
+      "image": "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTdQm62JfUzQeTWyHc_L1A8MM11MZqwwViqek59UBwP1hvwiMi5JYHsNrmOgF_YBvSyOYU&usqp=CAU",
+      "location": "SAN MIGUEL",
+      "description": "Somos un grupo de musica"
+    },
+    {
+      "id": 7
+    },
+    {
+      "id": 8
+    },
+    {
+      "id": 9,
+      "name": "Diego",
+      "image": "as",
+      "location": "as",
+      "description": "as"
+    },
+    {
+      "id": 10,
+      "name": "Diego",
+      "image": "imagenprueba",
+      "location": "Los Olivos",
+      "description": "vengan todos"
+    }
+  ],
+  "datesocialevents": [
+    {
+      "id": 1,
+      "idSocialEvent": 1,
+      "date": "14/12/10",
+      "startTime": "12",
+      "endTime": "11"
+    },
+    {
+      "id": 2,
+      "idSocialEvent": 2,
+      "date": "2023-05-03T05:00:00.000Z",
+      "startTime": "1",
+      "endTime": "2"
+    },
+    {
+      "id": 3,
+      "idSocialEvent": 1,
+      "date": "2023-05-06T05:00:00.000Z",
+      "startTime": "1",
+      "endTime": "3"
+    },
+    {
+      "id": 4,
+      "idSocialEvent": 1,
+      "date": "2023-05-07T05:00:00.000Z",
+      "startTime": "1",
+      "endTime": "2"
+    },
+    {
+      "id": 5,
+      "idSocialEvent": 1,
+      "date": "2023-05-14T05:00:00.000Z",
+      "startTime": "1",
+      "endTime": "2"
+    },
+    {
+      "id": 6,
+      "idSocialEvent": 1,
+      "date": "2023-05-21T05:00:00.000Z",
+      "startTime": "1",
+      "endTime": "2"
+    },
+    {
+      "id": 7,
+      "idSocialEvent": 1,
+      "date": "2023-05-07T05:00:00.000Z",
+      "startTime": "12",
+      "endTime": "13"
+    },
+    {
+      "id": 8,
+      "idSocialEvent": 1,
+      "date": "2023-05-21T05:00:00.000Z",
+      "startTime": "12",
+      "endTime": "13"
+    },
+    {
+      "id": 9,
+      "idSocialEvent": 1,
+      "date": "2023-05-27T05:00:00.000Z",
+      "startTime": "12",
+      "endTime": "13"
+    },
+    {
+      "id": 10,
+      "idSocialEvent": 10,
+      "date": "2023-05-02T05:00:00.000Z",
+      "startTime": "12",
+      "endTime": "13"
+    },
+    {
+      "id": 11,
+      "idSocialEvent": 10,
+      "date": "2023-05-04T05:00:00.000Z",
+      "startTime": "12",
+      "endTime": "13"
+    },
+    {
+      "id": 12,
+      "idSocialEvent": 10,
+      "date": "2023-05-06T05:00:00.000Z",
+      "startTime": "12",
+      "endTime": "13"
+    },
+    {
+      "id": 13,
+      "idSocialEvent": 10,
+      "date": "2023-05-08T05:00:00.000Z",
+      "startTime": "12",
+      "endTime": "13"
+    }
+  ],
+  "zone": [
+    {
+      "id": 1,
+      "name": "Plata",
+      "price": 120,
+      "idDateSocialEvent": 1,
+      "capacity": 1000
+    }
+  ],
+  "groups": [
+    {
+      "id": 1,
+      "name": "Reales",
+      "amountParticipants": 30,
+      "description": "Somos un grupo de musica",
+      "category": "Musica",
+      "image": "https://i.blogs.es/7ddff1/alex-bracken-rzulpgwqcue-unsplash/1366_2000.jpg"
+    },
+    {
+      "id": 2,
+      "name": "Reales",
+      "amountParticipants": 20,
+      "description": "Somos un grupo de musica",
+      "category": "Teatro",
+      "image": "https://www.mincetur.gob.pe/wp-content/uploads/2017/11/foto.jpg"
+    },
+    {
+      "id": 4,
+      "name": "Reales",
+      "amountParticipants": 20,
+      "description": "Somos un grupo de musica",
+      "category": "Arte",
+      "image": "https://www.grupoeducar.cl/wp-content/uploads/2017/10/artequin-grupo-educar.jpg"
+    },
+    {
+      "id": 6,
+      "name": "Reales",
+      "amountParticipants": 20,
+      "description": "Somos un grupo de musica",
+      "category": "Musica",
+      "image": "https://i.blogs.es/7ddff1/alex-bracken-rzulpgwqcue-unsplash/1366_2000.jpg"
+    },
+    {
+      "id": 7,
+      "name": "Reales",
+      "amountParticipants": 20,
+      "description": "Somos un grupo de musica",
+      "category": "Musica",
+      "image": "https://i.blogs.es/7ddff1/alex-bracken-rzulpgwqcue-unsplash/1366_2000.jpg"
+    },
+    {
+      "id": 8,
+      "name": "Reales",
+      "amountParticipants": 20,
+      "description": "Somos un grupo de musica",
+      "category": "Teatro",
+      "image": "https://www.mincetur.gob.pe/wp-content/uploads/2017/11/foto.jpg"
+    },
+    {
+      "id": 9,
+      "name": "Reales",
+      "amountParticipants": 20,
+      "description": "Somos un grupo de musica",
+      "category": "Arte",
+      "image": "https://www.grupoeducar.cl/wp-content/uploads/2017/10/artequin-grupo-educar.jpg"
+    },
+    {
+      "id": 10,
+      "name": "Reales",
+      "amountParticipants": 20,
+      "description": "Somos un grupo de musica",
+      "category": "Musica",
+      "image": "https://i.blogs.es/7ddff1/alex-bracken-rzulpgwqcue-unsplash/1366_2000.jpg"
+    },
+    {
+      "id": 11,
+      "name": "Reales",
+      "amountParticipants": 20,
+      "description": "Somos un grupo de musica",
+      "category": "Musica",
+      "image": "https://i.blogs.es/7ddff1/alex-bracken-rzulpgwqcue-unsplash/1366_2000.jpg"
+    },
+    {
+      "id": 12,
+      "name": "Reales",
+      "amountParticipants": 20,
+      "description": "Somos un grupo de musica",
+      "category": "Teatro",
+      "image": "https://www.mincetur.gob.pe/wp-content/uploads/2017/11/foto.jpg"
+    },
+    {
+      "id": 13,
+      "name": "Reales",
+      "amountParticipants": 20,
+      "description": "Somos un grupo de musica",
+      "category": "Musica",
+      "image": "https://i.blogs.es/7ddff1/alex-bracken-rzulpgwqcue-unsplash/1366_2000.jpg"
+    },
+    {
+      "id": 14,
+      "name": "Reales",
+      "amountParticipants": 20,
+      "description": "Somos un grupo de musica",
+      "category": "Musica",
+      "image": "https://i.blogs.es/7ddff1/alex-bracken-rzulpgwqcue-unsplash/1366_2000.jpg"
+    },
+    {
+      "id": 15,
+      "name": "Reales",
+      "amountParticipants": 20,
+      "description": "Somos un grupo de musica",
+      "category": "Arte",
+      "image": "https://www.grupoeducar.cl/wp-content/uploads/2017/10/artequin-grupo-educar.jpg"
+    },
+    {
+      "id": 16,
+      "name": "Reales",
+      "amountParticipants": 20,
+      "description": "Somos un grupo de musica",
+      "category": "Teatro",
+      "image": "https://www.mincetur.gob.pe/wp-content/uploads/2017/11/foto.jpg"
+    },
+    {
+      "id": 17,
+      "name": "Reales",
+      "amountParticipants": 20,
+      "description": "Somos un grupo de musica",
+      "category": "Musica",
+      "image": "https://i.blogs.es/7ddff1/alex-bracken-rzulpgwqcue-unsplash/1366_2000.jpg"
+    },
+    {
+      "id": 18,
+      "name": "Reales",
+      "amountParticipants": 20,
+      "description": "Somos un grupo de musica",
+      "category": "Musica",
+      "image": "https://i.blogs.es/7ddff1/alex-bracken-rzulpgwqcue-unsplash/1366_2000.jpg"
+    },
+    {
+      "id": 19,
+      "name": "Reales",
+      "amountParticipants": 20,
+      "description": "Somos un grupo de musica",
+      "category": "Teatro",
+      "image": "https://www.mincetur.gob.pe/wp-content/uploads/2017/11/foto.jpg"
+    }
+  ],
+  "userCategory": []
+>>>>>>> Stashed changes
 }

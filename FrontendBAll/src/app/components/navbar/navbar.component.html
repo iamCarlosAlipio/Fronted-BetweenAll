@@ -1,22 +1,22 @@
 <nav class="navbar navbar-expand-lg navbar-dark fs-5 py-3" style="background-color: #A32DE3;">
     <div class="container">
-      <a class="navbar-brand" routerLink="/Home">BETWEENALL</a>
+      <a class="navbar-brand" (click)="changeHome()">BETWEENALL</a>
       <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
         <span class="navbar-toggler-icon"></span>
       </button>
       <div class="collapse navbar-collapse" id="navbarSupportedContent">
         <ul class="navbar-nav ms-auto mb-2 mb-lg-0">
           <li class="nav-item me-5">
-            <a class="nav-link active" aria-current="page" href="#">EVENTOS</a>
+            <a class="nav-link active" (click)="changeEvent()" aria-current="page">EVENTOS</a>
           </li>
           <li class="nav-item me-5">
-            <a class="nav-link active" aria-current="page" href="#">GRUPOS</a>
+            <a class="nav-link active" (click)="changeGroups()" aria-current="page">GRUPOS</a>
           </li>
           <li class="nav-item me-5">
-            <a class="nav-link active" aria-current="page" href="#">ENTRADAS</a>
+            <a class="nav-link active" (click)="changeTickets()" aria-current="page" >ENTRADAS</a>
           </li>
           <li class="nav-item me-5">
-            <a class="nav-link active" aria-current="page" href="#">MI PERFIL</a>
+            <a class="nav-link active" (click)="changeProfile()" aria-current="page" >MI PERFIL</a>
           </li>
           <li class="nav-item me-5">
             <a class="nav-link active" aria-current="page" routerLink=" ">

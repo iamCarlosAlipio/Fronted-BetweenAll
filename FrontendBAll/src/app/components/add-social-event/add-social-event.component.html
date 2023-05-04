@@ -1,0 +1,266 @@
+<app-navbar></app-navbar>
+<!-- Ingrese los datos del evento -->
+<!-- Ingrese los datos del evento -->
+<!-- Ingrese los datos del evento -->
+<!-- Ingrese los datos del evento -->
+<!-- Ingrese los datos del evento -->
+
+
+
+<div class="title">
+  <p >Ingrese los datos del evento</p>
+</div>
+
+<form [formGroup]="myForm">
+
+  <div>
+    <div id="column-left" >    
+          
+      <div>
+        <p>Nombre</p>
+        <mat-form-field class="full">
+            <input matInput placeholder="nombre" formControlName="nameDetail">
+        </mat-form-field>    
+        <br>   <br>
+      </div>
+
+      <div>
+        <p>Imagen</p>
+        <mat-form-field class="full">
+          <input matInput placeholder="Imagen" formControlName="imageDetail">
+        </mat-form-field>
+        
+        <br>   <br>
+      </div>   
+  </div>
+
+
+  <div id="column-right">
+
+    <div>
+      <p>Ubicacion</p>
+      <mat-form-field class="full">
+        <input matInput placeholder="Ubicacion" formControlName="locationDetail">
+      </mat-form-field>
+    
+      <br>   <br>
+    </div>
+
+
+    <div>
+      <p>Descripción del evento</p>
+      <mat-form-field class="full">
+        <mat-label>Descripción del evento</mat-label>  
+        <textarea class="description-tool" matInput placeholder="Descripción" formControlName="descriptionDetail"></textarea>
+      </mat-form-field>
+      
+      <br>   <br>
+
+    </div>
+  
+  </div>
+
+  </div>
+
+
+
+
+<!-- imagenes y videos -->
+<!-- imagenes y videos -->
+<!-- imagenes y videos -->
+<!-- imagenes y videos -->
+<!-- imagenes y videos -->
+
+
+
+
+<!-- DETALLES FECHA-->
+<!-- DETALLES FECHA-->
+<!-- DETALLES FECHA-->
+<!-- DETALLES FECHA-->
+<!-- DETALLES FECHA-->
+
+<div class="title">
+  <p >Fechas y Zonas</p>
+</div>
+
+<div>
+
+  <div id="column-left" > 
+    
+
+    <div>
+      <p>Id del Evento</p>
+      <mat-form-field class="full">
+        <input matInput placeholder="Id del Evento" formControlName="idSEDate">
+      </mat-form-field>
+      
+      <br>   <br>
+    </div>
+
+
+
+    <div>
+      <p>Hora de inicio</p>
+      <mat-form-field class="full">
+        <input matInput placeholder="Hora de inicio" formControlName="startDate">
+      </mat-form-field>
+    
+      <br>   <br>
+    </div>
+
+    <div>
+      <p>Hora del fin</p>
+      <mat-form-field class="full">
+          <input matInput placeholder="Hora del fin" formControlName="endDate">
+      </mat-form-field>
+      
+      <br>   <br>
+    </div>
+
+</div>
+<!-- DETALLES FECHA-->
+<!-- DETALLES FECHA-->
+<!-- DETALLES FECHA-->
+
+
+<!-- FECHAS-->
+<!-- FECHAS-->
+<!-- FECHAS-->
+
+<div id="column-right">
+  
+  <div>
+    <p>Fecha</p>
+    <mat-form-field class="w-100">
+      <mat-label>Fechas</mat-label >
+      <input matInput [matDatepicker]="picker"
+          (dateInput)="addEvent('input', $event)" formControlName="dateDate">
+      <mat-hint>MM/DD/YYYY</mat-hint>
+      <mat-datepicker-toggle matIconSuffix [for]="picker"></mat-datepicker-toggle>
+      <mat-datepicker #picker></mat-datepicker>  
+    </mat-form-field>
+  </div>
+
+  <div class="example-events">
+    <div *ngFor="let e of events">{{e}}</div>
+  </div>  
+
+  </div>
+</div>
+<!-- FECHAS-->
+<!-- FECHAS-->
+<!-- FECHAS-->
+
+<!-- ZONAS-->
+<!-- ZONAS-->
+<!-- ZONAS-->
+
+<div>
+  <div id="column-left" >        
+    <div>
+      <p>Nombre de la Zona</p>
+      <mat-form-field class="full">
+          <input matInput placeholder="nombre de la zona" formControlName="nameZone">
+      </mat-form-field>    
+      <br>   <br>
+    </div>
+
+    <div>
+      <p>Precio de la entrada</p>
+      <mat-form-field class="full">
+        <input matInput placeholder="Precio" formControlName="priceZone">
+      </mat-form-field>
+      
+      <br>   <br>
+    </div>   
+  </div>
+
+
+  <div id="column-right">
+
+    <div>
+      <p>Capacidad</p>
+      <mat-form-field class="full">
+        <input matInput placeholder="capacidad" formControlName="capacityZone">
+      </mat-form-field>
+    
+      <br>   <br>
+    </div>
+
+  </div>
+
+  <!-- TABLA DE ZONAS -->
+  <!-- TABLA DE ZONAS -->
+  <!-- TABLA DE ZONAS -->
+  <div style="padding: 5%;">
+    <table mat-table [dataSource]="dataSource" class="mat-elevation-z8 demo-table">
+      <!-- Position Column -->
+      <ng-container matColumnDef="nameZone">
+        <th mat-header-cell *matHeaderCellDef> No. </th>
+        <td mat-cell *matCellDef="let element"> {{element.name}} </td>
+      </ng-container>
+    
+      <!-- Name Column -->
+      <ng-container matColumnDef="priceZone">
+        <th mat-header-cell *matHeaderCellDef> Name </th>
+        <td mat-cell *matCellDef="let element"> {{element.price}} </td>
+      </ng-container>
+    
+      <!-- Weight Column -->
+      <ng-container matColumnDef="capacityZone">
+        <th mat-header-cell *matHeaderCellDef> Weight </th>
+        <td mat-cell *matCellDef="let element"> {{element.capacity}} </td>
+      </ng-container>
+  
+      <ng-container matColumnDef="actions">
+        <th mat-header-cell *matHeaderCellDef>Acciones</th>
+        <td mat-cell *matCellDef="let element">       
+            <a style="cursor: pointer;" (click)="deleteZone(element.id)">
+                <mat-icon>delete</mat-icon>
+            </a>       
+        </td>
+      </ng-container>  
+  
+      <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
+      <tr mat-row *matRowDef="let row; columns: displayedColumns;"></tr>
+    </table>
+  </div>
+  
+  <!-- TABLA DE ZONAS -->
+  <!-- TABLA DE ZONAS -->
+  <!-- TABLA DE ZONAS -->
+
+
+</div>
+
+<!-- ZONAS-->
+<!-- ZONAS-->
+<!-- ZONAS-->
+
+
+<!-- BOTONES-->
+<!-- BOTONES-->
+<!-- BOTONES-->
+    
+      <div>
+        <div class="col-md-6" id="button-left"> 
+          <br>
+          <button class="botton1" (click)="volverHome();" mat-fab extended>AGREGAR ZONAS</button>
+        </div>
+
+
+        <div class="col-md-6" id="button-right" >
+          <br>
+          <button class="botton2" (click)="saveSocialEvent();"  mat-fab extended [disabled]="myForm.invalid">Crear Evento</button>
+        </div>
+
+      </div>
+<!-- BOTONES-->
+<!-- BOTONES-->
+<!-- BOTONES-->
+
+
+<!-- Form final-->      
+</form>
+

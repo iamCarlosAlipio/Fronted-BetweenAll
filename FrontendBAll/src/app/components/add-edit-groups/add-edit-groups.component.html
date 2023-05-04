@@ -1,0 +1,78 @@
+<app-navbar></app-navbar>
+<div class="container">
+  <mat-toolbar>
+    <div *ngIf="IsInsert">
+    <span>CREATE NEW GROUP</span>
+    </div>
+    <div *ngIf="!IsInsert">
+      <span>EDIT GROUP</span>
+      </div>
+  </mat-toolbar>
+
+  <mat-card style="margin-top: 10px;">
+    <form [formGroup] = "myForm">
+      <mat-grid-list cols="4" rowHeight="70px">
+        <mat-grid-tile [colspan]="3" [rowspan]="6">
+          <mat-form-field>
+            <mat-label>Image</mat-label>
+            <input matInput formControlName="image" placeholder="Enter url of image...">
+            <div *ngIf="myForm.get('image')?.hasError('required') && myForm.get('image')?.touched">
+              <span style="color: red;"> This field is required </span>
+            </div>
+          </mat-form-field>
+        </mat-grid-tile>
+        <mat-grid-tile [colspan]="1" [rowspan]="1">
+          <mat-form-field class="ancho">
+            <mat-label>ID</mat-label>
+            <input matInput formControlName="id" readonly="true">
+        </mat-form-field>
+        </mat-grid-tile>
+        <mat-grid-tile [colspan]="1" [rowspan]="1">
+          <mat-form-field class="ancho">
+            <mat-label>Name</mat-label>
+            <input matInput formControlName="name" placeholder="Enter name...">
+            <div *ngIf="myForm.get('name')?.hasError('required') && myForm.get('name')?.touched">
+              <span style="color: red;"> This field is required </span>
+            </div>
+          </mat-form-field>
+        </mat-grid-tile>
+        <mat-grid-tile [colspan]="1" [rowspan]="1">
+          <mat-form-field class="ancho">
+            <mat-label>Amount of Participants</mat-label>
+            <input matInput formControlName="amountParticipants" placeholder="Enter amount of participants...">
+            <div *ngIf="myForm.get('amountParticipants')?.hasError('required') && myForm.get('amountParticipants')?.touched">
+                <span style="color: red;"> This field is required</span>
+            </div>
+          </mat-form-field>
+        </mat-grid-tile>
+        <mat-grid-tile [colspan]="1" [rowspan]="1">
+          <mat-form-field class="ancho">
+            <mat-label>Description</mat-label>
+            <input matInput formControlName="description" placeholder="Enter description...">
+            <div *ngIf="myForm.get('description')?.hasError('required') && myForm.get('description')?.touched">
+                <span style="color: red;"> This field is required</span>
+            </div>
+          </mat-form-field>
+        </mat-grid-tile>
+        <mat-grid-tile [colspan]="1" [rowspan]="1">
+          <mat-form-field class="ancho">
+            <mat-label>Category</mat-label>
+            <mat-select>
+              <mat-option *ngFor="let item of category" [value]="item">
+                {{item}}
+              </mat-option>
+            </mat-select>
+          </mat-form-field>
+        </mat-grid-tile>
+
+        <mat-grid-tile [colspan]="1" [rowspan]="1">
+          <button mat-raised-button style="margin-right: 20px;" color="primary" (click)="saveGroup()" [disabled]="myForm.invalid">Save</button>
+          <button mat-raised-button color="secondary" (click)="backHome()">Cancelar</button>
+        </mat-grid-tile>
+      </mat-grid-list>
+
+
+
+    </form>
+  </mat-card>
+</div>
