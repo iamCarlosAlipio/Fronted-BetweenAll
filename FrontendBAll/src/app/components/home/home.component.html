@@ -1,3 +1,4 @@
+<app-navbar></app-navbar>
 <div class="container">
     <div class="row">
         
@@ -11,7 +12,7 @@
         </div>
         <div class="col-md-6 text-end">
             <br>
-            <button routerLink="/AddSocialEvent" mat-fab extended style=" background-color:#A32DE3;" class="text-white">CREAR EVENTO</button>
+            <button routerLink="/addSocialEvent/{{idUser}}" mat-fab extended style=" background-color:#A32DE3;" class="text-white">CREAR EVENTO</button>
         </div>
     </div>
     <div class="row mt-4">
@@ -25,7 +26,7 @@
                   <p>Lugar: {{item.location}} </p>
                 </mat-card-content>
                 <div class="text-end">
-                    <button mat-fab extended style=" background-color:#A32DE3;" class="text-white me-3 mb-3" routerLink="/purchase/{{item.id}}">COMPRAR</button>
+                    <button mat-fab extended style=" background-color:#A32DE3;" class="text-white me-3 mb-3" routerLink="/purchase/{{item.id}}/user/{{this.idUser}}">COMPRAR</button>
                 </div>
               </mat-card>
         </div>

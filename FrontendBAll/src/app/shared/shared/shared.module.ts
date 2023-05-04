@@ -15,6 +15,9 @@ import { MatCheckboxModule } from '@angular/material/checkbox';
 import { MatSelectModule } from '@angular/material/select';
 import {MatTabsModule} from '@angular/material/tabs';
 import {MatGridListModule} from '@angular/material/grid-list';
+import {MatProgressSpinnerModule} from '@angular/material/progress-spinner';
+import {MatAutocompleteSelectedEvent} from '@angular/material/autocomplete';
+import {MatChipInputEvent} from '@angular/material/chips';
 
 @NgModule({
   declarations: [],
@@ -32,9 +35,11 @@ import {MatGridListModule} from '@angular/material/grid-list';
     MatSnackBarModule,
     MatInputModule,
     MatCheckboxModule,
+    MatGridListModule,
     MatSelectModule,
     MatTabsModule,
-    MatGridListModule
+    MatGridListModule,
+    MatProgressSpinnerModule
   ],
 
   exports: [
@@ -44,15 +49,17 @@ import {MatGridListModule} from '@angular/material/grid-list';
     MatTableModule,
     MatFormFieldModule,
     MatPaginatorModule,
-    MatDatepickerModule,
     MatNativeDateModule,
     MatIconModule,
     MatSnackBarModule,
     MatInputModule,
     MatCheckboxModule,
     MatSelectModule,
+    MatGridListModule,
     MatTabsModule,
-    MatGridListModule
+    MatGridListModule,
+    MatProgressSpinnerModule,
+    MatDatepickerModule
   ]
 })
 export class SharedModule { }

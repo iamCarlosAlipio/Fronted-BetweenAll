@@ -8,22 +8,26 @@ import { Purchase } from '../models/purchase';
 export class PurchasesService {
 
   RutaServidor : string = "http://localhost:3000";
-  Recurso: string ="purchases";
-  
+  Recurso: string ="purchase";
+  RecursoUsuario: string="user";
   constructor(private http:HttpClient) { }
 
   getList(){
     return this.http.get<Purchase[]>(this.RutaServidor+ "/" + this.Recurso);}
     
-  getSocialEvents(){
+  getPurchases(){
     return this.http.get<Purchase[]>(this.RutaServidor+"/"+this.Recurso);
   }
   
-  getSocialEvent(id:number){
+  getPurchase(id:number){
       return this.http.get<Purchase>(this.RutaServidor+"/"+this.Recurso+"/"+id.toString());
   }
   
-  addSocialEvent(purchase:Purchase){
+  getSocialEventPurchase(id:number,idUser:number){
+    return this.http.get<Purchase>(this.RutaServidor+"/"+this.Recurso+"/"+id.toString()+"/"+this.RecursoUsuario+"/"+idUser.toString());
+}
+
+  addPurchase(purchase:Purchase){
     return this.http.post<Purchase>(this.RutaServidor+"/"+this.Recurso,purchase);
   }
 }

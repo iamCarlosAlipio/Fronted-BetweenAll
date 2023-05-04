@@ -1,3 +1,6 @@
+<app-navbar></app-navbar>
+
+          
 <mat-tab-group>
   <mat-tab label="Ingrese los datos del evento"> 
     <form [formGroup]="myForm">
@@ -49,18 +52,6 @@
     <form [formGroup]="myForm">
       <div id="column-left" > 
       
-  
-        <div>
-          <p>Id del Evento</p>
-          <mat-form-field class="full">
-            <input matInput placeholder="Id del Evento">
-          </mat-form-field>
-          
-          <br>   <br>
-        </div>
-    
-    
-    
         <div>
           <p>Hora de inicio</p>
           <mat-form-field class="full">
@@ -98,7 +89,7 @@
         <!-- Position Column -->
         <ng-container matColumnDef="dateDate">
           <th mat-header-cell *matHeaderCellDef> Fecha </th>
-          <td mat-cell *matCellDef="let element"> {{element}} </td>
+          <td mat-cell *matCellDef="let element"> {{element|date:"dd/MM/YYYY"}} </td>
         </ng-container>
 
         <ng-container matColumnDef="actions">
@@ -161,19 +152,19 @@
         <table mat-table [dataSource]="dataSource" class="mat-elevation-z8 demo-table">
           <!-- Position Column -->
           <ng-container matColumnDef="nameZone">
-            <th mat-header-cell *matHeaderCellDef> No. </th>
+            <th mat-header-cell *matHeaderCellDef> Nombre </th>
             <td mat-cell *matCellDef="let element"> {{element.name}} </td>
           </ng-container>
         
           <!-- Name Column -->
           <ng-container matColumnDef="priceZone">
-            <th mat-header-cell *matHeaderCellDef> Name </th>
+            <th mat-header-cell *matHeaderCellDef> Precio </th>
             <td mat-cell *matCellDef="let element"> {{element.price}} </td>
           </ng-container>
         
           <!-- Weight Column -->
           <ng-container matColumnDef="capacityZone">
-            <th mat-header-cell *matHeaderCellDef> Weight </th>
+            <th mat-header-cell *matHeaderCellDef> Cantidad </th>
             <td mat-cell *matCellDef="let element"> {{element.capacity}} </td>
           </ng-container>
       
@@ -192,26 +183,10 @@
       </div>
 
     </form>
-    
-
-    
   </mat-tab>
 </mat-tab-group>
-
-
-
-
-
-
 <form >
-  <div>
-    
-  </div>
 
-
-<div>
-
-</div>
       <div>
         <div class="col-md-6" id="button-left"> 
           <br>

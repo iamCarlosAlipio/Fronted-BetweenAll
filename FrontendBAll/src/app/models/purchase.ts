@@ -1,4 +1,5 @@
 export interface Purchase {
-    id: number,
-    date:Date,
-}   
+    id: number;
+    idUser: number;
+    idCard: number;
+  }

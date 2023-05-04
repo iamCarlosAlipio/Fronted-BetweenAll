@@ -14,12 +14,16 @@ import { AddUserComponent } from './components/add-user/add-user.component';
 import { AddSocialEventComponent } from './components/add-social-event/add-social-event.component';
 import { GroupsComponent } from './components/groups/groups.component';
 import { AddEditGroupsComponent } from './components/add-edit-groups/add-edit-groups.component';
+import { EventCreate1Component } from './components/event-create1/event-create1.component';
+import { EditUserComponent } from './components/edit-user/edit-user.component';
 import { PurchaseComponent } from './components/purchase/purchase.component';
+
 import { PayComponent } from './components/pay/pay.component';
 
 @NgModule({
   declarations: [
     AppComponent,
+    AddUserComponent,
     HomeComponent,
     NavbarComponent,
     LoginComponent,
@@ -27,6 +31,9 @@ import { PayComponent } from './components/pay/pay.component';
     AddSocialEventComponent,
     GroupsComponent,
     AddEditGroupsComponent,
+    EventCreate1Component,
+    AddEditGroupsComponent,
+    EditUserComponent,
     PurchaseComponent,
     PayComponent
   ],

@@ -1,24 +1,47 @@
+<app-navbar></app-navbar>
 <div class="container">
     <div class="row">
-        <div class="col-md-6" style="padding: 10%;">
+        <div class="col-md-6" style="padding: 2%;">
             <div class="text-center">
-                <img class="w-100" mat-card-image [src]="TheEvent.image" *ngIf="TheEvent">
+              <img class="w-50" mat-card-image [src]="TheEvent.image" *ngIf="TheEvent">
+              <p style="font-size: 30px;">{{TheEvent.name}}</p>
+                <p > Ubicación: {{TheEvent.location}}</p>
+                <p > Detalles del evento: <br>{{TheEvent.description}}</p>
+                <div class="d-flex justify-content-center">
+                  <table class="table w-50">
+                    <thead>
+                      <tr>
+                          <td>Inicio</td>
+                          <td>Fin</td>
+                      </tr>
+                  </thead>
+                  <tbody>
+                      <tr *ngFor="let event of TheDatesEvent">
+                        <td>{{event.startTime}}</td>
+                        <td>{{event.endTime}}</td>
+                    </tr>
+                  </tbody>
+                </table> 
+                </div>
                 <div class="d-flex justify-content-center">
                     <table class="table w-50">
                         <thead>
                             <tr>
                                 <td>Zone</td>
                                 <td>Price</td>
+                                <td>Capacidad</td>
                             </tr>
                         </thead>
                         <tbody>
                             <tr *ngFor="let item of TheZoneEvents">
                                 <td>{{item.name}}</td>
                                 <td>S/. {{item.price}}</td>
+                                <td> {{item.capacity}}</td>
                             </tr>
                         </tbody>
-                        
+                       
                     </table>
+                    
                 </div>
             </div>
             <div>
@@ -26,13 +49,14 @@
             </div>
         </div>
         <div class="col-md-6">
-            <br>
-            <label>Datos del evento</label>
+            
+          
+            <label style="margin-top: 10%;">Datos del evento</label>
             <mat-form-field class="w-100" >
                 <mat-label>Fecha</mat-label>
                 <mat-select>
-                  <mat-option *ngFor="let item of TheDatesEvent" [value]="item.date" (click)="ListZoneEvents(item.id)">
-                    {{item.date}}
+                  <mat-option *ngFor="let item of TheDatesEvent" [value]="item.date" (click)="ListZoneEvent(item.id)">
+                    {{item.date|date:"dd/MM/YYYY"}}
                   </mat-option>
                 </mat-select>
             </mat-form-field>
@@ -40,45 +64,37 @@
             <mat-form-field class="w-100">
                 <mat-label>Zona</mat-label>
                 <mat-select>
-                  <mat-option *ngFor="let item of ZoneEvents" [value]="item.name">
+                  <mat-option *ngFor="let item of TheZoneEvents" [value]="item.name" (click)="getIdZone(item.id); UpdateTotal();">
                     {{item.name}}
                   </mat-option>
                 </mat-select>
             </mat-form-field>
-            <div class="d-flex">
-                <mat-form-field appearance="fill" class="w-50 me-2">
-                    <mat-label>Cantidad</mat-label>
-                    <input type="number" matInput>
-                  </mat-form-field>
+            <div class="d-flex" >
+
+              <form [formGroup]="addPurchaseForm" class="space">
+                <mat-form-field>
+                  <p>Cantidad de entradas</p>
+                  <mat-select appearance="fill" >
+                    <mat-option type="text" formControlName="cant" placeholder="Cantidad de entradas"
+                     *ngFor="let cant of cants" [value]="cant" (click)="getTotal(cant)">
+                      {{cant}}
+                    </mat-option>
+                  </mat-select>
+                </mat-form-field>
+                
+              </form>
+
                 <mat-form-field appearance="fill" class="w-50 ms-2">
                     <mat-label>Monto</mat-label>
-                    <input type="text" matInput readonly="true" value=0>
+                    <input type="text" matInput readonly="true" >
+                    <p>{{total}}</p>
                   </mat-form-field>
             </div>
             <br>
-            <label>Datos de Facturación</label>
-            <br>
-            <div class="d-flex">
-                <mat-form-field appearance="fill" class="w-50 me-2">
-                    <mat-label>Nombre</mat-label>
-                    <input type="string" matInput readonly="true">
-                  </mat-form-field>
-                  <mat-form-field appearance="fill" class="w-50 ms-2">
-                    <mat-label>Apellido</mat-label>
-                    <input type="string" matInput readonly="true">
-                  </mat-form-field>
-            </div>
-            <mat-form-field appearance="fill" class="w-100">
-                <mat-label>Numero de Documento Registrado</mat-label>
-                <input type="string" matInput readonly="true">
-              </mat-form-field>
-              <mat-form-field appearance="fill" class="w-100">
-                <mat-label>Correo electronico</mat-label>
-                <input type="string" matInput readonly="true">
-              </mat-form-field>
+            
             <div >
                 <br>
-                <button routerLink="/pay" mat-fab extended style=" background-color:#A32DE3;" class="text-white w-100">IR A PAGAR</button>
+                <button mat-fab extended style=" background-color:#A32DE3;" class="text-white w-100" (click)="savePurchase(); saveTickets();">IR A PAGAR</button>
             </div>
         </div>
     </div>

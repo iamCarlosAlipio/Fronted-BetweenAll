@@ -1,5 +1,10 @@
+import { User } from './../../models/user';
 import { Component } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
+import { timeout } from 'rxjs';
+import { ActivatedRoute, Router } from '@angular/router';
+import { UserServiceService } from 'src/app/services/user-service.service';
+import { MatSnackBar } from '@angular/material/snack-bar';
 
 @Component({
   selector: 'app-login',
@@ -7,22 +12,46 @@ import { FormBuilder, FormGroup, Validators } from '@angular/forms';
   styleUrls: ['./login.component.css']
 })
 export class LoginComponent {
-  
-  form:FormGroup;
-  constructor(private fb:FormBuilder){
-    this.form=this.fb.group({
-      user:['',Validators.required],
-      password:['',Validators.required],
-    })
-  }
-  ngOnInit():void{
 
+  idUser!:number;
+  email!: string;
+  password!: string;
+  form!:FormGroup;
+  mensaje = false;
+
+  constructor(private FormBuilder:FormBuilder,private fb:FormBuilder,private user:UserServiceService, private router:Router,
+    private snack: MatSnackBar){}
+  
+  ngOnInit():void{
+    this.reactiveForm();
   }
-  getIntoDash(){
-    console.log(this.form);
-    const userForm=this.form.value.user;
-    const passwordForm=this.form.value.password;
-    console.log(userForm);
-    console.log(passwordForm);
+
+  reactiveForm():void {
+    
+    this.form = this.FormBuilder.group({
+        email:["",[Validators.required, Validators.maxLength(10)]],
+        password:["",[Validators.required, Validators.maxLength(10)]],
+    });
+  }
+
+  verificarUsuario(): void {
+
+    this.mensaje = true;
+    this.email = this.form.get('email')?.value;
+    this.password = this.form.get('password')?.value;
+    this.user.getUsers().subscribe(
+      (data: User[]) => {
+        let auxUser = data.find(x => x.email == this.email && x.password == this.password);
+        if (auxUser) {
+          this.router.navigate(["home/" + auxUser.id]);
+        }
+        else{
+          this.snack.open('El usuario no existe', 'OK', { duration: 5000 })
+        }
+    });
+    this.mensaje = false;
+  }
+  getIdUser():number{
+    return this.idUser;
   }
 }

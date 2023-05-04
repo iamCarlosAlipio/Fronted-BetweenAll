@@ -1,0 +1,99 @@
+.body {
+    justify-content: center;
+    height: 100%;
+    align-items: center;
+  }
+  .eventConfirm1Panel {
+    position: relative;
+    width: 80%;
+    text-align: justify;
+    margin-bottom: 10vh;
+  }
+  .row.event {
+      position: relative;
+    width: 100%;
+  }
+  .row.checkAccept {
+    align-items: center;
+    align-items: center;
+    justify-content: center;
+    width: 80%;
+  }
+  .form-check-input{
+      color:#a32de3;
+      
+  }
+  .row.checkAccept.down {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      width: 80%;
+      margin-bottom: 7vh;
+    }
+    .col-sm-12.imgConfirm {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      flex-direction: column;
+    }
+  .col-sm-12.term {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-direction: column;
+  }
+  .button.finish {
+    position: relative;
+    background-color: #a32de3;
+    color: white;
+    width: 60%;
+    margin-bottom: 3vh;
+    height: 4.5vh;
+  }
+  .button.cancel {
+    background-color: white;
+    color: #a32de3;
+    border-style: solid;
+    border-color: #a32de3;
+    background-color: white;
+    width: 60%;
+    height: 4.5vh;
+  }
+  @media (max-width: 992px){
+      .row.event {
+          flex-direction: column;
+      }
+      .eventConfirm1Panel{
+          margin-bottom: 2.5vh;
+      }
+      .row.checkAccept.down{
+          margin-bottom: 2.5vh;
+      }
+      .img-fluid.imgConfirm1{
+          position: relative;
+          max-width: 400px;
+      }
+  }
+  @media (max-width: 500px){
+      .img-fluid.imgConfirm1{
+          position: relative;
+          max-width: 250px;
+      }
+      .row.checkAccept{
+          width: 100%;
+          flex-direction: row;
+      }
+      .row.checkAccept.down{
+          width: 100%;
+          flex-direction: row;
+      }
+  }
+  @media (max-width: 432px){
+      .row.checkAccept{
+          flex-direction: row;
+      }
+  }
+  
+  .form-check-input:checked {
+      background-color: #a32de3;
+  }

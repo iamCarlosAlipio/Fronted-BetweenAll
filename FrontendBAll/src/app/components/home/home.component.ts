@@ -4,6 +4,7 @@ import { Component } from '@angular/core';
 import {MatTableDataSource} from '@angular/material/table';
 import { MatPaginator } from '@angular/material/paginator';
 import { ViewChild} from '@angular/core'
+import { ActivatedRoute } from '@angular/router';
 
 @Component({
   selector: 'app-home',
@@ -13,11 +14,13 @@ import { ViewChild} from '@angular/core'
 export class HomeComponent {
 
   events: SocialEvent[] = [];
-  constructor(private socialEventsService: SocialEventsService){
+  constructor(private socialEventsService: SocialEventsService, private activatedRoute:ActivatedRoute){
 
   }
+  idUser!: number;
   
   ngOnInit(){
+    this.idUser = this.activatedRoute.snapshot.params["id"];
     this.ListSocialEvents();
   }
 

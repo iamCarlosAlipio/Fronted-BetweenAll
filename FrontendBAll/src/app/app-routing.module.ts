@@ -6,19 +6,22 @@ import { LoginComponent } from './components/login/login.component';
 import { AddSocialEventComponent } from './components/add-social-event/add-social-event.component';
 import { GroupsComponent } from './components/groups/groups.component';
 import { AddEditGroupsComponent } from './components/add-edit-groups/add-edit-groups.component';
+import { EventCreate1Component } from './components/event-create1/event-create1.component';
+import { EditUserComponent } from './components/edit-user/edit-user.component';
 import { PurchaseComponent } from './components/purchase/purchase.component';
 import { PayComponent } from './components/pay/pay.component';
 
 const routes: Routes = [
   {path: '', component:LoginComponent},
-  {path: 'Login', component:LoginComponent},
-  {path: 'Home', component:HomeComponent},
+  {path: 'login', component:LoginComponent},
+  {path: 'home/:id', component:HomeComponent},
   {path:'insertUser',component:AddUserComponent},
-  {path: 'AddSocialEvent', component:AddSocialEventComponent},
-  {path: 'grupos', component:GroupsComponent},
-  {path: 'add-edit-groups', component:AddEditGroupsComponent},
-  {path: 'purchase/:id', component:PurchaseComponent},
-  {path: 'pay', component:PayComponent}
+  {path: 'addSocialEvent/:id', component:AddSocialEventComponent},
+  {path: 'groups/:id', component:GroupsComponent},
+  {path: 'addEditGroups/:id', component:AddEditGroupsComponent},
+  {path: 'eventConfirm1', component:EventCreate1Component},
+  {path: 'purchase/:id/user/:idUser', component:PurchaseComponent},
+  {path: 'pay/:id', component:PayComponent}
 ];
 
 @NgModule({
