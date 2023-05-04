@@ -10,6 +10,9 @@ import { EventCreate1Component } from './components/event-create1/event-create1.
 import { EditUserComponent } from './components/edit-user/edit-user.component';
 import { PurchaseComponent } from './components/purchase/purchase.component';
 import { PayComponent } from './components/pay/pay.component';
+import { ConfirmBuy1Component } from './components/page/confirm-buy1/confirm-buy1.component';
+import { ConfirmEventComponent } from './components/page/confirm-event/confirm-event.component';
+import { LogoutComponent } from './components/page/logout/logout.component';
 
 const routes: Routes = [
   {path: '', component:LoginComponent},
@@ -21,7 +24,10 @@ const routes: Routes = [
   {path: 'addEditGroups/:id', component:AddEditGroupsComponent},
   {path: 'eventConfirm1', component:EventCreate1Component},
   {path: 'purchase/:id', component:PurchaseComponent},
-  {path: 'pay/:id', component:PayComponent}
+  {path: 'pay/:id', component:PayComponent},
+  {path: 'confirmPage1', component:ConfirmBuy1Component},
+  {path: 'confirmEvent', component:ConfirmEventComponent},
+  {path: 'logout', component:LogoutComponent}
 ];
 
 @NgModule({

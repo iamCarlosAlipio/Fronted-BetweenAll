@@ -19,6 +19,9 @@ import { EditUserComponent } from './components/edit-user/edit-user.component';
 import { PurchaseComponent } from './components/purchase/purchase.component';
 
 import { PayComponent } from './components/pay/pay.component';
+import { ConfirmBuy1Component } from './components/page/confirm-buy1/confirm-buy1.component';
+import { ConfirmEventComponent } from './components/page/confirm-event/confirm-event.component';
+import { LogoutComponent } from './components/page/logout/logout.component';
 
 @NgModule({
   declarations: [
@@ -35,7 +38,10 @@ import { PayComponent } from './components/pay/pay.component';
     AddEditGroupsComponent,
     EditUserComponent,
     PurchaseComponent,
-    PayComponent
+    PayComponent,
+    ConfirmBuy1Component,
+    ConfirmEventComponent,
+    LogoutComponent
   ],
   imports: [
     BrowserModule,
