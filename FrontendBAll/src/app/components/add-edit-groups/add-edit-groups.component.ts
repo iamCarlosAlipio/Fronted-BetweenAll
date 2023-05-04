@@ -42,7 +42,7 @@ export class AddEditGroupsComponent {
           this.myForm.get("name")?.setValue(data.name);
           this.myForm.get("amountParticipants")?.setValue(data.amountParticipants);
           this.myForm.get("description")?.setValue(data.description);
-          this.myForm.get("category")?.setValue(data.category);
+          this.myForm.get("category")?.setValue(data.idCategory);
           this.myForm.get("image")?.setValue(data.image);
         },
         error: (err) => {
@@ -64,7 +64,7 @@ export class AddEditGroupsComponent {
       name: this.myForm.get("name")!.value,
       amountParticipants: this.myForm.get("amountParticipants")!.value,
       description: this.myForm.get("description")!.value,
-      category: this.myForm.get("category")!.value,
+      idCategory: this.myForm.get("category")!.value,
       image: this.myForm.get("image")!.value
     }
 

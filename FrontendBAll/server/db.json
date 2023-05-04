@@ -301,7 +301,7 @@
       "name": "Reales",
       "amountParticipants": 20,
       "description": "Somos un grupo de musica",
-      "category": "Teatro",
+      "idCategory": "Musica",
       "image": "https://www.mincetur.gob.pe/wp-content/uploads/2017/11/foto.jpg"
     },
     {
@@ -309,7 +309,7 @@
       "name": "Reales",
       "amountParticipants": 20,
       "description": "Somos un grupo de musica",
-      "category": "Arte",
+      "idCategory": 2,
       "image": "https://www.grupoeducar.cl/wp-content/uploads/2017/10/artequin-grupo-educar.jpg"
     },
     {
@@ -317,7 +317,7 @@
       "name": "Reales",
       "amountParticipants": 20,
       "description": "Somos un grupo de musica",
-      "category": "Musica",
+      "idCategory": 2,
       "image": "https://i.blogs.es/7ddff1/alex-bracken-rzulpgwqcue-unsplash/1366_2000.jpg"
     },
     {
@@ -325,7 +325,7 @@
       "name": "Reales",
       "amountParticipants": 20,
       "description": "Somos un grupo de musica",
-      "category": "Teatro",
+      "idCategory": 2,
       "image": "https://www.mincetur.gob.pe/wp-content/uploads/2017/11/foto.jpg"
     },
     {
@@ -333,7 +333,7 @@
       "name": "Reales",
       "amountParticipants": 20,
       "description": "Somos un grupo de musica",
-      "category": "Arte",
+      "idCategory": 2,
       "image": "https://www.grupoeducar.cl/wp-content/uploads/2017/10/artequin-grupo-educar.jpg"
     },
     {
@@ -341,7 +341,7 @@
       "name": "Reales",
       "amountParticipants": 20,
       "description": "Somos un grupo de musica",
-      "category": "Musica",
+      "idCategory": 2,
       "image": "https://i.blogs.es/7ddff1/alex-bracken-rzulpgwqcue-unsplash/1366_2000.jpg"
     },
     {
@@ -349,7 +349,7 @@
       "name": "Reales",
       "amountParticipants": 20,
       "description": "Somos un grupo de musica",
-      "category": "Musica",
+      "idCategory": 2,
       "image": "https://i.blogs.es/7ddff1/alex-bracken-rzulpgwqcue-unsplash/1366_2000.jpg"
     },
     {
@@ -365,7 +365,7 @@
       "name": "Reales",
       "amountParticipants": 20,
       "description": "Somos un grupo de musica",
-      "category": "Musica",
+      "idCategory": 2,
       "image": "https://i.blogs.es/7ddff1/alex-bracken-rzulpgwqcue-unsplash/1366_2000.jpg"
     },
     {
@@ -373,7 +373,7 @@
       "name": "Reales",
       "amountParticipants": 20,
       "description": "Somos un grupo de musica",
-      "category": "Musica",
+      "idCategory": 2,
       "image": "https://i.blogs.es/7ddff1/alex-bracken-rzulpgwqcue-unsplash/1366_2000.jpg"
     },
     {
@@ -381,7 +381,7 @@
       "name": "Reales",
       "amountParticipants": 20,
       "description": "Somos un grupo de musica",
-      "category": "Arte",
+      "idCategory": 2,
       "image": "https://www.grupoeducar.cl/wp-content/uploads/2017/10/artequin-grupo-educar.jpg"
     },
     {
@@ -389,7 +389,7 @@
       "name": "Reales",
       "amountParticipants": 20,
       "description": "Somos un grupo de musica",
-      "category": "Teatro",
+      "idCategory": 2,
       "image": "https://www.mincetur.gob.pe/wp-content/uploads/2017/11/foto.jpg"
     },
     {
@@ -397,7 +397,7 @@
       "name": "Reales",
       "amountParticipants": 20,
       "description": "Somos un grupo de musica",
-      "category": "Musica",
+      "idCategory": 2,
       "image": "https://i.blogs.es/7ddff1/alex-bracken-rzulpgwqcue-unsplash/1366_2000.jpg"
     },
     {
@@ -405,7 +405,7 @@
       "name": "Reales",
       "amountParticipants": 20,
       "description": "Somos un grupo de musica",
-      "category": "Musica",
+      "idCategory": 2,
       "image": "https://i.blogs.es/7ddff1/alex-bracken-rzulpgwqcue-unsplash/1366_2000.jpg"
     },
     {
@@ -413,16 +413,8 @@
       "name": "Reales",
       "amountParticipants": 20,
       "description": "Somos un grupo de musica",
-      "category": "Teatro",
+      "idCategory": 2,
       "image": "https://www.mincetur.gob.pe/wp-content/uploads/2017/11/foto.jpg"
-    },
-    {
-      "id": 20,
-      "name": "Nation of Electronic",
-      "amountParticipants": "20",
-      "description": "Fans of Electronical Music",
-      "category": "Musica",
-      "image": "https://imagenes.elpais.com/resizer/lts_jw-C3WPFJfgMQHXbcYDfcos=/414x0/arc-anglerfish-eu-central-1-prod-prisa.s3.amazonaws.com/public/XKHAIPAIUDWTDEVLE3ETK7SB7I.jpg"
     }
   ],
   "category": [
