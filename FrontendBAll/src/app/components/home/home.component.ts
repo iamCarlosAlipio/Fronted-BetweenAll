@@ -1,9 +1,7 @@
 import { SocialEventsService } from 'src/app/services/social-events.service';
 import { SocialEvent } from 'src/app/models/socialevent';
 import { Component } from '@angular/core';
-import {MatTableDataSource} from '@angular/material/table';
-import { MatPaginator } from '@angular/material/paginator';
-import { ViewChild} from '@angular/core'
+
 
 @Component({
   selector: 'app-home',
@@ -12,9 +10,17 @@ import { ViewChild} from '@angular/core'
 })
 export class HomeComponent {
 
-  events: SocialEvent[] = [];
+
+  events!: SocialEvent[];
+  filteredEvents!: SocialEvent[];
   constructor(private socialEventsService: SocialEventsService){
 
+  }
+
+  applyFilter(event: any) {
+    let filterValue = event.target.value;
+    filterValue = filterValue.trim().toLowerCase();
+    this.filteredEvents = this.events.filter(event => event.name.toLowerCase().includes(filterValue));
   }
   
   ngOnInit(){
