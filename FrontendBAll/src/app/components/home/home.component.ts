@@ -1,7 +1,10 @@
 import { SocialEventsService } from 'src/app/services/social-events.service';
 import { SocialEvent } from 'src/app/models/socialevent';
 import { Component } from '@angular/core';
-
+import {MatTableDataSource} from '@angular/material/table';
+import { MatPaginator } from '@angular/material/paginator';
+import { ViewChild} from '@angular/core'
+import { ActivatedRoute } from '@angular/router';
 
 @Component({
   selector: 'app-home',
@@ -10,12 +13,12 @@ import { Component } from '@angular/core';
 })
 export class HomeComponent {
 
-
-  events!: SocialEvent[];
-  filteredEvents!: SocialEvent[];
-  constructor(private socialEventsService: SocialEventsService){
+  constructor(private socialEventsService: SocialEventsService, private activatedRoute:ActivatedRoute){
 
   }
+  events!: SocialEvent[];
+  filteredEvents!: SocialEvent[];
+
 
   applyFilter(event: any) {
     let filterValue = event.target.value;
@@ -23,7 +26,10 @@ export class HomeComponent {
     this.filteredEvents = this.events.filter(event => event.name.toLowerCase().includes(filterValue));
   }
   
+  idUser!: number;
+  
   ngOnInit(){
+    this.idUser = this.activatedRoute.snapshot.params["id"];
     this.ListSocialEvents();
   }
 

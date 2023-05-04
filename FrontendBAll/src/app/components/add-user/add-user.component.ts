@@ -62,8 +62,6 @@ export class AddUserComponent {
         city:["",[Validators.required]],
         category:["",[Validators.required]],
      });
-;
-     
      this.id=0;
     }
 

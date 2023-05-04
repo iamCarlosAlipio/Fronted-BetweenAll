@@ -147,6 +147,7 @@ export class AddSocialEventComponent {
       image: this.myForm.get("imageDetail")!.value,
       location: this.myForm.get("locationDetail")!.value,
       description: this.myForm.get("descriptionDetail")!.value,
+      idUser: 1,
     }
 
     //Si EsInsertar entonces 
