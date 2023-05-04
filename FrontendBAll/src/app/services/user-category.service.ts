@@ -1,4 +1,4 @@
-import { HttpBackend } from '@angular/common/http';
+import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { userCategory } from '../models/userCategory';
 
@@ -10,6 +10,22 @@ export class UserCategoryService {
   RutaServidor : string = "http://localhost:3000";
   Recurso: string ="userCategory";
   
-  constructor(private http:HttpBackend) { }
+  constructor(private Http:HttpClient) { }
+
+  getUserCategories(){
+    return this.Http.get<userCategory[]>(this.RutaServidor+"/"+this.Recurso)
+  }
+
+  getUserCategory(id:number){
+    return this.Http.get<userCategory>(this.RutaServidor+"/"+this.Recurso+ "/" + id.toString());
+  }
+
+  insertUserCategory(userCat:userCategory){
+    return this.Http.post<userCategory>(this.RutaServidor+"/"+this.Recurso,userCat);
+  }
+  
+  deleteUserCategory(id: number) {
+    return this.Http.delete(this.RutaServidor +"/"+this.Recurso + "/" + id.toString());
+  }
 
 }

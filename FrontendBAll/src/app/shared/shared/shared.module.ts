@@ -34,9 +34,9 @@ import {MatChipInputEvent} from '@angular/material/chips';
     MatSnackBarModule,
     MatInputModule,
     MatCheckboxModule,
+    MatGridListModule,
     MatSelectModule,
     MatTabsModule,
-    MatGridListModule
   ],
 
   exports: [
@@ -46,15 +46,15 @@ import {MatChipInputEvent} from '@angular/material/chips';
     MatTableModule,
     MatFormFieldModule,
     MatPaginatorModule,
-    MatDatepickerModule,
     MatNativeDateModule,
     MatIconModule,
     MatSnackBarModule,
     MatInputModule,
     MatCheckboxModule,
     MatSelectModule,
+    MatGridListModule,
     MatTabsModule,
-    MatGridListModule
+    MatDatepickerModule
   ]
 })
 export class SharedModule { }

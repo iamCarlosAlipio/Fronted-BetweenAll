@@ -6,15 +6,18 @@ import { LoginComponent } from './components/login/login.component';
 import { AddSocialEventComponent } from './components/add-social-event/add-social-event.component';
 import { GroupsComponent } from './components/groups/groups.component';
 import { AddEditGroupsComponent } from './components/add-edit-groups/add-edit-groups.component';
+import { EditUserComponent } from './components/edit-user/edit-user.component';
 
 const routes: Routes = [
   {path: '', component:LoginComponent},
-  {path: 'Login', component:LoginComponent},
-  {path: 'Home', component:HomeComponent},
+  {path: 'login', component:LoginComponent},
+  {path: 'home/:id', component:HomeComponent},
   {path:'insertUser',component:AddUserComponent},
-  {path: 'AddSocialEvent', component:AddSocialEventComponent},
-  {path: 'grupos', component:GroupsComponent},
-  {path: 'add-edit-groups', component:AddEditGroupsComponent}
+  {path: 'addSocialEvent/:id', component:AddSocialEventComponent},
+  {path: 'groups/:id', component:GroupsComponent},
+  {path: 'addEditGroups/:id', component:AddEditGroupsComponent},
+  {path: 'editProfile/:id', component:EditUserComponent}
+
 ];
 
 @NgModule({

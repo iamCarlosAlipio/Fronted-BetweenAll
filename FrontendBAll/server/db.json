@@ -12,8 +12,21 @@
       "categoryEvent": "Rock",
       "type": "DNI",
       "number": "72556278"
+    },
+    {
+      "id": 2,
+      "name": "carlos",
+      "lastname": "sanchez",
+      "email": "alipiosanchez@gmail.com",
+      "password": "123",
+      "phone": "956275080",
+      "city": "lima",
+      "numberDocument": 72556278,
+      "typeDocument": "DNI",
+      "image": "src/assets/img/PERFIL-VACIO.png"
     }
   ],
+
   "socialevents": [
     {
       "id": 1,
@@ -320,5 +333,45 @@
       "category": "Teatro",
       "image": "https://www.mincetur.gob.pe/wp-content/uploads/2017/11/foto.jpg"
     }
-  ]
+  ],
+
+  "category": [
+    {
+      "id": 1,
+      "name": "Teatro",
+      "state": "Activo"
+    },
+    {
+      "id": 2,
+      "name": "Concierto",
+      "state": "Activo"
+    },
+    {
+      "id": 3,
+      "name": "Conferencia",
+      "state": "Activo"
+    },
+    {
+      "id": 4,
+      "name": "Festivales",
+      "state": "Activo"
+    },
+    {
+      "id": 5,
+      "name": "Cine y Peliculas",
+      "state": "Activo"
+    },
+    {
+      "id": 6,
+      "name": "Eventos especiales",
+      "state": "Activo"
+    },
+    {
+      "id": 7,
+      "name": "E-sport",
+      "state": "Activo"
+    }
+  ],
+  
+  "userCategory": []
 }
