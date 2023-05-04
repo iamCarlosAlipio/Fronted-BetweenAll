@@ -1,0 +1,36 @@
+@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@400;800&display=swap');
+.UpdateUser {
+    max-height: 80%;
+    width: 100%;
+    display: flex; 
+  }
+  .container1{
+    width: 50%;
+    height: 100%; 
+  }
+
+  .full{
+    width: 100%;
+  }
+.botton2{
+    display: block;
+    margin: auto;
+}
+
+.image{
+
+    margin: auto;
+    display: block;
+}
+.text-4 {
+    text-align: left;
+    vertical-align: middle;
+    font-size: 13px;
+    font-family: Poppins,sans-serif;
+    font-weight: 400;
+    line-height: auto;
+  }
+  .form-container-1 {
+  width: 49%;
+}
+

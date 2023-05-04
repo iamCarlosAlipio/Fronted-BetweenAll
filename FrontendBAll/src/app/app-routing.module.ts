@@ -35,8 +35,8 @@ const routes: Routes = [
   {path: 'edit-groups/:id', component:AddEditGroupsComponent},
   {path: 'details-group/:id', component: DetailsGroupComponent},
   {path: 'details-mygroup/:id', component: DetailsMygroupComponent},
-  {path: 'details-mygroupcreated/:id', component: DetailsMygroupcreatedComponent}
-
+  {path: 'details-mygroupcreated/:id', component: DetailsMygroupcreatedComponent},
+  {path: 'editProfile/:id', component:EditUserComponent}
 ];
 
 @NgModule({

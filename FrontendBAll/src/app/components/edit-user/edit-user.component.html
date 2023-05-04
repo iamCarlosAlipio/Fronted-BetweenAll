@@ -1,1 +1,86 @@
 <app-navbar></app-navbar>
+<div class="UpdateUser">    
+    <div class="container1">
+      <div>
+      <form [formGroup]="editUserForm1" style="margin-right: 10%;margin-left: 10%;">
+          <div style="margin-top: 5%;">
+            <img src="./assets/img/PERFILVACIO.png" alt="logo" width="30%" class="image" />
+            <br>
+            <br>
+            <button mat-raised-button class="botton2" style="background-color:#A32DE3; color:white;">Cambiar</button>
+          </div>
+          <div style="margin-top: 10%;">
+            <p class="text-4">Correo electronico</p>
+            <mat-form-field class="full" >
+                <input matInput formControlName="email" [value]="user.email">
+            </mat-form-field>
+          </div>
+          <div>
+            <p class="text-4">contraseña</p>
+            <mat-form-field class="full">
+                <input matInput formControlName="password" [value]="user.password">
+            </mat-form-field>
+          </div>
+        </form>
+      </div>
+    </div>
+    <div class="container1">
+        <form [formGroup]="editUserForm1" style="margin-right: 10%;margin-left: 10%;">
+                <div style="margin-top: 5%; display: flex;" >
+                    <mat-form-field class class="form-container-1">
+                        <label class="text-4">Nombre</label>
+                      <input matInput formControlName="name">
+                    </mat-form-field>
+                    <mat-form-field class="form-container-1" style="margin-left: 2%;">
+                        <label class="text-4">Apellido</label>
+                      <input matInput formControlName="lastname">
+                    </mat-form-field>
+                </div>
+                <div style=" display: flex;">
+                    <mat-form-field class="form-container-1">
+                        <label class="text-4">Tipo de docuemento</label>
+                        <mat-select formControlName = "typeDocument">
+                            <mat-option value="DNI">DNI</mat-option>
+                            <mat-option value="Tarjeta de extrangeria">Tarjeta de extrangeria</mat-option>
+                        </mat-select>
+                    </mat-form-field>
+                    <mat-form-field class="form-container-1" style="margin-left: 2%;">
+                        <label class="text-4">Numero de docuemento</label>
+                      <input matInput [value]="user.numberDocument" formControlName="numberDocument">
+                    </mat-form-field>
+                </div>
+                <div style="display: flex;">
+                    <mat-form-field style="width: 60%;">
+                        <label class="text-4">Categorias</label>
+                      <mat-select  formControlName="category" (selectionChange)="changeButton($event)">
+                        <mat-option *ngFor="let category of categories" [value]="category.name">
+                          {{category.name}}
+                        </mat-option>
+                      </mat-select>
+                    </mat-form-field>
+                    <button mat-raised-button [disabled]="insert" style="background-color:#A32DE3; color:white; width: 20%; margin-left: 6%" (click)="saveUserCategory()" >Agregar</button>
+                    <button mat-raised-button [disabled]="delete" style="background-color:white; color:black; width: 20%; margin-left: 10%;" (click)="deleteUserCategory()">Quitar</button>
+                </div>  
+                <div>
+                    <label class="text-4">Telefono</label>
+                  <mat-form-field class="full">
+                    <input matInput [value]="user.phone" formControlName="phone">
+                  </mat-form-field>
+                </div>
+                <div>
+                    <label class="text-4">Ciudad</label>
+                    <mat-form-field class="full">
+                      <input matInput [value]="user.city" formControlName="city">
+                    </mat-form-field>
+                </div>
+                <div style="display: block;">
+                    <button mat-raised-button style="background-color:#A32DE3; color:white; width: 100%;" (click)="updateUser()">Actuaizar datos</button>
+                </div>
+        </form>
+    </div>
+</div>
+  
+  
+  
+  
+

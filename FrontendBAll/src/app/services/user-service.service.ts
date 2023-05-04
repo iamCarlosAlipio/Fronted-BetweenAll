@@ -24,11 +24,11 @@ export class UserServiceService {
     return this.Http.post<User>(this.rutaServer+"/"+this.recurso,user);
   }
   
-  updateEmpleado(user: User) {
+  updateUser(user:User) {
     return this.Http.put<User>(this.rutaServer +"/"+this.recurso + "/" + user.id.toString(), user);
   }
 
-  deleteEmpleado(id: number) {
+  deleteUser(id:number) {
     return this.Http.delete(this.rutaServer +"/"+this.recurso + "/" + id.toString());
   }
 
