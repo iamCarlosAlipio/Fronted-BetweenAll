@@ -34,8 +34,8 @@ const routes: Routes = [
   {path: 'details-group/:id', component: DetailsGroupComponent},
   {path: 'details-mygroup/:id', component: DetailsMygroupComponent},
   {path: 'details-mygroupcreated/:id', component: DetailsMygroupcreatedComponent},
-  {path: 'editProfile/:id', component:EditUserComponent}
-  {path: 'groups/:id', component:GroupsComponent},
+  {path: 'editProfile/:id', component:EditUserComponent},
+  {path: 'groups', component:GroupsComponent},
   {path: 'addEditGroups/:id', component:AddEditGroupsComponent},
   {path: 'eventConfirm1', component:EventCreate1Component},
   {path: 'purchase/:id/user/:idUser', component:PurchaseComponent},
