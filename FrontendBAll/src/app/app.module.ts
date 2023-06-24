@@ -26,6 +26,7 @@ import { DetailsGroupComponent } from './components/details-group/details-group.
 import { DetailsMygroupComponent } from './components/details-mygroup/details-mygroup.component';
 import { DetailsMygroupcreatedComponent } from './components/details-mygroupcreated/details-mygroupcreated.component';
 import { ProfileUserComponent } from './components/profile-user/profile-user.component';
+import { EventsAssistedComponent } from './components/events-assisted/events-assisted.component';
 
 @NgModule({
   declarations: [
@@ -49,7 +50,8 @@ import { ProfileUserComponent } from './components/profile-user/profile-user.com
     DetailsGroupComponent,
     DetailsMygroupComponent,
     DetailsMygroupcreatedComponent,
-    ProfileUserComponent
+    ProfileUserComponent,
+    EventsAssistedComponent
   ],
   imports: [
     BrowserModule,

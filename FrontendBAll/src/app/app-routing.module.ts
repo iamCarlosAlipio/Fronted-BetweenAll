@@ -1,3 +1,4 @@
+import { DtoEventsAssistedSumary } from './models/dtoEventsAssistedSummary';
 import { NgModule} from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
 import { AddUserComponent } from './components/add-user/add-user.component';
@@ -17,6 +18,7 @@ import { DetailsGroupComponent } from './components/details-group/details-group.
 import { DetailsMygroupComponent } from './components/details-mygroup/details-mygroup.component';
 import { DetailsMygroupcreatedComponent } from './components/details-mygroupcreated/details-mygroupcreated.component';
 import { ProfileUserComponent } from './components/profile-user/profile-user.component';
+import { EventsAssistedComponent } from './components/events-assisted/events-assisted.component';
 
 const routes: Routes = [
   {path: '', component:LoginComponent},
@@ -41,6 +43,8 @@ const routes: Routes = [
   {path: 'eventConfirm1', component:EventCreate1Component},
   {path: 'purchase/:id/user/:idUser', component:PurchaseComponent},
   {path: 'profile/:id', component:ProfileUserComponent},
+  {path: 'eventsAssisted/:id', component:EventsAssistedComponent},
+
 ];
 
 @NgModule({

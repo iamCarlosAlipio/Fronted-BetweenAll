@@ -32,4 +32,8 @@ export class SocialEventsService {
     return this.http.post<SocialEvent>(this.RutaServidor+"/"+this.Recurso,socialevent);
   }
 
+  getSocialEventCreated(id:number){
+    return this.http.get<SocialEvent[]>(this.RutaServidor+"/"+this.Recurso+"/created/"+id.toString());
+  }
+
 }

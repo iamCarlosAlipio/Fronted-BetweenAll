@@ -5,5 +5,5 @@ export interface SocialEvent {
     location: string,
     idOrganizer:number;
     idCategory:number;
-    description:number;
+    description:string;
 }   

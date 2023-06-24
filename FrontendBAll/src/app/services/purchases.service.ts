@@ -1,6 +1,7 @@
 import { Injectable } from '@angular/core';
 import { HttpClient} from '@angular/common/http';
 import { Purchase } from '../models/purchase';
+import { DtoEventsAssistedSumary } from '../models/dtoEventsAssistedSummary';
 @Injectable({
   providedIn: 'root'
 })
@@ -29,5 +30,9 @@ export class PurchasesService {
 
   addPurchase(purchase:Purchase){
     return this.http.post<Purchase>(this.RutaServidor+"/"+this.Recurso,purchase);
+  }
+
+  getAssistedTicketsSummary(id: number){
+    return this.http.get<DtoEventsAssistedSumary[]>(this.RutaServidor+"/"+this.Recurso+"/summary/"+id.toString());
   }
 }
