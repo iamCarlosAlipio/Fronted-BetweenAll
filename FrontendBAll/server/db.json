@@ -4,13 +4,13 @@
       "id": 1,
       "name": "Carlos",
       "lastname": "Sanchez",
-      "phone": "957049668",
       "email": "alipiosanchez0@gmail.com",
       "password": "1234567",
+      "phone": "957049668",
       "city": "Lima",
-      "categoryEvent": "Rock",
-      "type": "DNI",
-      "number": "72556278"
+      "numberDocument": 12345678,
+      "typeDocument": "DNI",
+      "image": "./assets/img/PERFILVACIO.png"
     },
     {
       "id": 2,
@@ -34,6 +34,66 @@
       "phone": "123",
       "city": "",
       "numberDocument": 123,
+      "typeDocument": "DNI",
+      "image": "src/assets/img/PERFIL-VACIO.png"
+    },
+    {
+      "id": 4,
+      "name": "carlos",
+      "lastname": "sanchez",
+      "email": "alipiosanchez@gmail.com",
+      "password": "1234",
+      "phone": "",
+      "city": "",
+      "numberDocument": null,
+      "typeDocument": "",
+      "image": "src/assets/img/PERFIL-VACIO.png"
+    },
+    {
+      "id": 5,
+      "name": "asd",
+      "lastname": "asd",
+      "email": "",
+      "password": "",
+      "phone": "",
+      "city": "",
+      "numberDocument": null,
+      "typeDocument": "",
+      "image": "src/assets/img/PERFIL-VACIO.png"
+    },
+    {
+      "id": 6,
+      "name": "jeampier",
+      "lastname": "bautista",
+      "email": "a@gmail.com",
+      "password": "123",
+      "phone": "1241234",
+      "city": "Lima",
+      "numberDocument": 123124,
+      "typeDocument": "DNI",
+      "image": "src/assets/img/PERFIL-VACIO.png"
+    },
+    {
+      "id": 7,
+      "name": "jeampier",
+      "lastname": "bautista",
+      "email": "a@gmail.com",
+      "password": "123",
+      "phone": "1241234",
+      "city": "Lima",
+      "numberDocument": 123124,
+      "typeDocument": "DNI",
+      "image": "src/assets/img/PERFIL-VACIO.png"
+    },
+    {
+      "id": 8,
+      "name": "asd",
+      "lastname": "asd",
+      "email": "adm",
+      "password": "123",
+      "phone": "12312312",
+      "city": "Lima",
+      "numberDocument": 123123,
       "typeDocument": "DNI",
       "image": "src/assets/img/PERFIL-VACIO.png"
     }
@@ -241,7 +301,7 @@
       "name": "Reales",
       "amountParticipants": 20,
       "description": "Somos un grupo de musica",
-      "idCategory": "Musica",
+      "idCategory": "Rap",
       "image": "https://www.mincetur.gob.pe/wp-content/uploads/2017/11/foto.jpg"
     },
     {
@@ -355,6 +415,14 @@
       "description": "Somos un grupo de musica",
       "idCategory": 2,
       "image": "https://www.mincetur.gob.pe/wp-content/uploads/2017/11/foto.jpg"
+    },
+    {
+      "id": 20,
+      "name": "Los galacticos",
+      "amountParticipants": "123",
+      "description": "hola",
+      "idCategory": "Rap",
+      "image": "i0.wp.com/urbanroosters.news/wp-content/uploads/2018/12/IMG_6557.jpg?fit=3000%2C1636&ssl=1"
     }
   ],
   "category": [
@@ -468,6 +536,11 @@
       "id": 8,
       "idUser": 8,
       "idCategory": 5
+    },
+    {
+      "id": 9,
+      "idUser": 4,
+      "idCategory": 4
     }
   ],
   "ticket": [
@@ -515,6 +588,236 @@
       "id": 9,
       "idPurchase": "2",
       "idZoneEvent": 2
+    },
+    {
+      "id": 10,
+      "idPurchase": "2",
+      "idZoneEvent": 2
+    },
+    {
+      "id": 11,
+      "idPurchase": "2",
+      "idZoneEvent": 2
+    },
+    {
+      "id": 12,
+      "idPurchase": "2",
+      "idZoneEvent": 2
+    },
+    {
+      "id": 13,
+      "idPurchase": 0,
+      "idZoneEvent": 1
+    },
+    {
+      "id": 14,
+      "idPurchase": 0,
+      "idZoneEvent": 1
+    },
+    {
+      "id": 15,
+      "idPurchase": 0,
+      "idZoneEvent": 1
+    },
+    {
+      "id": 16,
+      "idPurchase": null,
+      "idZoneEvent": 3
+    },
+    {
+      "id": 17,
+      "idPurchase": null,
+      "idZoneEvent": 3
+    },
+    {
+      "id": 18,
+      "idPurchase": null,
+      "idZoneEvent": 4
+    },
+    {
+      "id": 19,
+      "idPurchase": null,
+      "idZoneEvent": 4
+    },
+    {
+      "id": 20,
+      "idPurchase": null
+    },
+    {
+      "id": 21,
+      "idPurchase": null,
+      "idZoneEvent": 2
+    },
+    {
+      "id": 22,
+      "idPurchase": null,
+      "idZoneEvent": 2
+    },
+    {
+      "id": 23,
+      "idPurchase": null,
+      "idZoneEvent": 1
+    },
+    {
+      "id": 24,
+      "idPurchase": null,
+      "idZoneEvent": 1
+    },
+    {
+      "id": 25,
+      "idPurchase": null,
+      "idZoneEvent": 1
+    },
+    {
+      "id": 26,
+      "idPurchase": 0,
+      "idZoneEvent": 5
+    },
+    {
+      "id": 27,
+      "idPurchase": 0,
+      "idZoneEvent": 3
+    },
+    {
+      "id": 28,
+      "idPurchase": 0,
+      "idZoneEvent": 3
+    },
+    {
+      "id": 29,
+      "idPurchase": 0,
+      "idZoneEvent": 2
+    },
+    {
+      "id": 30,
+      "idPurchase": 0,
+      "idZoneEvent": 2
+    },
+    {
+      "id": 31,
+      "idPurchase": 0,
+      "idZoneEvent": 2
+    },
+    {
+      "id": 32,
+      "idPurchase": 0,
+      "idZoneEvent": 2
+    },
+    {
+      "id": 33,
+      "idZoneEvent": 1
+    },
+    {
+      "id": 34,
+      "idZoneEvent": 1
+    },
+    {
+      "id": 35,
+      "idZoneEvent": 1
+    },
+    {
+      "id": 36,
+      "idZoneEvent": 1
+    },
+    {
+      "id": 37,
+      "idPurchase": 0,
+      "idZoneEvent": 1
+    },
+    {
+      "id": 38,
+      "idPurchase": 0,
+      "idZoneEvent": 1
+    },
+    {
+      "id": 39,
+      "idPurchase": 0,
+      "idZoneEvent": 1
+    },
+    {
+      "id": 40,
+      "idPurchase": 0,
+      "idZoneEvent": 1
+    },
+    {
+      "id": 41,
+      "idPurchase": 0,
+      "idZoneEvent": 1
+    },
+    {
+      "id": 42,
+      "idPurchase": 0,
+      "idZoneEvent": 1
+    },
+    {
+      "id": 43,
+      "idPurchase": 0,
+      "idZoneEvent": 1
+    },
+    {
+      "id": 44,
+      "idPurchase": 31,
+      "idZoneEvent": 1
+    },
+    {
+      "id": 45,
+      "idPurchase": 33,
+      "idZoneEvent": 1
+    },
+    {
+      "id": 46,
+      "idPurchase": 33,
+      "idZoneEvent": 1
+    },
+    {
+      "id": 47,
+      "idPurchase": 33,
+      "idZoneEvent": 1
+    },
+    {
+      "id": 48,
+      "idPurchase": 33,
+      "idZoneEvent": 1
+    },
+    {
+      "id": 49,
+      "idPurchase": 34,
+      "idZoneEvent": 3
+    },
+    {
+      "id": 50,
+      "idPurchase": 35,
+      "idZoneEvent": 2
+    },
+    {
+      "id": 51,
+      "idPurchase": 36,
+      "idZoneEvent": 1
+    },
+    {
+      "id": 52,
+      "idPurchase": 36,
+      "idZoneEvent": 1
+    },
+    {
+      "id": 53,
+      "idPurchase": 38,
+      "idZoneEvent": 1
+    },
+    {
+      "id": 54,
+      "idPurchase": 38,
+      "idZoneEvent": 1
+    },
+    {
+      "id": 55,
+      "idPurchase": 38,
+      "idZoneEvent": 1
+    },
+    {
+      "id": 11,
+      "idPurchase": 4,
+      "idZoneEvent": 1
     }
   ],
   "purchase": [
@@ -532,6 +835,181 @@
       "id": 3,
       "idUser": 2,
       "idCard": 2
+    },
+    {
+      "id": 4,
+      "idUser": "1",
+      "idCard": 12
+    },
+    {
+      "id": 5,
+      "idUser": "2",
+      "idCard": 5
+    },
+    {
+      "id": 6,
+      "idUser": "1",
+      "idCard": null
+    },
+    {
+      "id": 7,
+      "idUser": "1",
+      "idCard": 3
+    },
+    {
+      "id": 8,
+      "idUser": "1",
+      "idCard": 2
+    },
+    {
+      "id": 9,
+      "idUser": "2",
+      "idCard": 2
+    },
+    {
+      "id": 10,
+      "idUser": "1",
+      "idCard": 1
+    },
+    {
+      "id": 11,
+      "idUser": "2",
+      "idCard": 2
+    },
+    {
+      "id": 12,
+      "idUser": "1",
+      "idCard": 1
+    },
+    {
+      "id": 13,
+      "idUser": "1",
+      "idCard": 1
+    },
+    {
+      "id": 14,
+      "idUser": "1",
+      "idCard": 1
+    },
+    {
+      "id": 15,
+      "idUser": "2",
+      "idCard": 1
+    },
+    {
+      "id": 16,
+      "idUser": "1",
+      "idCard": 1
+    },
+    {
+      "id": 17,
+      "idUser": "1",
+      "idCard": 1
+    },
+    {
+      "id": 18,
+      "idUser": "1",
+      "idCard": 1
+    },
+    {
+      "id": 19,
+      "idUser": "2",
+      "idCard": 4
+    },
+    {
+      "id": 20,
+      "idUser": "1",
+      "idCard": 1
+    },
+    {
+      "id": 21,
+      "idUser": "1",
+      "idCard": 1
+    },
+    {
+      "id": 22,
+      "idUser": "1",
+      "idCard": 1
+    },
+    {
+      "id": 23,
+      "idUser": "1",
+      "idCard": 2
+    },
+    {
+      "id": 24,
+      "idUser": "1",
+      "idCard": 2
+    },
+    {
+      "id": 25,
+      "idUser": "1",
+      "idCard": 1
+    },
+    {
+      "id": 26,
+      "idUser": "1",
+      "idCard": 1
+    },
+    {
+      "id": 27,
+      "idUser": "1",
+      "idCard": 1
+    },
+    {
+      "id": 28,
+      "idUser": "1",
+      "idCard": 1
+    },
+    {
+      "id": 29,
+      "idUser": "1",
+      "idCard": 1
+    },
+    {
+      "id": 30,
+      "idUser": "1",
+      "idCard": 1
+    },
+    {
+      "id": 31,
+      "idUser": "1",
+      "idCard": 1
+    },
+    {
+      "id": 32,
+      "idUser": "1",
+      "idCard": 1
+    },
+    {
+      "id": 33,
+      "idUser": "1",
+      "idCard": 4
+    },
+    {
+      "id": 34,
+      "idUser": "1",
+      "idCard": 1
+    },
+    {
+      "id": 35,
+      "idUser": "2",
+      "idCard": 1
+    },
+    {
+      "id": 36,
+      "idUser": "1",
+      "idCard": 2
+    },
+    {
+      "id": 37,
+      "idUser": "1",
+      "idCard": 1
+    },
+    {
+      "id": 38,
+      "idUser": "1",
+      "idCard": 1
     }
   ],
   "groupUser": [

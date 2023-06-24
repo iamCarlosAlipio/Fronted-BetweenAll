@@ -9,7 +9,7 @@ import { Group } from './../models/group';
 })
 export class GroupsService {
 
-  ruta_servidor: string = "http://localhost:3000";
+  ruta_servidor: string = "http://localhost:8080/api";
   recurso: string = "groups";
 
   constructor(private http:HttpClient) { }

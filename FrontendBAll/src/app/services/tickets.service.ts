@@ -6,9 +6,9 @@ import { Ticket } from '../models/ticket';
 })
 export class TicketsService {
 
-  RutaServidor : string = "http://localhost:3000";
-  Recurso: string ="ticket";
-  RecursoUsuario: string="user";
+  RutaServidor : string = "http://localhost:8080/api";
+  Recurso: string ="tickets";
+  RecursoUsuario: string="users";
   constructor(private http:HttpClient) { }
 
   getList(){
