@@ -4,13 +4,13 @@
       "id": 1,
       "name": "Carlos",
       "lastname": "Sanchez",
-      "phone": "957049668",
       "email": "alipiosanchez0@gmail.com",
       "password": "1234567",
+      "phone": "957049668",
       "city": "Lima",
-      "categoryEvent": "Rock",
-      "type": "DNI",
-      "number": "72556278"
+      "numberDocument": 12345678,
+      "typeDocument": "DNI",
+      "image": "./assets/img/PERFILVACIO.png"
     },
     {
       "id": 2,
@@ -39,14 +39,22 @@
     },
     {
       "id": 4,
+<<<<<<< Updated upstream
       "name": "asd",
       "lastname": "",
       "email": "",
       "password": "",
+=======
+      "name": "carlos",
+      "lastname": "sanchez",
+      "email": "alipiosanchez@gmail.com",
+      "password": "1234",
+>>>>>>> Stashed changes
       "phone": "",
       "city": "",
       "numberDocument": null,
       "typeDocument": "",
+<<<<<<< Updated upstream
       "image": "src/assets/img/PERFIL-VACIO.png"
     },
     {
@@ -96,6 +104,9 @@
       "numberDocument": 123123,
       "typeDocument": "DNI",
       "image": "src/assets/img/PERFIL-VACIO.png"
+=======
+      "image": "./assets/img/PERFILVACIO.png"
+>>>>>>> Stashed changes
     }
   ],
   "socialevents": [
@@ -301,7 +312,7 @@
       "name": "Reales",
       "amountParticipants": 20,
       "description": "Somos un grupo de musica",
-      "idCategory": "Musica",
+      "idCategory": "Rap",
       "image": "https://www.mincetur.gob.pe/wp-content/uploads/2017/11/foto.jpg"
     },
     {
@@ -415,6 +426,14 @@
       "description": "Somos un grupo de musica",
       "idCategory": 2,
       "image": "https://www.mincetur.gob.pe/wp-content/uploads/2017/11/foto.jpg"
+    },
+    {
+      "id": 20,
+      "name": "Los galacticos",
+      "amountParticipants": "123",
+      "description": "hola",
+      "idCategory": "Rap",
+      "image": "i0.wp.com/urbanroosters.news/wp-content/uploads/2018/12/IMG_6557.jpg?fit=3000%2C1636&ssl=1"
     }
   ],
   "category": [
@@ -530,6 +549,11 @@
       "id": 8,
       "idUser": 8,
       "idCategory": 5
+    },
+    {
+      "id": 9,
+      "idUser": 4,
+      "idCategory": 4
     }
   ],
   "ticket": [
@@ -580,6 +604,7 @@
     },
     {
       "id": 10,
+<<<<<<< Updated upstream
       "idPurchase": "2",
       "idZoneEvent": 2
     },
@@ -801,6 +826,14 @@
     {
       "id": 55,
       "idPurchase": 38,
+=======
+      "idPurchase": 4,
+      "idZoneEvent": 1
+    },
+    {
+      "id": 11,
+      "idPurchase": 4,
+>>>>>>> Stashed changes
       "idZoneEvent": 1
     }
   ],
@@ -823,6 +856,7 @@
     {
       "id": 4,
       "idUser": "1",
+<<<<<<< Updated upstream
       "idCard": 12
     },
     {
@@ -993,6 +1027,8 @@
     {
       "id": 38,
       "idUser": "1",
+=======
+>>>>>>> Stashed changes
       "idCard": 1
     }
   ],

@@ -7,9 +7,9 @@ import { Purchase } from '../models/purchase';
 
 export class PurchasesService {
 
-  RutaServidor : string = "http://localhost:3000";
-  Recurso: string ="purchase";
-  RecursoUsuario: string="user";
+  RutaServidor : string = "http://localhost:8080/api";
+  Recurso: string ="purchases";
+  RecursoUsuario: string="users";
   constructor(private http:HttpClient) { }
 
   getList(){

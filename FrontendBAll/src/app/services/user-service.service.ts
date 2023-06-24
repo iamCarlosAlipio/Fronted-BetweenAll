@@ -7,8 +7,8 @@ import { User } from '../models/user';
 })
 export class UserServiceService {
 
-  rutaServer: string="http://localhost:3000";
-  recurso:string="user";
+  rutaServer: string="http://localhost:8080/api";
+  recurso:string="users";
 
   constructor(private Http:HttpClient) { }
 

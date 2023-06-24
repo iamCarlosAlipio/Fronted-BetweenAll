@@ -25,6 +25,7 @@ import { LogoutComponent } from './components/page/logout/logout.component';
 import { DetailsGroupComponent } from './components/details-group/details-group.component';
 import { DetailsMygroupComponent } from './components/details-mygroup/details-mygroup.component';
 import { DetailsMygroupcreatedComponent } from './components/details-mygroupcreated/details-mygroupcreated.component';
+import { ProfileUserComponent } from './components/profile-user/profile-user.component';
 
 @NgModule({
   declarations: [
@@ -47,7 +48,8 @@ import { DetailsMygroupcreatedComponent } from './components/details-mygroupcrea
     LogoutComponent,
     DetailsGroupComponent,
     DetailsMygroupComponent,
-    DetailsMygroupcreatedComponent
+    DetailsMygroupcreatedComponent,
+    ProfileUserComponent
   ],
   imports: [
     BrowserModule,

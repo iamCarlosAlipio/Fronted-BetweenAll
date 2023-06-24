@@ -7,8 +7,8 @@ import { ZoneEvent } from '../models/zoneevent';
 })
 export class ZoneeventsService {
 
-  RutaServidor : string = "http://localhost:3000";
-  Recurso: string ="zoneevents";
+  RutaServidor : string = "http://localhost:8080/api";
+  Recurso: string ="zoneEvents";
   
   constructor(private http:HttpClient) { }
 

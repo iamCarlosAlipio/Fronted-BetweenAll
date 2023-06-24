@@ -1,0 +1,33 @@
+<app-navbar></app-navbar>
+<div class="body">
+    <form [formGroup]="profileUserForm1" class="container1">
+        <div style="margin-top: 5%;">
+            <img src="./assets/img/PERFILVACIO.png" alt="logo" width="30%" class="image" />
+
+            <div style="margin-top: 5%; display: flex;" >
+                <mat-form-field class class="form-container-1">
+                    <label class="text-4">Nombre</label>
+                  <input matInput formControlName="name">
+                </mat-form-field>
+                <mat-form-field class="form-container-1" style="margin-left: 2%;">
+                    <label class="text-4">Apellido</label>
+                  <input matInput formControlName="lastname">
+                </mat-form-field>
+            </div>
+           
+            <div style="margin-top: 10%;">
+                <p class="text-4">Correo electronico</p>
+                <mat-form-field class="full" >
+                    <!--<input matInput formControlName="email"[value]="user.email">-->
+                </mat-form-field>
+            </div>
+        </div>
+    </form>
+
+    <form [formGroup]="profileUserForm1" class="container1">
+       <mat-table>
+
+       </mat-table>
+    </form>
+
+</div>

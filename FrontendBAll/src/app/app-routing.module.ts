@@ -16,6 +16,7 @@ import { LogoutComponent } from './components/page/logout/logout.component';
 import { DetailsGroupComponent } from './components/details-group/details-group.component';
 import { DetailsMygroupComponent } from './components/details-mygroup/details-mygroup.component';
 import { DetailsMygroupcreatedComponent } from './components/details-mygroupcreated/details-mygroupcreated.component';
+import { ProfileUserComponent } from './components/profile-user/profile-user.component';
 
 const routes: Routes = [
   {path: '', component:LoginComponent},
@@ -39,6 +40,7 @@ const routes: Routes = [
   {path: 'addEditGroups/:id', component:AddEditGroupsComponent},
   {path: 'eventConfirm1', component:EventCreate1Component},
   {path: 'purchase/:id/user/:idUser', component:PurchaseComponent},
+  {path: 'profile/:id', component:ProfileUserComponent},
 ];
 
 @NgModule({

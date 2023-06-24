@@ -8,8 +8,8 @@ import { Observable, map } from 'rxjs';
 
 export class SocialEventsService {
 
-  RutaServidor : string = "http://localhost:3000";
-  Recurso: string ="socialevents";
+  RutaServidor : string = "http://localhost:8080/api";
+  Recurso: string ="socialEvents";
   
   constructor(private http:HttpClient) { }
 

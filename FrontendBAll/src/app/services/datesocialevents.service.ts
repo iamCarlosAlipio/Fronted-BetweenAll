@@ -9,8 +9,8 @@ import { Observable, map } from 'rxjs';
 })
 export class DatesocialeventsService {
 
-  RutaServidor : string = "http://localhost:3000";
-  Recurso: string ="datesocialevents";
+  RutaServidor : string = "http://localhost:8080/api";
+  Recurso: string ="dateSocialEvents";
   
   constructor(private http:HttpClient) { }
 
