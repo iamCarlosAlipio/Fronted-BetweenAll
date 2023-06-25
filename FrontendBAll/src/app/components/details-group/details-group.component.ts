@@ -8,6 +8,9 @@ import { Category } from 'src/app/models/category';
 import { CategoryService } from 'src/app/services/category.service';
 import { MatSnackBar } from '@angular/material/snack-bar';
 
+import { User } from 'src/app/models/user';
+import { UserServiceService } from 'src/app/services/user-service.service';
+
 
 @Component({
   selector: 'app-details-group',
@@ -16,7 +19,7 @@ import { MatSnackBar } from '@angular/material/snack-bar';
 })
 export class DetailsGroupComponent implements OnInit {
   constructor(private formBuilder:FormBuilder, private groupService: GroupsService, private router: Router,
-    private activatedRouter: ActivatedRoute,private categoryService:CategoryService,private snack: MatSnackBar) {
+    private activatedRouter: ActivatedRoute,private categoryService:CategoryService,private snack: MatSnackBar, private UserServiceService: UserServiceService) {
   }
 
   group!: Group;
@@ -26,8 +29,11 @@ export class DetailsGroupComponent implements OnInit {
   categories!:Category[]
   idCatg!:number
 
+  users!: User[];
+
   ngOnInit() {
     this.reactiveForm();
+    this.ListParticipants();
   }
     reactiveForm():void {
       this.detailsForm = this.formBuilder.group({
@@ -67,6 +73,18 @@ export class DetailsGroupComponent implements OnInit {
       (group: Group) =>
       {this.TheGroup = group;});
 
+    }
+
+    ListParticipants():void{
+      this.UserServiceService.getUsers().subscribe({
+        next: (data:User[]) => {
+          this.users=data;
+          console.log(data);
+        },
+        error: (err) => {
+          console.log(err);
+        }
+      });
     }
 
     deleteGroup(id: number):void {
