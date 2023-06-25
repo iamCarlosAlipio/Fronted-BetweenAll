@@ -1,5 +1,6 @@
 import { NgModule} from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
+<<<<<<< Updated upstream
 import { AddUserComponent } from './components/add-user/add-user.component';
 import { HomeComponent } from './components/home/home.component';
 import { LoginComponent } from './components/login/login.component';
@@ -22,6 +23,14 @@ const routes: Routes = [
   {path: 'eventConfirm1', component:EventCreate1Component},
   {path: 'purchase/:id/user/:idUser', component:PurchaseComponent},
   {path: 'pay/:id', component:PayComponent}
+=======
+import { AddEventComponent } from './components/add-event/add-event.component';
+import { NavbarComponent } from './components/navbar/navbar.component';
+
+const routes: Routes = [
+  {path:'new-event',component:AddEventComponent},
+  {path:'navbar',component:NavbarComponent}
+>>>>>>> Stashed changes
 ];
 
 @NgModule({

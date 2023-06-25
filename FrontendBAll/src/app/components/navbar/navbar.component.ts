@@ -1,5 +1,8 @@
 import { Component } from '@angular/core';
+<<<<<<< Updated upstream
 import { ActivatedRoute, Router } from '@angular/router';
+=======
+>>>>>>> Stashed changes
 
 @Component({
   selector: 'app-navbar',
@@ -8,6 +11,7 @@ import { ActivatedRoute, Router } from '@angular/router';
 })
 export class NavbarComponent {
 
+<<<<<<< Updated upstream
   idUser:number = this.activated.snapshot.params['id'];
   constructor(private router: Router,private activated: ActivatedRoute){}
 
@@ -30,4 +34,6 @@ export class NavbarComponent {
   }
 
 
+=======
+>>>>>>> Stashed changes
 }

@@ -1,4 +1,5 @@
 {
+<<<<<<< Updated upstream
   "user": [
     {
       "id": 1,
@@ -1018,6 +1019,18 @@
       "id": 3,
       "idGroup": 1,
       "idUser": 2
+=======
+  "event": [
+    {
+      "id": 1,
+      "name": "Los mojarras",
+      "image": "imagen.com",
+      "idOrganizer": 1,
+      "idCategory": 1,
+      "location": "Lima",
+      "description":"Evento de Diego",
+      "state": "Disponible"
+>>>>>>> Stashed changes
     }
   ]
 }

@@ -3,6 +3,7 @@ import { ReactiveFormsModule} from '@angular/forms';
 import { platformBrowserDynamic } from '@angular/platform-browser-dynamic';
 import { NgModule } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
+<<<<<<< Updated upstream
 import { BrowserAnimationsModule} from '@angular/platform-browser/animations';
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
@@ -19,10 +20,21 @@ import { EditUserComponent } from './components/edit-user/edit-user.component';
 import { PurchaseComponent } from './components/purchase/purchase.component';
 
 import { PayComponent } from './components/pay/pay.component';
+=======
+import {ReactiveFormsModule} from '@angular/forms';
+import { AppRoutingModule } from './app-routing.module';
+import { AppComponent } from './app.component';
+import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
+import { SharedModule } from './shared/shared/shared.module';
+import { HttpClientModule } from '@angular/common/http';
+import { AddEventComponent } from './components/add-event/add-event.component';
+import { NavbarComponent } from './components/navbar/navbar.component';
+>>>>>>> Stashed changes
 
 @NgModule({
   declarations: [
     AppComponent,
+<<<<<<< Updated upstream
     AddUserComponent,
     HomeComponent,
     NavbarComponent,
@@ -36,15 +48,26 @@ import { PayComponent } from './components/pay/pay.component';
     EditUserComponent,
     PurchaseComponent,
     PayComponent
+=======
+    AddEventComponent,
+    NavbarComponent
+>>>>>>> Stashed changes
   ],
   imports: [
     BrowserModule,
     AppRoutingModule,
+<<<<<<< Updated upstream
     SharedModule,
     ReactiveFormsModule,
     BrowserAnimationsModule,
     HttpClientModule
 
+=======
+    BrowserAnimationsModule,
+    SharedModule,
+    HttpClientModule,
+    ReactiveFormsModule
+>>>>>>> Stashed changes
   ],
   providers: [],
   bootstrap: [AppComponent]
