@@ -6,8 +6,7 @@
             <br>
             <mat-form-field appearance="fill" class="w-100">
                 <mat-icon matSuffix>search</mat-icon>
-                <mat-label>Busca el evento de tu preferencia</mat-label>
-                <input matInput>
+                <input matInput type="text" (input)="applyFilter($event)" placeholder="Busca el evento de tu preferencia" >
               </mat-form-field>
         </div>
         <div class="col-md-6 text-end">
@@ -15,15 +14,15 @@
             <button routerLink="/addSocialEvent/{{idUser}}" mat-fab extended style=" background-color:#A32DE3;" class="text-white">CREAR EVENTO</button>
         </div>
     </div>
-    <div class="row mt-4">
-        <div class="col-md-4 mt-4" *ngFor="let item of events">
-            <mat-card class="example-card">
-                <img mat-card-image src= {{item.image}} alt="Photo of a Shiba Inu">
+    <div class="row mt-4 ">
+        <div class="col-md-4 mt-4 " *ngFor="let item of filteredEvents ?? events">
+            <mat-card  class="example-card" >
+                <img mat-card-image src= {{item.image}} >
+                <mat-card-header>
+                    <mat-card-title>Nombre: {{item.name}}</mat-card-title>
+                </mat-card-header>  
                 <mat-card-content>
-                  <br> 
-                  <p>Nombre: {{item.name}}</p>
-                  <br> 
-                  <p>Lugar: {{item.location}} </p>
+                    <p>Lugar: {{item.location}} </p>
                 </mat-card-content>
                 <div class="text-end">
                     <button mat-fab extended style=" background-color:#A32DE3;" class="text-white me-3 mb-3" routerLink="/purchase/{{item.id}}/user/{{this.idUser}}">COMPRAR</button>

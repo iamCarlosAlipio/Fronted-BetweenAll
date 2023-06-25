@@ -1,44 +1,30 @@
-<<<<<<< Updated upstream
 <nav class="navbar navbar-expand-lg navbar-dark fs-5 py-3" style="background-color: #A32DE3;">
-    <div class="container">
-      <a class="navbar-brand" (click)="changeHome()">BETWEENALL</a>
-      <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
-        <span class="navbar-toggler-icon"></span>
-      </button>
-      <div class="collapse navbar-collapse" id="navbarSupportedContent">
-        <ul class="navbar-nav ms-auto mb-2 mb-lg-0">
-          <li class="nav-item me-5">
-            <a class="nav-link active" (click)="changeEvent()" aria-current="page">EVENTOS</a>
-          </li>
-          <li class="nav-item me-5">
-            <a class="nav-link active" (click)="changeGroups()" aria-current="page">GRUPOS</a>
-          </li>
-          <li class="nav-item me-5">
-            <a class="nav-link active" (click)="changeTickets()" aria-current="page" >ENTRADAS</a>
-          </li>
-          <li class="nav-item me-5">
-            <a class="nav-link active" (click)="changeProfile()" aria-current="page" >MI PERFIL</a>
-          </li>
-          <li class="nav-item me-5">
-            <a class="nav-link active" aria-current="page" routerLink=" ">
-                <mat-icon class="fs-4">account_circle</mat-icon>
-            </a>
-          </li>
-        </ul>
-      </div>
+  <div class="container">
+    <a class="navbar-brand" (click)="changeHome()">BETWEENALL</a>
+    <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+      <span class="navbar-toggler-icon"></span>
+    </button>
+    <div class="collapse navbar-collapse" id="navbarSupportedContent">
+      <ul class="navbar-nav ms-auto mb-2 mb-lg-0">
+        <li class="nav-item me-5">
+          <a class="nav-link active" (click)="changeEvent()" aria-current="page">EVENTOS</a>
+        </li>
+        <li class="nav-item me-5">
+          <a class="nav-link active" (click)="changeGroups()" aria-current="page">GRUPOS</a>
+        </li>
+        <li class="nav-item me-5">
+          <a class="nav-link active" (click)="changeTickets()" aria-current="page" >ENTRADAS</a>
+        </li>
+        <li class="nav-item me-5">
+          <a class="nav-link active" (click)="changeProfile()" aria-current="page" >MI PERFIL</a>
+        </li>
+        <li class="nav-item me-5">
+            <button mat-icon-button routerLink="/logout">
+              <mat-icon>exit_to_app</mat-icon>
+            </button>
+        </li>
+      </ul>
     </div>
-  </nav>
+  </div>
+</nav>
   
-=======
-<mat-toolbar color="primary">
-    <mat-toolbar-row>
-        <span>Office Control</span>
-        <span class="example-spacer"></span>
-        <div>
-            <button routerLink="/home" mat-raised-button>Home</button>
-            <span> - </span>
-            <button routerLink="/new-event" mat-raised-button>Intranet</button>
-        </div>
-    </mat-toolbar-row>
-</mat-toolbar>
->>>>>>> Stashed changes

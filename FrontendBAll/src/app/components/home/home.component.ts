@@ -13,10 +13,19 @@ import { ActivatedRoute } from '@angular/router';
 })
 export class HomeComponent {
 
-  events: SocialEvent[] = [];
   constructor(private socialEventsService: SocialEventsService, private activatedRoute:ActivatedRoute){
 
   }
+  events!: SocialEvent[];
+  filteredEvents!: SocialEvent[];
+
+
+  applyFilter(event: any) {
+    let filterValue = event.target.value;
+    filterValue = filterValue.trim().toLowerCase();
+    this.filteredEvents = this.events.filter(event => event.name.toLowerCase().includes(filterValue));
+  }
+  
   idUser!: number;
   
   ngOnInit(){

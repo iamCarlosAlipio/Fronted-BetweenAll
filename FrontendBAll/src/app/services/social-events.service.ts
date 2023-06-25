@@ -8,8 +8,8 @@ import { Observable, map } from 'rxjs';
 
 export class SocialEventsService {
 
-  RutaServidor : string = "http://localhost:3000";
-  Recurso: string ="socialevents";
+  RutaServidor : string = "http://localhost:8080/api";
+  Recurso: string ="socialEvents";
   
   constructor(private http:HttpClient) { }
 
@@ -30,6 +30,10 @@ export class SocialEventsService {
   
   addSocialEvent(socialevent:SocialEvent){
     return this.http.post<SocialEvent>(this.RutaServidor+"/"+this.Recurso,socialevent);
+  }
+
+  getSocialEventCreated(id:number){
+    return this.http.get<SocialEvent[]>(this.RutaServidor+"/"+this.Recurso+"/created/"+id.toString());
   }
 
 }

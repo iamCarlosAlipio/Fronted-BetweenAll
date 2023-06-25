@@ -3,6 +3,6 @@ export interface Group {
   name: string;
   amountParticipants: number;
   description: string;
-  category: string;
+  idCategory: number;
   image: string;
 }

@@ -3,6 +3,7 @@ export interface SocialEvent {
     name: string,
     image: string,
     location: string,
-    description:string,
-    idUser:number,
-}
+    idOrganizer:number;
+    idCategory:number;
+    description:string;
+}   

@@ -7,8 +7,8 @@ import { Category } from '../models/category';
 })
 export class CategoryService {
 
-  rutaServer: string="http://localhost:3000";
-  recurso:string="category";
+  rutaServer: string="http://localhost:8080/api";
+  recurso:string="categories";
 
   constructor(private Http:HttpClient) { }
 

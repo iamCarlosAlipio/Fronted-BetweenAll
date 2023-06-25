@@ -3,7 +3,6 @@ import { ReactiveFormsModule} from '@angular/forms';
 import { platformBrowserDynamic } from '@angular/platform-browser-dynamic';
 import { NgModule } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
-<<<<<<< Updated upstream
 import { BrowserAnimationsModule} from '@angular/platform-browser/animations';
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
@@ -20,21 +19,18 @@ import { EditUserComponent } from './components/edit-user/edit-user.component';
 import { PurchaseComponent } from './components/purchase/purchase.component';
 
 import { PayComponent } from './components/pay/pay.component';
-=======
-import {ReactiveFormsModule} from '@angular/forms';
-import { AppRoutingModule } from './app-routing.module';
-import { AppComponent } from './app.component';
-import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
-import { SharedModule } from './shared/shared/shared.module';
-import { HttpClientModule } from '@angular/common/http';
-import { AddEventComponent } from './components/add-event/add-event.component';
-import { NavbarComponent } from './components/navbar/navbar.component';
->>>>>>> Stashed changes
+import { ConfirmBuy1Component } from './components/page/confirm-buy1/confirm-buy1.component';
+import { ConfirmEventComponent } from './components/page/confirm-event/confirm-event.component';
+import { LogoutComponent } from './components/page/logout/logout.component';
+import { DetailsGroupComponent } from './components/details-group/details-group.component';
+import { DetailsMygroupComponent } from './components/details-mygroup/details-mygroup.component';
+import { DetailsMygroupcreatedComponent } from './components/details-mygroupcreated/details-mygroupcreated.component';
+import { ProfileUserComponent } from './components/profile-user/profile-user.component';
+import { EventsAssistedComponent } from './components/events-assisted/events-assisted.component';
 
 @NgModule({
   declarations: [
     AppComponent,
-<<<<<<< Updated upstream
     AddUserComponent,
     HomeComponent,
     NavbarComponent,
@@ -47,27 +43,24 @@ import { NavbarComponent } from './components/navbar/navbar.component';
     AddEditGroupsComponent,
     EditUserComponent,
     PurchaseComponent,
-    PayComponent
-=======
-    AddEventComponent,
-    NavbarComponent
->>>>>>> Stashed changes
+    PayComponent,
+    ConfirmBuy1Component,
+    ConfirmEventComponent,
+    LogoutComponent,
+    DetailsGroupComponent,
+    DetailsMygroupComponent,
+    DetailsMygroupcreatedComponent,
+    ProfileUserComponent,
+    EventsAssistedComponent
   ],
   imports: [
     BrowserModule,
     AppRoutingModule,
-<<<<<<< Updated upstream
     SharedModule,
     ReactiveFormsModule,
     BrowserAnimationsModule,
     HttpClientModule
 
-=======
-    BrowserAnimationsModule,
-    SharedModule,
-    HttpClientModule,
-    ReactiveFormsModule
->>>>>>> Stashed changes
   ],
   providers: [],
   bootstrap: [AppComponent]

@@ -16,11 +16,11 @@ export class NavbarComponent {
   constructor(private router: Router,private activated: ActivatedRoute){}
 
   changeEvent():void{
-    this.router.navigate(["home/" + this.idUser]);
+    this.router.navigate(["eventsAssisted/" + this.idUser]);
 
   }
   changeGroups():void{
-    this.router.navigate(["groups/" + this.idUser]);
+    this.router.navigate(["groups"]);
   }
   changeTickets():void{
     this.router.navigate(["home/" + this.idUser]);

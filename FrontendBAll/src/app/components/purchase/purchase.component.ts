@@ -35,7 +35,7 @@ export class PurchaseComponent {
   ZoneEvents: ZoneEvent[] = [];
   TheZoneEvents: ZoneEvent[] = [];
   idZoneEvent!:number;
-  idUser:number = this.activatedRoute.snapshot.params['id'];
+  idUser:number = this.activatedRoute.snapshot.params['idUser'];
   endPurchase: Purchase[]=[];
   
   constructor(private formBuilder:FormBuilder,private zoneeventservice: ZoneeventsService, private activatedRoute: ActivatedRoute, 
@@ -95,7 +95,7 @@ export class PurchaseComponent {
     const purchase:Purchase = {
       id:parseInt(this.addPurchaseForm.get("id")!.value),
       idUser: this.idUser,
-      idCard: 1,
+      idCard: 1, 
     }
 
 

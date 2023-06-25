@@ -5,14 +5,13 @@
       "id": 1,
       "name": "Carlos",
       "lastname": "Sanchez",
-      "phone": 957049668,
       "email": "alipiosanchez0@gmail.com",
       "password": "1234567",
+      "phone": "957049668",
       "city": "Lima",
-      "idCard": 1,
-      "categoryEvent": "Rock",
-      "type": "DNI",
-      "number": "72556278"
+      "numberDocument": 12345678,
+      "typeDocument": "DNI",
+      "image": "./assets/img/PERFILVACIO.png"
     },
     {
       "id": 2,
@@ -41,10 +40,10 @@
     },
     {
       "id": 4,
-      "name": "asd",
-      "lastname": "",
-      "email": "",
-      "password": "",
+      "name": "carlos",
+      "lastname": "sanchez",
+      "email": "alipiosanchez@gmail.com",
+      "password": "1234",
       "phone": "",
       "city": "",
       "numberDocument": null,
@@ -303,7 +302,7 @@
       "name": "Reales",
       "amountParticipants": 20,
       "description": "Somos un grupo de musica",
-      "category": "Teatro",
+      "idCategory": "Rap",
       "image": "https://www.mincetur.gob.pe/wp-content/uploads/2017/11/foto.jpg"
     },
     {
@@ -311,7 +310,7 @@
       "name": "Reales",
       "amountParticipants": 20,
       "description": "Somos un grupo de musica",
-      "category": "Arte",
+      "idCategory": 2,
       "image": "https://www.grupoeducar.cl/wp-content/uploads/2017/10/artequin-grupo-educar.jpg"
     },
     {
@@ -319,15 +318,7 @@
       "name": "Reales",
       "amountParticipants": 20,
       "description": "Somos un grupo de musica",
-      "category": "Musica",
-      "image": "https://i.blogs.es/7ddff1/alex-bracken-rzulpgwqcue-unsplash/1366_2000.jpg"
-    },
-    {
-      "id": 7,
-      "name": "Reales",
-      "amountParticipants": 20,
-      "description": "Somos un grupo de musica",
-      "category": "Musica",
+      "idCategory": 2,
       "image": "https://i.blogs.es/7ddff1/alex-bracken-rzulpgwqcue-unsplash/1366_2000.jpg"
     },
     {
@@ -335,7 +326,7 @@
       "name": "Reales",
       "amountParticipants": 20,
       "description": "Somos un grupo de musica",
-      "category": "Teatro",
+      "idCategory": 2,
       "image": "https://www.mincetur.gob.pe/wp-content/uploads/2017/11/foto.jpg"
     },
     {
@@ -343,7 +334,7 @@
       "name": "Reales",
       "amountParticipants": 20,
       "description": "Somos un grupo de musica",
-      "category": "Arte",
+      "idCategory": 2,
       "image": "https://www.grupoeducar.cl/wp-content/uploads/2017/10/artequin-grupo-educar.jpg"
     },
     {
@@ -351,7 +342,7 @@
       "name": "Reales",
       "amountParticipants": 20,
       "description": "Somos un grupo de musica",
-      "category": "Musica",
+      "idCategory": 2,
       "image": "https://i.blogs.es/7ddff1/alex-bracken-rzulpgwqcue-unsplash/1366_2000.jpg"
     },
     {
@@ -359,7 +350,7 @@
       "name": "Reales",
       "amountParticipants": 20,
       "description": "Somos un grupo de musica",
-      "category": "Musica",
+      "idCategory": 2,
       "image": "https://i.blogs.es/7ddff1/alex-bracken-rzulpgwqcue-unsplash/1366_2000.jpg"
     },
     {
@@ -375,7 +366,7 @@
       "name": "Reales",
       "amountParticipants": 20,
       "description": "Somos un grupo de musica",
-      "category": "Musica",
+      "idCategory": 2,
       "image": "https://i.blogs.es/7ddff1/alex-bracken-rzulpgwqcue-unsplash/1366_2000.jpg"
     },
     {
@@ -383,7 +374,7 @@
       "name": "Reales",
       "amountParticipants": 20,
       "description": "Somos un grupo de musica",
-      "category": "Musica",
+      "idCategory": 2,
       "image": "https://i.blogs.es/7ddff1/alex-bracken-rzulpgwqcue-unsplash/1366_2000.jpg"
     },
     {
@@ -391,7 +382,7 @@
       "name": "Reales",
       "amountParticipants": 20,
       "description": "Somos un grupo de musica",
-      "category": "Arte",
+      "idCategory": 2,
       "image": "https://www.grupoeducar.cl/wp-content/uploads/2017/10/artequin-grupo-educar.jpg"
     },
     {
@@ -399,7 +390,7 @@
       "name": "Reales",
       "amountParticipants": 20,
       "description": "Somos un grupo de musica",
-      "category": "Teatro",
+      "idCategory": 2,
       "image": "https://www.mincetur.gob.pe/wp-content/uploads/2017/11/foto.jpg"
     },
     {
@@ -407,7 +398,7 @@
       "name": "Reales",
       "amountParticipants": 20,
       "description": "Somos un grupo de musica",
-      "category": "Musica",
+      "idCategory": 2,
       "image": "https://i.blogs.es/7ddff1/alex-bracken-rzulpgwqcue-unsplash/1366_2000.jpg"
     },
     {
@@ -415,7 +406,7 @@
       "name": "Reales",
       "amountParticipants": 20,
       "description": "Somos un grupo de musica",
-      "category": "Musica",
+      "idCategory": 2,
       "image": "https://i.blogs.es/7ddff1/alex-bracken-rzulpgwqcue-unsplash/1366_2000.jpg"
     },
     {
@@ -423,8 +414,16 @@
       "name": "Reales",
       "amountParticipants": 20,
       "description": "Somos un grupo de musica",
-      "category": "Teatro",
+      "idCategory": 2,
       "image": "https://www.mincetur.gob.pe/wp-content/uploads/2017/11/foto.jpg"
+    },
+    {
+      "id": 20,
+      "name": "Los galacticos",
+      "amountParticipants": "123",
+      "description": "hola",
+      "idCategory": "Rap",
+      "image": "i0.wp.com/urbanroosters.news/wp-content/uploads/2018/12/IMG_6557.jpg?fit=3000%2C1636&ssl=1"
     }
   ],
   "category": [
@@ -538,6 +537,11 @@
       "id": 8,
       "idUser": 8,
       "idCategory": 5
+    },
+    {
+      "id": 9,
+      "idUser": 4,
+      "idCategory": 4
     }
   ],
   "ticket": [
@@ -810,6 +814,11 @@
       "id": 55,
       "idPurchase": 38,
       "idZoneEvent": 1
+    },
+    {
+      "id": 11,
+      "idPurchase": 4,
+      "idZoneEvent": 1
     }
   ],
   "purchase": [
@@ -1033,4 +1042,5 @@
 >>>>>>> Stashed changes
     }
   ]
+  
 }

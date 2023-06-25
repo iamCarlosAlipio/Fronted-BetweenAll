@@ -15,8 +15,6 @@ export class AddEditGroupsComponent {
   myForm!:FormGroup;
   id!:number;
 
-  category: string[] = ['Teatro','Musica','Arte','Rap'];
-
   constructor(private formBuilder:FormBuilder, private groupService:GroupsService,
     private router: Router, private activatedRouter: ActivatedRoute,
     private snackBar:MatSnackBar){}
@@ -35,10 +33,6 @@ export class AddEditGroupsComponent {
         image:["",[Validators.required]]
     });
 
-    //Obtener el Id que esta llegando por la ruta del browser en casos de Editar
-    // Si (id = a  un numero ) entonces debo cargar los datos de ese empleado para editarlos y cambiar el IsInsert a falso
-    // sino
-
     this.id = this.activatedRouter.snapshot.params["id"];
     if (this.id!=0 && this.id!=undefined) {
       this.IsInsert = false;
@@ -48,7 +42,7 @@ export class AddEditGroupsComponent {
           this.myForm.get("name")?.setValue(data.name);
           this.myForm.get("amountParticipants")?.setValue(data.amountParticipants);
           this.myForm.get("description")?.setValue(data.description);
-          this.myForm.get("category")?.setValue(data.category);
+          this.myForm.get("category")?.setValue(data.idCategory);
           this.myForm.get("image")?.setValue(data.image);
         },
         error: (err) => {
@@ -70,28 +64,25 @@ export class AddEditGroupsComponent {
       name: this.myForm.get("name")!.value,
       amountParticipants: this.myForm.get("amountParticipants")!.value,
       description: this.myForm.get("description")!.value,
-      category: this.myForm.get("category")!.value,
+      idCategory: this.myForm.get("category")!.value,
       image: this.myForm.get("image")!.value
     }
 
-    //Si IsInsert entonces
     if (this.IsInsert) {
-        //this.empleadoService.addEmpleado(empleado);
         this.groupService.addGroup(group).subscribe({
           next: (data)  => {
             this.router.navigate(["/home"]);
-            this.snackBar.open("El empleado se ingresó correctamente","OK",{duration:3000});
+            this.snackBar.open("El grupo se ingresó correctamente","OK",{duration:3000});
           },
           error: (err) => {
             console.log(err);
           }
         });
     } else {
-      //Hacer el codigo de actualizar
       this.groupService.updateGroup(group).subscribe({
         next: (data)  => {
-          this.router.navigate(["/home"]);
-          this.snackBar.open("El empleado se actualizó correctamente","OK",{duration:3000});
+          this.router.navigate(["/groups"]);
+          this.snackBar.open("El grupo se actualizó correctamente","OK",{duration:3000});
         },
         error: (err) => {
           console.log(err);
@@ -105,7 +96,7 @@ export class AddEditGroupsComponent {
 
   }
 
-  backHome():void {
-    this.router.navigate(["/home"]);
+  backGroups():void {
+    this.router.navigate(["/groups"]);
   }
 }

@@ -1,0 +1,14 @@
+.body{
+    width: 100%;
+    display: flex; 
+}
+.image{
+    margin: auto;
+    display: block;
+}
+.container1{
+    margin-right: 10%;
+    margin-left: 10%;
+    width: 50%;
+    height: 100%; 
+}

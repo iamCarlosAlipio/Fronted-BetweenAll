@@ -62,14 +62,10 @@ export class AddUserComponent {
         city:["",[Validators.required]],
         category:["",[Validators.required]],
      });
-
-     this.addUserForm3 = this.FormBuilder.group({
-     });
-     
      this.id=0;
     }
 
-    saveUser():void {
+    saveUser():void { 
       const user:User = {
         id: parseInt(this.addUserForm1.get("id")!.value),
         name: this.addUserForm1.get("name")!.value,
@@ -80,7 +76,7 @@ export class AddUserComponent {
         city: this.addUserForm2.get("city")!.value,
         numberDocument: parseInt(this.addUserForm2.get("numberDocument")!.value),
         typeDocument: this.addUserForm2.get("typeDocument")!.value,
-        image:"src/assets/img/PERFIL-VACIO.png"
+        image:"./assets/img/PERFILVACIO.png"
       }
   
       this.userService.insertUser(user).subscribe({
@@ -94,7 +90,6 @@ export class AddUserComponent {
         }
   
       });
-  
     }
 
     saveUserCategory():void {
@@ -127,17 +122,6 @@ export class AddUserComponent {
           this.categories = data;
       });
     }
-
-    /*listarCategyInTable(): void {
-
-      let catg = this.categories.find(x=> x.id==this.idcategory)
-      if(catg){
-       this.auxcCategories.push(catg);
-       console.log(this.auxcCategories);
-       this.dataSource = new MatTableDataSource(this.auxcCategories); 
-      }
-      
-    }*/
 
     changeScreen():void{
       

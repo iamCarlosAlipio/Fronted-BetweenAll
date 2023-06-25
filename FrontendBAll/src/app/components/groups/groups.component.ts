@@ -1,9 +1,10 @@
 import { Group } from 'src/app/models/group';
-import { Component } from '@angular/core';
+import { Component, EventEmitter, Output } from '@angular/core';
 import { MatTableDataSource } from '@angular/material/table';
 import { GroupsService } from 'src/app/services/groups.service';
 import { MatPaginator } from '@angular/material/paginator';
 import{ ViewChild } from '@angular/core';
+
 
 @Component({
   selector: 'app-groups',

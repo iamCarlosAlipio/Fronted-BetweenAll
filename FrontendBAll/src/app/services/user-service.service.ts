@@ -7,8 +7,8 @@ import { User } from '../models/user';
 })
 export class UserServiceService {
 
-  rutaServer: string="http://localhost:3000";
-  recurso:string="user";
+  rutaServer: string="http://localhost:8080/api";
+  recurso:string="users";
 
   constructor(private Http:HttpClient) { }
 
@@ -24,11 +24,11 @@ export class UserServiceService {
     return this.Http.post<User>(this.rutaServer+"/"+this.recurso,user);
   }
   
-  updateEmpleado(user: User) {
+  updateUser(user:User) {
     return this.Http.put<User>(this.rutaServer +"/"+this.recurso + "/" + user.id.toString(), user);
   }
 
-  deleteEmpleado(id: number) {
+  deleteUser(id:number) {
     return this.Http.delete(this.rutaServer +"/"+this.recurso + "/" + id.toString());
   }
 

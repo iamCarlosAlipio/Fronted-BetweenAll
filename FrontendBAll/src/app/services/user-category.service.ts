@@ -7,8 +7,8 @@ import { userCategory } from '../models/userCategory';
 })
 export class UserCategoryService {
 
-  RutaServidor : string = "http://localhost:3000";
-  Recurso: string ="userCategory";
+  RutaServidor : string = "http://localhost:8080/api";
+  Recurso: string ="userCategories";
   
   constructor(private Http:HttpClient) { }
 
