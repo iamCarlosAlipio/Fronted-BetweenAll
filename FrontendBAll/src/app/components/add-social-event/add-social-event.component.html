@@ -7,34 +7,41 @@
     <form [formGroup]="myForm">
       <div>
         <div id="column-left" >    
-              
+                        
           <div>
             <p>Nombre</p>
             <mat-form-field class="full">
-                <input matInput placeholder="nombre" >
+                <input matInput placeholder="nombre del evento" formControlName="nameDetail">
             </mat-form-field>    
             <br>   <br>
           </div>
-    
+
           <div>
             <p>Imagen</p>
             <mat-form-field class="full">
-              <input matInput placeholder="Imagen">
-            </mat-form-field>
-            
+                <input matInput placeholder="nombre del evento" formControlName="imageDetail">
+            </mat-form-field>    
             <br>   <br>
-          </div>   
+          </div>  
+
+          <div>
+            <p>Location</p>
+            <mat-form-field class="full">
+                <input matInput placeholder="nombre del evento" formControlName="locationDetail">
+            </mat-form-field>    
+            <br>   <br>
+          </div>
+
       </div>
     
     
       <div id="column-right">
     
         <div>
-          <p>Ubicacion</p>
+          <p>Description</p>
           <mat-form-field class="full">
-            <input matInput placeholder="Ubicacion">
-          </mat-form-field>
-        
+              <input matInput placeholder="nombre del evento" formControlName="descriptionDetail">
+          </mat-form-field>    
           <br>   <br>
         </div>
     
@@ -50,23 +57,22 @@
   </mat-tab>
   <mat-tab label="Fechas y Zonas">
     
-    <form [formGroup]="myForm">
+    <form [formGroup]="myForm2">
       <div id="column-left" > 
       
         <div>
-          <p>Hora de inicio</p>
+          <p>Inicio</p>
           <mat-form-field class="full">
-            <input matInput placeholder="Hora de inicio">
-          </mat-form-field>
-        
+              <input matInput placeholder="hora de inicio" formControlName="startDate">
+          </mat-form-field>    
           <br>   <br>
         </div>
     
         <div>
-          <p>Hora del fin</p>
+          <p>Fin</p>
           <mat-form-field class="full">
-              <input matInput placeholder="Hora del fin">
-          </mat-form-field>      
+              <input matInput placeholder="hora del fin" formControlName="endDate">
+          </mat-form-field>    
           <br>   <br>
         </div>
     
@@ -88,7 +94,7 @@
           
       <table mat-table [dataSource]="dataSource2" class="mat-elevation-z8 demo-table">
         <!-- Position Column -->
-        <ng-container matColumnDef="dateDate">
+        <ng-container matColumnDef="dDate">
           <th mat-header-cell *matHeaderCellDef> Fecha </th>
           <td mat-cell *matCellDef="let element"> {{element|date:"dd/MM/YYYY"}} </td>
         </ng-container>
@@ -113,7 +119,7 @@
   </mat-tab>
   <mat-tab label="Zonas de Evento"> 
 
-    <form [formGroup]="myForm">
+    <form [formGroup]="myForm3">
 
       <div id="column-left" >        
         <div>
@@ -146,7 +152,9 @@
           <br>
           <button class="botton2" (click)="agregarZone();" mat-fab extended style="align-items: center;">Agregar Zona</button>
         </div>
-        
+        <form>
+          
+        </form>
       </div>
 
       <div id="column-right" style="padding: 5%;">
@@ -197,7 +205,7 @@
 
         <div class="col-md-6" id="button-right" >
           <br>
-          <button class="botton2" (click)="volverHome();"  mat-fab extended [disabled]="myForm.invalid">Crear Evento</button>
+          <button class="botton2" (click)="saveSocialEvent(); saveDateSocialEvent(); saveZoneEvent();volverHome(); "  mat-fab extended [disabled]="myForm.invalid">Crear Evento</button>
         </div>
 
       </div>   

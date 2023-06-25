@@ -22,8 +22,8 @@ export class GroupsService {
     return this.http.get<Group>(this.ruta_servidor +"/"+this.recurso + "/" + id.toString());
   }
 
-  addGroup(group: Group){
-    return this.http.post<Group>(this.ruta_servidor +"/"+this.recurso,group);
+  addGroup(group: Group,id:number){
+    return this.http.post<Group>(this.ruta_servidor +"/"+this.recurso+"/"+id.toString,group);
   }
 
   updateGroup(group: Group) {

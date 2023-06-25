@@ -23,6 +23,8 @@ import { identity } from 'rxjs';
 export class AddSocialEventComponent {
   EsInsertar: boolean = true;
   myForm!:FormGroup;
+  myForm2!:FormGroup;
+  myForm3!:FormGroup;
   id!:number;
 
   constructor(private formBuilder:FormBuilder, private socialEventsService:SocialEventsService,
@@ -31,6 +33,8 @@ export class AddSocialEventComponent {
     private snackBar:MatSnackBar){}
 
   ngOnInit(){
+      this.reactiveForm();
+      this.reactiveForm2();
       this.reactiveForm3();
   }
   
@@ -38,73 +42,32 @@ export class AddSocialEventComponent {
 
   reactiveForm():void {
     this.myForm = this.formBuilder.group({
-        id:[""],
         nameDetail:[""],
         imageDetail:[""],
         locationDetail:[""],
         descriptionDetail:[""],
     });
     
-    this.id = this.activatedRouter.snapshot.params["id"];
-    if (this.id!=0 && this.id!=undefined) {
-      this.EsInsertar = false;
-      this.socialEventsService.getSocialEvent(this.id).subscribe({
-        next: (data:SocialEvent) => {
-          this.myForm.get("id")?.setValue(data.id);
-          this.myForm.get("nameDetail")?.setValue(data.name);
-          this.myForm.get("imageDetail")?.setValue(data.image);
-          this.myForm.get("locationDetail")?.setValue(data.location);       
-          this.myForm.get("descriptionDetail")?.setValue(data.description);       
-        },
-        error: (err) => {
-          console.log(err);
-        }
-      });
-
-    } else {
-      this.id = 0;
-      this.EsInsertar = true;
-    }
-   
+    this.id = this.activatedRouter.snapshot.params["id"];   
   }
 
   //REACTIVE FORM PARA CREAR LAS FECHAS DEL EVENTO
 
   reactiveForm2():void {
-    this.myForm = this.formBuilder.group({  
-        id:[""],
-        idSEDate:["",[Validators.maxLength(60)]],
-        dateDate:["",[Validators.maxLength(50)]],
+    this.myForm2 = this.formBuilder.group({  
+        //dateDate:["",[Validators.maxLength(50)]],
         startDate:[""],
         endDate:[""]
     }
     );
     this.id = this.activatedRouter.snapshot.params["id"];
-      if (this.id!=0 && this.id!=undefined) {
-        this.EsInsertar = false;
-        this.datesocialeventsService.getDateSocialEvent(this.id).subscribe({
-          next: (data:DateSocialEvent) => { 
-            this.myForm.get("id")?.setValue(data.id);
-            this.myForm.get("idSEDate")?.setValue(data.idSocialEvent);
-            this.myForm.get("dateDate")?.setValue(data.date);
-            this.myForm.get("startDate")?.setValue(data.startTime);
-            this.myForm.get("endDate")?.setValue(data.endTime);       
-          },
-          error: (err) => {
-            console.log(err);
-          }
-        });
-
-      } else {
-        this.id = 0;
-        this.EsInsertar = true;
-      }
+     
   }
  
   //REACTIVE FORM PARA CREAR LAS ZONAS DEL EVENTO
 
   reactiveForm3():void {
-    this.myForm = this.formBuilder.group({  
+    this.myForm3 = this.formBuilder.group({  
         id:[""],
         nameZone:["",[Validators.maxLength(60)]],
         priceZone:["",[Validators.maxLength(50)]],
@@ -112,37 +75,17 @@ export class AddSocialEventComponent {
         capacityZone:[""]
     }
     );
-    this.id = this.activatedRouter.snapshot.params["id"];
-      if (this.id!=0 && this.id!=undefined) {
-        this.EsInsertar = false;
-        this.zoneeventsService.getZoneEvent(this.id).subscribe({
-          next: (data:ZoneEvent) => { 
-            this.myForm.get("id")?.setValue(data.id);
-            this.myForm.get("nameZone")?.setValue(data.name);
-            this.myForm.get("priceZone")?.setValue(data.price);
-            this.myForm.get("idDateSocialEvent")?.setValue(data.idDateSocialEvent);
-            this.myForm.get("capacityZone")?.setValue(data.capacity);       
-          },
-          error: (err) => {
-            console.log(err);
-          }
-        });
 
-      } else {
-        this.id = 0;
-        this.EsInsertar = true;
-      }
   }
 
   //GUARDAR DETALLES DE EVENTO SOCIAL
-
   //GUARDAR DETALLES DE EVENTO SOCIAL
   //GUARDAR DETALLES DE EVENTO SOCIAL
 
   saveSocialEvent():void {
 
     const socialEvent:SocialEvent = {
-      id: parseInt(this.myForm.get("id")!.value),
+      id: 0,
       name: this.myForm.get("nameDetail")!.value,
       image: this.myForm.get("imageDetail")!.value,
       location: this.myForm.get("locationDetail")!.value,
@@ -151,25 +94,20 @@ export class AddSocialEventComponent {
       idOrganizer:1
     }
 
-    //Si EsInsertar entonces 
-    if (this.EsInsertar) {
-        //this.empleadoService.addEmpleado(empleado);
-        this.socialEventsService.addSocialEvent(socialEvent).subscribe({
-          next: (data)  => {
-            this.router.navigate(["/Home"]);
-            this.snackBar.open("El evento se registró correctamente","OK",{duration:3000});
-          },
-          error: (err) => {
-            console.log(err);
-          }
-        });
-    } else {
-      //Hacer el codigo de actualizar
-    }
+    this.socialEventsService.addSocialEvent(socialEvent).subscribe({
+      next: (data)  => {
+        this.router.navigate(["/home/"+this.id]);
+        this.snackBar.open("El evento se registró correctamente","OK",{duration:3000});
+        console.log("evento guardado");
+      },
+      error: (err) => {
+        console.log(err);
+      }
+    });
   }
 
   volverHome():void {
-    this.router.navigate(["/Home"]);
+    this.router.navigate(["/home/"+this.id]);
   }
 
   //GUARDAR FECHAS DE EVENTO
@@ -186,60 +124,44 @@ export class AddSocialEventComponent {
     this.cargarFecha();
   }
 
-  displayedColumns2: string[] = ['dateDate', 'actions'];
+  displayedColumns2: string[] = ['dDate', 'actions'];
   dataSource2 = new MatTableDataSource<Date>();
-
-  agregarFecha(){
-    this.NumberZone.push(
-      {
-        id: this.idNumberZone,
-        name: this.myForm.get("nameZone")!.value,
-        price: parseInt(this.myForm.get("priceZone")!.value),
-        idDateSocialEvent: parseInt(this.myForm.get("idDateSocialEvent")!.value),
-        capacity: parseInt(this.myForm.get("capacityZone")!.value)
-      }
-    );
-    this.cargarZonas();
-    this.idNumberZone++;
-    console.log(this.NumberZone);
-  }
-
+  
   cargarFecha(): void{
     this.dataSource2=new MatTableDataSource(this.events);
-    console.log(this.events);
   }
   
   deleteFecha(id: number):void {
     this.events.splice(id,1);
     this.cargarFecha();
-    console.log(this.events);
   }
 
 
   saveDateSocialEvent():void {
-
+    console.log("entro a la funciona save date");
     for(let i:number=0;i<this.events.length;i++){
       const dateSocialEvent:DateSocialEvent = {
-        id: parseInt(this.myForm.get("id")!.value),
-        idSocialEvent: parseInt(this.myForm.get("idSEDate")!.value),
+        //id: parseInt(this.myForm2.get("id")!.value),
+        id:0,
+        //idSocialEvent: parseInt(this.myForm2.get("idSEDate")!.value),
+        idSocialEvent:1,
         date: this.events[i],
-        startTime: this.myForm.get("startDate")!.value,
-        endTime: this.myForm.get("endDate")!.value
+        starTime: this.myForm2.get("startDate")!.value,
+        endTime: this.myForm2.get("endDate")!.value,
       }
   
-      //Si EsInsertar entonces 
-  
-      if (this.EsInsertar) {
-        this.datesocialeventsService.addDateSocialEvent(dateSocialEvent).subscribe({
-          next: (data)  => {
-            this.router.navigate(["/Home"]);
-            this.snackBar.open("La fecha del evento se registró correctamente","OK",{duration:3000});
-          },
-          error: (err) => {
-            console.log(err);
-          }
-        });
-      }
+      console.log("ejecuto el for de date");
+      console.log(dateSocialEvent);
+      this.datesocialeventsService.addDateSocialEvent(dateSocialEvent).subscribe({
+        next: (data)  => {
+          console.log("fecha creada");
+          this.router.navigate(["/home/"+this.id]);
+          this.snackBar.open("La fecha del evento se registró correctamente","OK",{duration:3000});
+        },
+        error: (err) => {
+          console.log(err);
+        }
+      });
     }
   }
 
@@ -253,18 +175,17 @@ export class AddSocialEventComponent {
   dataSource = new MatTableDataSource<ZoneEvent>();
 
   idNumberZone:number=0;
-  
-
+  myFormZone!:FormGroup;
   agregarZone(){
     this.NumberZone.push(
       {
         id: this.idNumberZone,
-        name: this.myForm.get("nameZone")!.value,
-        price: parseInt(this.myForm.get("priceZone")!.value),
-        idDateSocialEvent: parseInt(this.myForm.get("idDateSocialEvent")!.value),
-        capacity: parseInt(this.myForm.get("capacityZone")!.value)
+        name: this.myForm3.get("nameZone")!.value,
+        price: parseInt(this.myForm3.get("priceZone")!.value),
+        idDateSocialEvent: parseInt(this.myForm3.get("idDateSocialEvent")!.value),
+        capacity: parseInt(this.myForm3.get("capacityZone")!.value)
       }
-    );
+    );  
     this.cargarZonas();
     this.idNumberZone++;
     console.log(this.NumberZone);
@@ -285,26 +206,23 @@ export class AddSocialEventComponent {
 
     for(let i:number=0;i<this.events.length;i++){
       const zoneEvent:ZoneEvent = {
-        id: parseInt(this.myForm.get("id")!.value),
-        name: this.myForm.get("nameZone")!.value,
-        price: parseInt(this.myForm.get("priceZone")!.value),
-        idDateSocialEvent: parseInt(this.myForm.get("idDateSocialEvent")!.value),
-        capacity: parseInt(this.myForm.get("capacityZone")!.value)
+        id: parseInt(this.myForm3.get("id")!.value),
+        name: this.myForm3.get("nameZone")!.value,
+        price: parseInt(this.myForm3.get("priceZone")!.value),
+        idDateSocialEvent: parseInt(this.myForm3.get("idDateSocialEvent")!.value),
+        capacity: parseInt(this.myForm3.get("capacityZone")!.value)
       }
   
-      //Si EsInsertar entonces 
-  
-      if (this.EsInsertar) {
-        this.zoneeventsService.addZoneEvent(zoneEvent).subscribe({
-          next: (data)  => {
-            this.router.navigate(["/Home"]);
-            this.snackBar.open("Las zonas del evento se registraron correctamente","OK",{duration:3000});
-          },
-          error: (err) => {
-            console.log(err);
-          }
-        });
-      }
+      this.zoneeventsService.addZoneEvent(zoneEvent).subscribe({
+        next: (data)  => {
+          this.router.navigate(["/home/"+this.id]);
+          this.snackBar.open("Las zonas del evento se registraron correctamente","OK",{duration:3000});
+          console.log("zona creada");
+        },
+        error: (err) => {
+          console.log(err);
+        }
+      });
     }
   }
 

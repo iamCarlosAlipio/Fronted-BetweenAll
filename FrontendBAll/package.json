@@ -7,11 +7,7 @@
     "build": "ng build",
     "watch": "ng build --watch --configuration development",
     "test": "ng test",
-<<<<<<< Updated upstream
     "json:server": "json-server --watch server/db.json"
-=======
-    "json:server" : "json-server --watch server/db.json"
->>>>>>> Stashed changes
   },
   "private": true,
   "dependencies": {

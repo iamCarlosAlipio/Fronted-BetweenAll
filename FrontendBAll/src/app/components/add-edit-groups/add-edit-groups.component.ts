@@ -64,12 +64,13 @@ export class AddEditGroupsComponent {
       name: this.myForm.get("name")!.value,
       amountParticipants: this.myForm.get("amountParticipants")!.value,
       description: this.myForm.get("description")!.value,
-      idCategory: this.myForm.get("category")!.value,
+      //idCategory: this.myForm.get("category")!.value,
+      idCategory:1,
       image: this.myForm.get("image")!.value
     }
 
     if (this.IsInsert) {
-        this.groupService.addGroup(group).subscribe({
+        this.groupService.addGroup(group,group.idCategory).subscribe({
           next: (data)  => {
             this.router.navigate(["/home"]);
             this.snackBar.open("El grupo se ingresó correctamente","OK",{duration:3000});
