@@ -29,7 +29,7 @@ export class DatesocialeventsService {
       return this.http.get<DateSocialEvent>(this.RutaServidor+"/"+this.Recurso+"/"+id.toString());
   }
 
-  addDateSocialEvent(datesocialevent:DateSocialEvent){
-    return this.http.post<DateSocialEvent>(this.RutaServidor+"/"+this.Recurso,datesocialevent);
+  addDateSocialEvent(datesocialevent:DateSocialEvent,idSocialEvent:number){
+    return this.http.post<DateSocialEvent>(this.RutaServidor+"/"+this.Recurso+"/"+idSocialEvent.toString(),datesocialevent);
   }
 }
