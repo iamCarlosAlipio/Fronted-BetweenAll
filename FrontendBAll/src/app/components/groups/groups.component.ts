@@ -4,6 +4,7 @@ import { MatTableDataSource } from '@angular/material/table';
 import { GroupsService } from 'src/app/services/groups.service';
 import { MatPaginator } from '@angular/material/paginator';
 import{ ViewChild } from '@angular/core';
+import { ActivatedRoute } from '@angular/router';
 
 
 @Component({
@@ -18,10 +19,12 @@ export class GroupsComponent {
   @ViewChild('paginator')
   paginator!: MatPaginator;
 
+  id!: number;
 
-  constructor(private groupService: GroupsService) {}
+  constructor(private groupService: GroupsService, private activatedRoute:ActivatedRoute) {}
 
   ngOnInit() {
+    this.id = this.activatedRoute.snapshot.params["id"];
     this.loadGroups();
   }
 

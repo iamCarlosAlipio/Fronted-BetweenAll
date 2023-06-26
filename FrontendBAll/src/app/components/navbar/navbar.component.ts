@@ -16,7 +16,7 @@ export class NavbarComponent {
 
   }
   changeGroups():void{
-    this.router.navigate(["groups"]);
+    this.router.navigate(["groups/" + this.idUser]);
   }
   changeTickets():void{
     this.router.navigate(["home/" + this.idUser]);
