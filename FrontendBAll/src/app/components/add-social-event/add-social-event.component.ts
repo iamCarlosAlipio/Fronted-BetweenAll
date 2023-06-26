@@ -1,3 +1,4 @@
+import { CategoryService } from './../../services/category.service';
 import { ZoneEvent } from './../../models/zoneevent';
 import { ZoneeventsService } from './../../services/zoneevents.service';
 import { Component } from '@angular/core';
@@ -12,7 +13,7 @@ import {MatDatepickerInputEvent} from '@angular/material/datepicker';
 import {MatChipEditedEvent, MatChipInputEvent} from '@angular/material/chips';
 import { MatTableDataSource } from '@angular/material/table';
 import { identity } from 'rxjs';
-
+import { Category } from 'src/app/models/category';
 
 @Component({
   selector: 'app-add-social-event',
@@ -26,16 +27,20 @@ export class AddSocialEventComponent {
   myForm2!:FormGroup;
   myForm3!:FormGroup;
   id!:number;
-
+  categories!:Category[];
+  socialevents!:SocialEvent[];
+  datesocialevents!:DateSocialEvent[];
   constructor(private formBuilder:FormBuilder, private socialEventsService:SocialEventsService,
     private datesocialeventsService:DatesocialeventsService, private zoneeventsService:ZoneeventsService,
     private router: Router, private activatedRouter: ActivatedRoute,
-    private snackBar:MatSnackBar){}
+    private snackBar:MatSnackBar, private categoryService:CategoryService){}
 
   ngOnInit(){
       this.reactiveForm();
       this.reactiveForm2();
       this.reactiveForm3();
+      this.loadCatergories();
+      this.id = this.activatedRouter.snapshot.params["id"];  
   }
   
   //REACTIVE FORM PARA CREAR LOS DETALLES DEL EVENTO
@@ -46,38 +51,53 @@ export class AddSocialEventComponent {
         imageDetail:[""],
         locationDetail:[""],
         descriptionDetail:[""],
+        category:[""],
     });
-    
-    this.id = this.activatedRouter.snapshot.params["id"];   
+     
   }
 
   //REACTIVE FORM PARA CREAR LAS FECHAS DEL EVENTO
 
   reactiveForm2():void {
     this.myForm2 = this.formBuilder.group({  
-        //dateDate:["",[Validators.maxLength(50)]],
         startDate:[""],
         endDate:[""]
     }
-    );
-    this.id = this.activatedRouter.snapshot.params["id"];
-     
+    );  
   }
  
   //REACTIVE FORM PARA CREAR LAS ZONAS DEL EVENTO
 
   reactiveForm3():void {
     this.myForm3 = this.formBuilder.group({  
-        id:[""],
         nameZone:["",[Validators.maxLength(60)]],
         priceZone:["",[Validators.maxLength(50)]],
-        idDateSocialEvent:[""],
         capacityZone:[""]
     }
     );
-
   }
+  
 
+  loadCatergories(): void {
+    
+    this.categoryService.getCartegories().subscribe(
+      (data: Category[]) => {
+        this.categories = data;
+    });
+   
+    /*this.socialEventsService.getSocialEvents().subscribe(
+      (data: SocialEvent[])=>{
+        this.socialevents=data;
+        
+      }
+      );
+    this.datesocialeventsService.getDateSocialEvents().subscribe(
+      (data: DateSocialEvent[])=>{
+        this.datesocialevents=data;
+      });
+      console.log(this.socialevents);
+  */
+  }
   //GUARDAR DETALLES DE EVENTO SOCIAL
   //GUARDAR DETALLES DE EVENTO SOCIAL
   //GUARDAR DETALLES DE EVENTO SOCIAL
@@ -90,11 +110,11 @@ export class AddSocialEventComponent {
       image: this.myForm.get("imageDetail")!.value,
       location: this.myForm.get("locationDetail")!.value,
       description: this.myForm.get("descriptionDetail")!.value,
-      idCategory:1,
-      idOrganizer:1
+      idCategory:this.myForm.get("category")!.value,
+      idOrganizer: this.id
     }
 
-    this.socialEventsService.addSocialEvent(socialEvent).subscribe({
+    this.socialEventsService.addSocialEvent(socialEvent,socialEvent.idCategory,this.id).subscribe({
       next: (data)  => {
         this.router.navigate(["/home/"+this.id]);
         this.snackBar.open("El evento se registró correctamente","OK",{duration:3000});
@@ -122,6 +142,7 @@ export class AddSocialEventComponent {
       this.events.push(date);
     }
     this.cargarFecha();
+    
   }
 
   displayedColumns2: string[] = ['dDate', 'actions'];
@@ -138,23 +159,18 @@ export class AddSocialEventComponent {
 
 
   saveDateSocialEvent():void {
-    console.log("entro a la funciona save date");
+    
     for(let i:number=0;i<this.events.length;i++){
       const dateSocialEvent:DateSocialEvent = {
-        //id: parseInt(this.myForm2.get("id")!.value),
         id:0,
-        //idSocialEvent: parseInt(this.myForm2.get("idSEDate")!.value),
-        idSocialEvent:1,
+        idSocialEvent: this.socialEventsService.getSocialEvents.length+1,
         date: this.events[i],
         starTime: this.myForm2.get("startDate")!.value,
         endTime: this.myForm2.get("endDate")!.value,
       }
   
-      console.log("ejecuto el for de date");
-      console.log(dateSocialEvent);
-      this.datesocialeventsService.addDateSocialEvent(dateSocialEvent).subscribe({
+      this.datesocialeventsService.addDateSocialEvent(dateSocialEvent,dateSocialEvent.idSocialEvent).subscribe({
         next: (data)  => {
-          console.log("fecha creada");
           this.router.navigate(["/home/"+this.id]);
           this.snackBar.open("La fecha del evento se registró correctamente","OK",{duration:3000});
         },
@@ -182,7 +198,7 @@ export class AddSocialEventComponent {
         id: this.idNumberZone,
         name: this.myForm3.get("nameZone")!.value,
         price: parseInt(this.myForm3.get("priceZone")!.value),
-        idDateSocialEvent: parseInt(this.myForm3.get("idDateSocialEvent")!.value),
+        idDateSocialEvent: 0,
         capacity: parseInt(this.myForm3.get("capacityZone")!.value)
       }
     );  
@@ -194,35 +210,38 @@ export class AddSocialEventComponent {
   cargarZonas(): void{
     this.dataSource=new MatTableDataSource(this.NumberZone);
     console.log(this.dataSource.data);
+    console.log(this.NumberZone.length);
   }
   
   deleteZone(id: number):void {
     this.NumberZone.splice(id,1);
     this.cargarZonas();
-    console.log(this.NumberZone);
+    
   }
 
   saveZoneEvent():void {
 
     for(let i:number=0;i<this.events.length;i++){
-      const zoneEvent:ZoneEvent = {
-        id: parseInt(this.myForm3.get("id")!.value),
-        name: this.myForm3.get("nameZone")!.value,
-        price: parseInt(this.myForm3.get("priceZone")!.value),
-        idDateSocialEvent: parseInt(this.myForm3.get("idDateSocialEvent")!.value),
-        capacity: parseInt(this.myForm3.get("capacityZone")!.value)
-      }
-  
-      this.zoneeventsService.addZoneEvent(zoneEvent).subscribe({
-        next: (data)  => {
-          this.router.navigate(["/home/"+this.id]);
-          this.snackBar.open("Las zonas del evento se registraron correctamente","OK",{duration:3000});
-          console.log("zona creada");
-        },
-        error: (err) => {
-          console.log(err);
+      for(let j:number=0;i<this.NumberZone.length;i++){
+        const zoneEvent:ZoneEvent = {
+          id: 0,
+          name: this.NumberZone[j].name,
+          price: this.NumberZone[j].price,
+          idDateSocialEvent:this.datesocialeventsService.getDateSocialEvents.length+i+1,
+          capacity: this.NumberZone[j].capacity
         }
-      });
+    
+        this.zoneeventsService.addZoneEvent(zoneEvent,zoneEvent.idDateSocialEvent).subscribe({
+          next: (data)  => {
+            this.router.navigate(["/home/"+this.id]);
+            this.snackBar.open("Las zonas del evento se registraron correctamente","OK",{duration:3000});
+            console.log("zona creada");
+          },
+          error: (err) => {
+            console.log(err);
+          }
+        });
+      }
     }
   }
 

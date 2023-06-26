@@ -28,8 +28,8 @@ export class SocialEventsService {
       return this.http.get<SocialEvent>(this.RutaServidor+"/"+this.Recurso+"/"+id.toString());
   }
   
-  addSocialEvent(socialevent:SocialEvent){
-    return this.http.post<SocialEvent>(this.RutaServidor+"/"+this.Recurso,socialevent);
+  addSocialEvent(socialevent:SocialEvent,idCategory:number,idUser:number){
+    return this.http.post<SocialEvent>(this.RutaServidor+"/"+this.Recurso+"/"+idCategory.toString()+"/"+idUser.toString(),socialevent);
   }
 
   getSocialEventCreated(id:number){
