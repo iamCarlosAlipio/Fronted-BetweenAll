@@ -38,8 +38,9 @@ export class DetailsGroupComponent implements OnInit {
   ngOnInit() {
     this.id = this.activatedRouter.snapshot.params["id"];
     this.reactiveForm();
+    this.ListParticipants();
     //this.reactiveForm(this.id);
-    this.ListParticipants(this.id);
+    //this.ListParticipants(this.id);
   }
 
   reactiveForm():void {
@@ -82,6 +83,18 @@ export class DetailsGroupComponent implements OnInit {
 
   }
 
+  ListParticipants():void{
+    this.UserServiceService.getUsers().subscribe({
+      next: (data:User[]) => {
+        this.users=data;
+        console.log(data);
+      },
+      error: (err) => {
+        console.log(err);
+      }
+    });
+  }
+
     /*reactiveForm(id: number):void {
       this.detailsForm = this.formBuilder.group({
         //id:[""],
@@ -109,7 +122,7 @@ export class DetailsGroupComponent implements OnInit {
       }
     }*/
 
-    ListParticipants(id: number):void{
+    /*ListParticipants(id: number):void{
       this.groupService.getGroupParticipantsSummary(id).subscribe({
         next: (data:DtoGroupParticipantsSummary[]) => {
           this.dtoGroupParticipantsSummaries = data;
@@ -122,7 +135,7 @@ export class DetailsGroupComponent implements OnInit {
           console.log(err);
         }
       });
-    }
+    }*/
 
     deleteGroup(id: number):void {
       this.groupService.deleteGroup(id).subscribe({
