@@ -36,7 +36,11 @@ export class GroupsService {
   }
 
   getGroupParticipantsSummary(id: number) {
-    return this.http.get<DtoGroupParticipantsSummary[]>(this.ruta_servidor+"/"+this.recurso+"/GroupParticipantssummary/"+id.toString())
+    return this.http.get<DtoGroupParticipantsSummary>(this.ruta_servidor+"/"+this.recurso+"/groupParticipantsSummary/"+id.toString())
+  }
+
+  getListGroupParticipantsSummary(){
+    return this.http.get<DtoGroupParticipantsSummary[]>(this.ruta_servidor+"/"+this.recurso+"/groupsSummary")
   }
 
 }

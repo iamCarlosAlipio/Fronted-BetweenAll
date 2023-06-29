@@ -27,7 +27,7 @@ export class AddEditGroupsComponent {
     this.myForm = this.formBuilder.group({
         id:[""],
         name:["",[Validators.required, Validators.maxLength(60)]],
-        amountParticipants:["",[Validators.required, Validators.maxLength(50), Validators.minLength(2)]],
+        //amountParticipants:["",[Validators.required, Validators.maxLength(50), Validators.minLength(1)]],
         description:["",[Validators.required, , Validators.maxLength(200)]],
         category:["",[Validators.required]],
         image:["",[Validators.required]]
@@ -40,7 +40,7 @@ export class AddEditGroupsComponent {
         next: (data:Group) => {
           this.myForm.get("id")?.setValue(data.id);
           this.myForm.get("name")?.setValue(data.name);
-          this.myForm.get("amountParticipants")?.setValue(data.amountParticipants);
+          //this.myForm.get("amountParticipants")?.setValue(data.amountParticipants);
           this.myForm.get("description")?.setValue(data.description);
           this.myForm.get("category")?.setValue(data.idCategory);
           this.myForm.get("image")?.setValue(data.image);
