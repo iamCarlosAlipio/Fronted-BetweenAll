@@ -29,7 +29,7 @@ export class LoginComponent {
   reactiveForm():void {
     
     this.form = this.FormBuilder.group({
-        email:["",[Validators.required, Validators.maxLength(10)]],
+        email:["",[Validators.required, Validators.maxLength(30)]],
         password:["",[Validators.required, Validators.maxLength(10)]],
     });
   }
@@ -39,19 +39,15 @@ export class LoginComponent {
     this.mensaje = true;
     this.email = this.form.get('email')?.value;
     this.password = this.form.get('password')?.value;
-    this.user.getUsers().subscribe(
-      (data: User[]) => {
-        let auxUser = data.find(x => x.email == this.email && x.password == this.password);
-        if (auxUser) {
-          this.router.navigate(["home/" + auxUser.id]);
+    this.user.getUserPassword(this.password,this.email).subscribe(
+      (data: User) => {
+        if (data) {
+          this.router.navigate(["home/" + data.id]);
         }
         else{
           this.snack.open('El usuario no existe', 'OK', { duration: 5000 })
         }
     });
     this.mensaje = false;
-  }
-  getIdUser():number{
-    return this.idUser;
   }
 }

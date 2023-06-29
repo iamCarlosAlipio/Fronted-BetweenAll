@@ -32,4 +32,13 @@ export class UserServiceService {
     return this.Http.delete(this.rutaServer +"/"+this.recurso + "/" + id.toString());
   }
 
+  getLastUsers(){
+    return this.Http.get<User>(this.rutaServer+"/"+this.recurso+ "/last")
+  }
+
+  getUserPassword(pass:string, email:string){
+    return this.Http.get<User>(this.rutaServer+"/"+this.recurso+ "/pass/"+pass+"/"+email)
+  }
+
+
 }

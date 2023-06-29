@@ -17,7 +17,7 @@ import { AddEditGroupsComponent } from './components/add-edit-groups/add-edit-gr
 import { EventCreate1Component } from './components/event-create1/event-create1.component';
 import { EditUserComponent } from './components/edit-user/edit-user.component';
 import { PurchaseComponent } from './components/purchase/purchase.component';
-
+import { MatInputModule } from '@angular/material/input';
 import { PayComponent } from './components/pay/pay.component';
 import { ConfirmBuy1Component } from './components/page/confirm-buy1/confirm-buy1.component';
 import { ConfirmEventComponent } from './components/page/confirm-event/confirm-event.component';
