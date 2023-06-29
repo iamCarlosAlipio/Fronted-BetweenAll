@@ -1,33 +1,56 @@
 <app-navbar></app-navbar>
-<div class="body">
-    <form [formGroup]="profileUserForm1" class="container1">
-        <div style="margin-top: 5%;">
+
+<div class="container" style="margin-top: 1%;">
+    <div class="row text-center">
+        <div class="col-md-6 justify-content">
             <img src="./assets/img/PERFILVACIO.png" alt="logo" width="30%" class="image" />
 
-            <div style="margin-top: 5%; display: flex;" >
-                <mat-form-field class class="form-container-1">
-                    <label class="text-4">Nombre</label>
-                  <input matInput formControlName="name">
-                </mat-form-field>
-                <mat-form-field class="form-container-1" style="margin-left: 2%;">
-                    <label class="text-4">Apellido</label>
-                  <input matInput formControlName="lastname">
-                </mat-form-field>
+            <div style="margin-top: 1%; justify-content: center;">
+
+              <mat-form-field class="form-container-1" style="flex: 1;">
+                <label class="text">Nombre</label>
+                <input matInput formControlName="nameAndLastName" [readonly]="!isEditMode" [disabled]="!isEditMode">
+              </mat-form-field>
+              <mat-form-field class="form-container-1" style="margin-left: 2%; flex: 1;">
+                <label class="text">Apellido</label>
+                <input matInput formControlName="ageAndDistrict" [readonly]="!isEditMode" [disabled]="!isEditMode">
+              </mat-form-field>
             </div>
-           
-            <div style="margin-top: 10%;">
-                <p class="text-4">Correo electronico</p>
-                <mat-form-field class="full" >
-                    <!--<input matInput formControlName="email"[value]="user.email">-->
-                </mat-form-field>
+      
+            <div style="margin-top: 1%;">
+              <mat-form-field class="form-container-1" style="flex: 1;">
+                <label class="text-4">Edad</label>
+                <input matInput formControlName="ageAndDistrict" [readonly]="!isEditMode" [disabled]="!isEditMode">
+              </mat-form-field>
+              <mat-form-field class="form-container-1" style="margin-left: 2%; flex: 1;">
+                <label class="text-4">Distrito</label>
+                <input matInput formControlName="ageAndDistrict" [readonly]="!isEditMode" [disabled]="!isEditMode">
+              </mat-form-field>
+            </div>
+      
+            <div style="margin-top: 2%;">
+              <mat-form-field class="form-container">
+                <label class="text">Correo electrónico</label>
+                <input matInput formControlName="email" [readonly]="!isEditMode" [disabled]="!isEditMode">
+              </mat-form-field>
             </div>
         </div>
-    </form>
+        
+        <div class="col-md-6">
+            <div class="category-list">
+                <label>CATEGORIAS FAVORITAS</label>
 
-    <form [formGroup]="profileUserForm1" class="container1">
-       <mat-table>
-
-       </mat-table>
-    </form>
-
-</div>
+              <mat-table [dataSource]="dataSource">
+                <!-- Columna para el nombre de la categoría -->
+                <ng-container matColumnDef="nameCategory">
+                  <mat-header-cell *matHeaderCellDef>Nombre</mat-header-cell>
+                  <mat-cell *matCellDef="let category">{{ category.nameCategory }}</mat-cell>
+                </ng-container>
+      
+                <mat-header-row *matHeaderRowDef="displayedColumns"></mat-header-row>
+                <mat-row *matRowDef="let row; columns: displayedColumns;"></mat-row>
+              </mat-table>
+            </div>
+          </div>
+        </div>
+      </div>

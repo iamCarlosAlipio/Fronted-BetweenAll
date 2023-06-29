@@ -1,6 +1,8 @@
+import { DTOUserCategorySummary } from './../models/dtoUserCategorySummary';
 import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { userCategory } from '../models/userCategory';
+
 
 @Injectable({
   providedIn: 'root'
@@ -26,6 +28,10 @@ export class UserCategoryService {
   
   deleteUserCategory(id: number) {
     return this.Http.delete(this.RutaServidor +"/"+this.Recurso + "/" + id.toString());
+  }
+
+  getUserCategorySummary(id: number){
+    return this.Http.get<DTOUserCategorySummary[]>(this.RutaServidor+"/"+this.Recurso+"/summary/"+id.toString());
   }
 
 }
