@@ -22,8 +22,11 @@ export class ZoneeventsService {
   getZoneEvent(id:number){
       return this.http.get<ZoneEvent>(this.RutaServidor+"/"+this.Recurso+"/"+id.toString());
   }
-  
-  addZoneEvent(zoneevent:ZoneEvent){
-    return this.http.post<ZoneEvent>(this.RutaServidor+"/"+this.Recurso,zoneevent);
+  getZoneEventByDate(id:number){
+    return this.http.get<ZoneEvent[]>(this.RutaServidor+"/"+this.Recurso+"/Date/"+id.toString());
+  }
+
+  addZoneEvent(zoneevent:ZoneEvent,idDateSocialEvent:number){
+    return this.http.post<ZoneEvent>(this.RutaServidor+"/"+this.Recurso+"/"+idDateSocialEvent.toString(),zoneevent);
   }
 }

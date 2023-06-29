@@ -10,7 +10,7 @@
       <form [formGroup] = "detailsForm">
         <mat-grid-list cols="4" rowHeight="70px">
           <mat-grid-tile [colspan]="3" [rowspan]="5">
-            <img mat-card-image [src]="TheGroup.image" *ngIf="TheGroup">
+            <img mat-card-image [src]="TheGroup.imageGroup" *ngIf="TheGroup">
           </mat-grid-tile>
           <mat-grid-tile [colspan]="1" [rowspan]="1">
             <mat-form-field class="ancho">
@@ -42,6 +42,32 @@
         </mat-grid-list>
       </form>
     </mat-card>
+
+    <mat-toolbar>
+      <span>PARTICIPANTS</span>
+    </mat-toolbar>
+
+    <div class="center">
+      <div class="user-cards">
+        <mat-card *ngFor="let user of users">
+          <mat-card-header>
+            <div class="center2">
+              <img [src]="user.image" alt="User Image">
+              <mat-card-title>Nombre</mat-card-title>
+              <mat-card-subtitle>{{ user.name }}</mat-card-subtitle>
+              <mat-card-title>Apellido</mat-card-title>
+              <mat-card-subtitle>{{ user.lastname }}</mat-card-subtitle>
+              <mat-card-title>Ciudad</mat-card-title>
+              <mat-card-subtitle>{{ user.city }}</mat-card-subtitle>
+              <div class="button-container">
+                <button mat-raised-button color="primary" style="background-color: #A32DE3;">Ver Perfil</button>
+              </div>
+            </div>
+          </mat-card-header>
+        </mat-card>
+      </div>
+    </div>
+
   </div>
 
 </div>

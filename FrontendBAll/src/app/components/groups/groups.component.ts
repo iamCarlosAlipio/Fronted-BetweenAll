@@ -4,6 +4,8 @@ import { MatTableDataSource } from '@angular/material/table';
 import { GroupsService } from 'src/app/services/groups.service';
 import { MatPaginator } from '@angular/material/paginator';
 import{ ViewChild } from '@angular/core';
+import { ActivatedRoute } from '@angular/router';
+import { DtoGroupParticipantsSummary } from 'src/app/models/dtoGroupParticipantsSummary';
 
 
 @Component({
@@ -12,16 +14,18 @@ import{ ViewChild } from '@angular/core';
   styleUrls: ['./groups.component.css']
 })
 export class GroupsComponent {
-  dataSource = new MatTableDataSource<Group>();
+  dataSource = new MatTableDataSource<DtoGroupParticipantsSummary>();
   displayedColumns: string[]=["image","name","amountParticipants","description","category","actions"];
 
   @ViewChild('paginator')
   paginator!: MatPaginator;
 
+  id!: number;
 
-  constructor(private groupService: GroupsService) {}
+  constructor(private groupService: GroupsService, private activatedRoute:ActivatedRoute) {}
 
   ngOnInit() {
+    this.id = this.activatedRoute.snapshot.params["id"];
     this.loadGroups();
   }
 
@@ -32,12 +36,8 @@ export class GroupsComponent {
 
   loadGroups(): void {
 
-    this.groupService.getGroups().subscribe({
-      next: (data:Group[]) => {
-
-        data.forEach((group:Group) => {
-            group.name = (group.name)
-        });
+    this.groupService.getListGroupParticipantsSummary().subscribe({
+      next: (data:DtoGroupParticipantsSummary[]) => {
 
         this.dataSource = new MatTableDataSource(data);
         this.dataSource.paginator = this.paginator;

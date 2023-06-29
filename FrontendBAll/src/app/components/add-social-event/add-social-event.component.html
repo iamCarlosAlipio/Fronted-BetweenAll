@@ -32,6 +32,9 @@
             <br>   <br>
           </div>
 
+
+          
+
       </div>
     
     
@@ -44,7 +47,17 @@
           </mat-form-field>    
           <br>   <br>
         </div>
-    
+        <p class="text-4">Elige tus categorias</p>
+        <div style="display: flex;">
+          <mat-form-field class="form-container-1">
+            <mat-select placeholder="Categoria" formControlName="category" (selectionChange)="($event)">
+              <mat-option *ngFor="let category of categories" [value]="category.id">
+                {{category.name}}
+              </mat-option>
+            </mat-select>
+          </mat-form-field>
+        </div>
+
         <div class="condition">
           <mat-checkbox>He leído y acepto los Terminos y Condiciones</mat-checkbox>
           <mat-checkbox>¿Usted ha leído y acepta los términos y condiciones para el tratamiento de sus datos personales contenidos en la Politicas de privacidad Web?</mat-checkbox>

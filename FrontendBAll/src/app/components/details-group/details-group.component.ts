@@ -8,6 +8,10 @@ import { Category } from 'src/app/models/category';
 import { CategoryService } from 'src/app/services/category.service';
 import { MatSnackBar } from '@angular/material/snack-bar';
 
+import { User } from 'src/app/models/user';
+import { UserServiceService } from 'src/app/services/user-service.service';
+import { DtoGroupParticipantsSummary } from 'src/app/models/dtoGroupParticipantsSummary';
+
 
 @Component({
   selector: 'app-details-group',
@@ -16,44 +20,44 @@ import { MatSnackBar } from '@angular/material/snack-bar';
 })
 export class DetailsGroupComponent implements OnInit {
   constructor(private formBuilder:FormBuilder, private groupService: GroupsService, private router: Router,
-    private activatedRouter: ActivatedRoute,private categoryService:CategoryService,private snack: MatSnackBar) {
+    private activatedRouter: ActivatedRoute,private categoryService:CategoryService,private snack: MatSnackBar, private UserServiceService: UserServiceService) {
   }
 
   group!: Group;
   detailsForm!:FormGroup;
   id!:number;
-  TheGroup!: Group;
-  categories!:Category[]
-  idCatg!:number
+  TheGroup!: DtoGroupParticipantsSummary;
+
+  users!: User[];
+  dtoGroupParticipantsSummary!: DtoGroupParticipantsSummary;
 
   ngOnInit() {
-    this.reactiveForm();
+    this.id = this.activatedRouter.snapshot.params["idGroup"];
+    this.reactiveForm(this.id);
+    this.ListParticipants(this.id);
   }
-    reactiveForm():void {
+
+
+    reactiveForm(id: number):void {
       this.detailsForm = this.formBuilder.group({
-        id:[""],
+        //id:[""],
         name:["",[Validators.required, Validators.maxLength(60)]],
-        amountParticipants:["",[Validators.required, Validators.maxLength(50), Validators.minLength(2)]],
+        amountParticipants:["",[Validators.required, Validators.maxLength(50), Validators.minLength(1)]],
         description:["",[Validators.required, , Validators.maxLength(200)]],
         category:["",[Validators.required]],
         image:["",[Validators.required]]
       });
 
-      this.id = this.activatedRouter.snapshot.params["id"];
       if (this.id!=0 && this.id!=undefined) {
-        this.groupService.getGroup(this.id).subscribe({
-          next: (data:Group) => {
-            this.detailsForm.get("id")?.setValue(data.id);
-            this.detailsForm.get("name")?.setValue(data.name);;
+        this.groupService.getGroupParticipantsSummary(id).subscribe({
+          next: (data:DtoGroupParticipantsSummary) => {
+            this.dtoGroupParticipantsSummary = data;
+
+            this.detailsForm.get("name")?.setValue(data.nameGroup);;
             this.detailsForm.get("amountParticipants")?.setValue(data.amountParticipants);;
-            this.detailsForm.get("description")?.setValue(data.description);;
-            this.detailsForm.get("image")?.setValue(data.image);;
-            this.idCatg=data.id;;
-            this.categoryService.getCategory(this.idCatg).subscribe({
-              next: (dato:Category)=>{
-                this.detailsForm.get("category")?.setValue(dato.name);;
-              }
-            });
+            this.detailsForm.get("description")?.setValue(data.descriptionGroup);;
+            this.detailsForm.get("category")?.setValue(data.categoryGroup);;
+            this.detailsForm.get("image")?.setValue(data.imageGroup);;
           },
           error: (err) => {
             console.log(err);
@@ -61,12 +65,21 @@ export class DetailsGroupComponent implements OnInit {
         });
       }
 
-
-      this.id = this.activatedRouter.snapshot.params["id"];
-      this.groupService.getGroup(this.id).subscribe(
-      (group: Group) =>
+      this.groupService.getGroupParticipantsSummary(id).subscribe(
+      (group: DtoGroupParticipantsSummary) =>
       {this.TheGroup = group;});
+    }
 
+    ListParticipants(id: number):void{
+      this.groupService.getGroupParticipantsSummary(id).subscribe({
+        next: (data:DtoGroupParticipantsSummary) => {
+          this.dtoGroupParticipantsSummary = data;
+          this.users = data.userList;
+        },
+        error: (err) => {
+          console.log(err);
+        }
+      });
     }
 
     deleteGroup(id: number):void {

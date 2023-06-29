@@ -1,6 +1,7 @@
 import { Injectable } from '@angular/core';
 import { HttpClient} from '@angular/common/http';
 import { Group } from './../models/group';
+import { DtoGroupParticipantsSummary } from '../models/dtoGroupParticipantsSummary';
 
 
 
@@ -32,6 +33,14 @@ export class GroupsService {
 
   deleteGroup(id: number) {
     return this.http.delete(this.ruta_servidor +"/"+this.recurso + "/" + id.toString());
+  }
+
+  getGroupParticipantsSummary(id: number) {
+    return this.http.get<DtoGroupParticipantsSummary>(this.ruta_servidor+"/"+this.recurso+"/groupParticipantsSummary/"+id.toString())
+  }
+
+  getListGroupParticipantsSummary(){
+    return this.http.get<DtoGroupParticipantsSummary[]>(this.ruta_servidor+"/"+this.recurso+"/groupsSummary")
   }
 
 }

@@ -20,7 +20,10 @@ export class DatesocialeventsService {
   getDateSocialEvents(){
     return this.http.get<DateSocialEvent[]>(this.RutaServidor+"/"+this.Recurso);
   }
-  
+  getDateSocialEventByEvent(id:number){
+    return this.http.get<DateSocialEvent[]>(this.RutaServidor+"/"+this.Recurso+"/Event/"+id.toString());
+  }
+
   getDateSocialEventF(): Observable<DateSocialEvent>{
     return this.http.get<DateSocialEvent[]>(this.RutaServidor+"/"+this.Recurso).pipe(map(datesocialevents=>datesocialevents[datesocialevents.length-1]));
   }
@@ -29,7 +32,8 @@ export class DatesocialeventsService {
       return this.http.get<DateSocialEvent>(this.RutaServidor+"/"+this.Recurso+"/"+id.toString());
   }
 
-  addDateSocialEvent(datesocialevent:DateSocialEvent){
-    return this.http.post<DateSocialEvent>(this.RutaServidor+"/"+this.Recurso,datesocialevent);
+  
+  addDateSocialEvent(datesocialevent:DateSocialEvent,idSocialEvent:number){
+    return this.http.post<DateSocialEvent>(this.RutaServidor+"/"+this.Recurso+"/"+idSocialEvent.toString(),datesocialevent);
   }
 }

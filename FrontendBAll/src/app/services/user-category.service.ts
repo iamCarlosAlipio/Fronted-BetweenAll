@@ -4,6 +4,7 @@ import { Injectable } from '@angular/core';
 import { userCategory } from '../models/userCategory';
 import { DtoUserCategorySummary } from '../models/dtoUserCategorySummary';
 
+
 @Injectable({
   providedIn: 'root'
 })
