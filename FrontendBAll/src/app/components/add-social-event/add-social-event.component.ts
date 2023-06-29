@@ -114,7 +114,7 @@ export class AddSocialEventComponent {
       idOrganizer: this.id
     }
 
-    this.socialEventsService.addSocialEvent(socialEvent,socialEvent.idCategory,this.id).subscribe({
+    this.socialEventsService.addSocialEvent(socialEvent,socialEvent.idCategory,socialEvent.idOrganizer).subscribe({
       next: (data)  => {
         this.router.navigate(["/home/"+this.id]);
         this.snackBar.open("El evento se registró correctamente","OK",{duration:3000});
@@ -163,7 +163,7 @@ export class AddSocialEventComponent {
     for(let i:number=0;i<this.events.length;i++){
       const dateSocialEvent:DateSocialEvent = {
         id:0,
-        idSocialEvent: this.socialEventsService.getSocialEvents.length+1,
+        idSocialEvent: this.socialEventsService.getSocialEvents.length,
         date: this.events[i],
         starTime: this.myForm2.get("startDate")!.value,
         endTime: this.myForm2.get("endDate")!.value,

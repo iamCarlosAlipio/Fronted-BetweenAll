@@ -28,8 +28,8 @@ export class PurchasesService {
     return this.http.get<Purchase>(this.RutaServidor+"/"+this.Recurso+"/"+id.toString()+"/"+this.RecursoUsuario+"/"+idUser.toString());
 }
 
-  addPurchase(purchase:Purchase){
-    return this.http.post<Purchase>(this.RutaServidor+"/"+this.Recurso,purchase);
+  addPurchase(purchase:Purchase,idUser:number,idCard:number){
+    return this.http.post<Purchase>(this.RutaServidor+"/"+this.Recurso+"/"+idUser.toString()+"/"+idCard.toString(),purchase);
   }
 
   getAssistedTicketsSummary(id: number){

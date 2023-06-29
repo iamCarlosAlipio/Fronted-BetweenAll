@@ -34,7 +34,7 @@ export class HomeComponent {
   }
 
   ListSocialEvents():void{
-    this.socialEventsService.getList().subscribe({
+    this.socialEventsService.getSocialEvents().subscribe({
       next: (data:SocialEvent[]) => {
         this.events=data;
         console.log(data);
