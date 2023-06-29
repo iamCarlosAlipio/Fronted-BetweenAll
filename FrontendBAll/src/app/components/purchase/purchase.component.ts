@@ -1,4 +1,5 @@
-import { User } from './../../models/user';
+import { DateSocialEvent } from './../../models/datesocialevent';
+  import { User } from './../../models/user';
 import { UserServiceService } from './../../services/user-service.service';
 import { TicketsService } from './../../services/tickets.service';
 import { PurchasesService } from './../../services/purchases.service';
@@ -8,11 +9,10 @@ import { SocialEventsService } from './../../services/social-events.service';
 import { ActivatedRoute, Router } from '@angular/router';
 import { ZoneeventsService } from './../../services/zoneevents.service';
 import { ZoneEvent } from './../../models/zoneevent';
-import { Component } from '@angular/core';
+import { Component, Output } from '@angular/core';
 import { MatTableDataSource } from '@angular/material/table';
 import { MatPaginator } from '@angular/material/paginator';
 import { ViewChild } from '@angular/core'
-import { DateSocialEvent } from 'src/app/models/datesocialevent';
 import {FormBuilder, FormControl, FormGroup, Validators} from '@angular/forms';
 import { Purchase } from 'src/app/models/purchase';
 import { Ticket } from 'src/app/models/ticket';
@@ -28,101 +28,96 @@ import { throwToolbarMixedModesError } from '@angular/material/toolbar';
 export class PurchaseComponent {
   addPurchaseForm!:FormGroup;
   addTicketForm!:FormGroup;
-
-  TheEvent!: SocialEvent;
-  TheDatesEvent: DateSocialEvent[]=[];
-  DatesEvent: DateSocialEvent[]=[];
-  ZoneEvents: ZoneEvent[] = [];
-  TheZoneEvents: ZoneEvent[] = [];
-  idZoneEvent!:number;
-  idUser:number = this.activatedRoute.snapshot.params['idUser'];
-  endPurchase: Purchase[]=[];
   
+  TheEvent!: SocialEvent;
+  DatesEvent!: DateSocialEvent[];
+  ZoneEvents!: ZoneEvent[];
+  idUser:number = this.activatedRoute.snapshot.params['idUser'];
+  idEvent:number = this.activatedRoute.snapshot.params["idEvent"];
+  endPurchase: Purchase[]=[];
+  idSelectDate!:number;
   constructor(private formBuilder:FormBuilder,private zoneeventservice: ZoneeventsService, private activatedRoute: ActivatedRoute, 
     private socialEventsService: SocialEventsService, private datesocialeventsService:DatesocialeventsService
     , private router:Router, private purchasesService:PurchasesService,private snackBar:MatSnackBar,
     private ticketsService:TicketsService, private userServiceService:UserServiceService) {
 
   }
-  id!: number;
   total!:number;
   totaltickets!:number;
 
   ngOnInit() {
     this.reactiveForm();
-
-    this.id = this.activatedRoute.snapshot.params["id"];
-    this.socialEventsService.getSocialEvent(this.id).subscribe(
-      (socialEvent: SocialEvent) => 
-      { this.TheEvent = socialEvent;});
-
+    console.log(this.idUser);
+    console.log(this.idEvent);
     
     this.ListDatesEvents();
-    this.ListTickets();
+    /*this.ListTickets();*/
+    this.ListZoneEvents();
+    
   }
   
-
-
-
   reactiveForm():void {
     
-    this.addPurchaseForm = this.formBuilder.group({
-        id:[""],
-        cant:["",[Validators.required]],
-    });
+    /*this.addPurchaseForm = this.formBuilder.group({
+        quantityForm:["",[Validators.required]],
+        totalForm:["",[Validators.required]],
+    });*/
 
-    this.addTicketForm = this.formBuilder.group({
+    /*this.addTicketForm = this.formBuilder.group({
       id:[""],
-  });
+  });*/
   }
 
-  getIdZone(id:number):void{
+  /*getIdZone(id:number):void{
     this.idZoneEvent=id;
     console.log(this.idZoneEvent);
-  }
+  }*/
 
-  getTotal(total:string):void{
+  /*getTotal(total:string):void{
     this.totaltickets=parseInt(total);
     this.total=this.totaltickets*this.TheZoneEvents[this.idZoneEvent-1].price;
     console.log(this.total);
-  }
+  }*/
 
-  UpdateTotal():void{
+  /*UpdateTotal():void{
     this.total=this.totaltickets*this.TheZoneEvents[this.idZoneEvent-1].price;
-  }
+  }*/
 
-  savePurchase():void {
+  /*savePurchase():void {
     const purchase:Purchase = {
-      id:parseInt(this.addPurchaseForm.get("id")!.value),
+      id:0,
+      date: new Date(2023,2,2),
+      quantity:1,
+      total:1,
       idUser: this.idUser,
       idCard: 1, 
     }
 
 
-    this.purchasesService.addPurchase(purchase).subscribe({
+    this.purchasesService.addPurchase(purchase,purchase.idUser,purchase.idCard).subscribe({
       
       next: (data)  => {
-        this.router.navigate(["home/" + this.id]);
+        this.router.navigate(["home/" + this.idUser]);
         this.snackBar.open("La compra se ingresó correctamente","OK",{duration:3000});
       },
       error: (err) => {
         console.log(err);
       }
     });
-  }
+  }*/
 
-  ListTickets():void{
+  /*ListTickets():void{
     this.purchasesService.getPurchases().subscribe(
       (date:Purchase[])=>
       {
         this.endPurchase=date;
       }
     )
-  }
+  }*/
 
   
 
-  saveTickets():void {
+  /*saveTickets():void {
     let idpurchase:number=0;
 
     for(let i=0;i<this.endPurchase.length;i++){
@@ -151,52 +146,41 @@ export class PurchaseComponent {
       });
     }
     
-  }
+  }*/
   
-
+  
 
   ListDatesEvents(): void {
-    this.datesocialeventsService.getDateSocialEvents().subscribe(
-      (date:DateSocialEvent[])=>
-      {
-        this.DatesEvent=date;
-              for(let i=0;i<this.DatesEvent.length;i++){
-                if(this.DatesEvent[i].idSocialEvent==this.id){
-                  this.TheDatesEvent.push(this.DatesEvent[i]);
-                }
-              };
-    });
+    this.socialEventsService.getSocialEvent(this.idEvent).subscribe(
+      (data: SocialEvent) => 
+      {this.TheEvent = data;});
+
+    this.datesocialeventsService.getDateSocialEventByEvent(this.idEvent).subscribe(
+      (data: DateSocialEvent[]) => 
+      { this.DatesEvent=data;});  
+      console.log(this.DatesEvent);
   }
 
-  ListZoneEvents(id:number): void{
+  ListZoneEvents(): void{
 
-    this.zoneeventservice.getZoneEvents().subscribe(
-      (date:ZoneEvent[])=>
-      {
-        this.ZoneEvents=date.filter(x=>x.idDateSocialEvent==id);
-      }
-    )
-    
+    this.zoneeventservice.getZoneEventByDate(3).subscribe(
+      (data: ZoneEvent[])=>
+      {this.ZoneEvents=data;})
+    console.log(this.ZoneEvents);
   }
+
+  /*changePay():void{
+    this.router.navigate(["pay/" + this.idUser]);
+  }*/
   
-  changePay():void{
-    this.router.navigate(["pay/" + this.id]);
-  }
-  
-  ListZoneEvent(id:number): void{
-    this.TheZoneEvents=[];
-    this.zoneeventservice.getZoneEvents().subscribe(
-      (date:ZoneEvent[])=>
-      {
-        this.ZoneEvents=date;
-              for(let i=0;i<this.ZoneEvents.length;i++){
-                if(this.ZoneEvents[i].idDateSocialEvent==id){
-                  this.TheZoneEvents.push(this.ZoneEvents[i]);
-                }
-              };
-      }
-    )
-  }
+  /*ListZoneEvent(id:number): void{
+    for(let i=0;i<this.DatesEvent.length;i++){
+      this.zoneeventservice.getZoneEventByDate(this.DatesEvent[0].id).subscribe(
+        (zone:ZoneEvent[])=>
+        {this.ZoneEvents=zone;});
+    }
+  }*/
+
   cants: string[] = ["1","2","3","4"];
   
 }
