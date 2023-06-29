@@ -20,6 +20,7 @@ import {MatAutocompleteSelectedEvent} from '@angular/material/autocomplete';
 import {MatChipInputEvent} from '@angular/material/chips';
 import { Input } from '@angular/core';
 import { FormsModule } from '@angular/forms';
+import { ReactiveFormsModule } from '@angular/forms';
 
 @NgModule({
   declarations: [],
@@ -42,7 +43,8 @@ import { FormsModule } from '@angular/forms';
     MatTabsModule,
     MatGridListModule,
     MatProgressSpinnerModule,
-    FormsModule
+    FormsModule,
+    ReactiveFormsModule
   ],
 
   exports: [
@@ -63,7 +65,8 @@ import { FormsModule } from '@angular/forms';
     MatGridListModule,
     MatProgressSpinnerModule,
     MatDatepickerModule,
-    FormsModule
+    FormsModule,
+    ReactiveFormsModule
   ]
 })
 export class SharedModule { }
