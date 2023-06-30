@@ -173,9 +173,8 @@ export class EditUserComponent {
 
   updateUser():void{
     
-    this.snack.open("a","OK",{duration:3000});
     const axuser:User = {
-      id: this.idUser,
+      id: this.idUser+1,
       name: this.editUserForm1.get("name")!.value,
       lastname: this.editUserForm1.get("lastname")!.value,
       email: this.editUserForm1.get("email")!.value,

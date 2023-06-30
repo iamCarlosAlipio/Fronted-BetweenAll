@@ -1,7 +1,8 @@
-import { DTOUserCategorySummary } from './../models/dtoUserCategorySummary';
+import { Category } from './../models/category';
 import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { userCategory } from '../models/userCategory';
+import { DtoUserCategorySummary } from '../models/dtoUserCategorySummary';
 
 
 @Injectable({
@@ -23,15 +24,20 @@ export class UserCategoryService {
   }
 
   insertUserCategory(userCat:userCategory){
-    return this.Http.post<userCategory>(this.RutaServidor+"/"+this.Recurso,userCat);
+    return this.Http.post<userCategory>(this.RutaServidor+"/"+this.Recurso+"/"+userCat.idUser.toString()+"/"+
+    userCat.idCategory.toString(),userCat);
   }
   
   deleteUserCategory(id: number) {
     return this.Http.delete(this.RutaServidor +"/"+this.Recurso + "/" + id.toString());
   }
 
-  getUserCategorySummary(id: number){
-    return this.Http.get<DTOUserCategorySummary[]>(this.RutaServidor+"/"+this.Recurso+"/summary/"+id.toString());
+  deleteUserCategoryByUser(id: number) {
+    return this.Http.delete(this.RutaServidor +"/"+this.Recurso + "/user/" + id.toString());
+  }
+
+  getUserCategoriesDTO(idUser: number){
+    return this.Http.get<DtoUserCategorySummary[]>(this.RutaServidor+"/"+this.Recurso+"/summary/"+idUser.toString());
   }
 
 }
