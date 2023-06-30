@@ -31,7 +31,9 @@ export class DatesocialeventsService {
   getDateSocialEvent(id:number){
       return this.http.get<DateSocialEvent>(this.RutaServidor+"/"+this.Recurso+"/"+id.toString());
   }
-
+  getDateSocialEventEnd(){
+    return this.http.get<DateSocialEvent>(this.RutaServidor+"/"+this.Recurso+"/End");
+}
   
   addDateSocialEvent(datesocialevent:DateSocialEvent,idSocialEvent:number){
     return this.http.post<DateSocialEvent>(this.RutaServidor+"/"+this.Recurso+"/"+idSocialEvent.toString(),datesocialevent);
