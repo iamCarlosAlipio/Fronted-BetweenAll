@@ -56,7 +56,7 @@ export class PurchaseComponent {
     this.reactiveForm();
     console.log(this.idUser);
     console.log(this.idEvent);
-    this.LoadPurchase();
+    this.ListDatesEvents();
     this.ListDatesEvents();
   }
   
@@ -116,7 +116,7 @@ export class PurchaseComponent {
     this.purchasesService.addPurchase(purchase,purchase.idUser,purchase.idCard).subscribe({
       
       next: (data)  => {
-        this.snackBar.open("La compra se ingresó correctamente","OK",{duration:3000});     
+        this.snackBar.open("Genera la compra de sus tickets","OK",{duration:3000});     
       },
       error: (err) => {
         console.log(err);
@@ -181,12 +181,12 @@ export class PurchaseComponent {
       (data: Purchase)=>
       {this.endPurchase=data}
     );
-
-    console.log(this.endPurchase);
   }
 
 
   cants: number[] = [1,2,3,4];
   
 }
+
+
 

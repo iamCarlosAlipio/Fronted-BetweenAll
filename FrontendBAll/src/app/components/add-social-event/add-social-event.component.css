@@ -85,6 +85,12 @@
     width: 100%;
   }
   
-  .example-full-width {
+.example-full-width {
     width: 100%;
+}
+
+.condition{
+    font-family: Poppins,sans-serif;
+    font-weight: 400;
+    font-size: 13px;
   }

@@ -13,23 +13,23 @@
             <mat-form-field class="full">
                 <input matInput placeholder="nombre del evento" formControlName="nameDetail">
             </mat-form-field>    
-            <br>   <br>
+            <br> 
           </div>
 
           <div>
             <p>Imagen</p>
             <mat-form-field class="full">
-                <input matInput placeholder="nombre del evento" formControlName="imageDetail">
+                <input matInput placeholder="imagen del evento" formControlName="imageDetail">
             </mat-form-field>    
-            <br>   <br>
+            <br>  
           </div>  
 
           <div>
             <p>Location</p>
             <mat-form-field class="full">
-                <input matInput placeholder="nombre del evento" formControlName="locationDetail">
+                <input matInput placeholder="lugar evento" formControlName="locationDetail">
             </mat-form-field>    
-            <br>   <br>
+            <br>  
           </div>
 
 
@@ -45,7 +45,7 @@
           <mat-form-field class="full">
               <input matInput placeholder="nombre del evento" formControlName="descriptionDetail">
           </mat-form-field>    
-          <br>   <br>
+          <br>   
         </div>
         <p class="text-4">Elige tus categorias</p>
         <div style="display: flex;">
@@ -76,17 +76,17 @@
         <div>
           <p>Inicio</p>
           <mat-form-field class="full">
-              <input matInput placeholder="hora de inicio" formControlName="startDate">
+              <input type="time" matInput placeholder="hora de inicio" formControlName="startDate">
           </mat-form-field>    
-          <br>   <br>
+          <br>  
         </div>
     
         <div>
           <p>Fin</p>
           <mat-form-field class="full">
-              <input matInput placeholder="hora del fin" formControlName="endDate">
+              <input type="time" matInput placeholder="hora del fin" formControlName="endDate">
           </mat-form-field>    
-          <br>   <br>
+          <br>  
         </div>
     
     </div>
@@ -98,7 +98,7 @@
         <mat-form-field class="w-100">
           <mat-label>Fechas</mat-label >
           <input matInput [matDatepicker]="picker"
-              (dateInput)="addEvent('input', $event)">
+              (dateInput)="addEvent('input', $event)" readonly>
           <mat-hint>MM/DD/YYYY</mat-hint>
           <mat-datepicker-toggle matIconSuffix [for]="picker"></mat-datepicker-toggle>
           <mat-datepicker #picker></mat-datepicker>  
@@ -140,25 +140,25 @@
           <mat-form-field class="full">
               <input matInput placeholder="nombre de la zona" formControlName="nameZone">
           </mat-form-field>    
-          <br>   <br>
+          <br>  
         </div>
     
         <div>
           <p>Precio de la entrada</p>
           <mat-form-field class="full">
-            <input matInput placeholder="Precio" formControlName="priceZone">
+            <input type="text" oninput="this.value = this.value.replace(/[^0-9]/g, '')" matInput placeholder="Precio" formControlName="priceZone">
           </mat-form-field>
           
-          <br>   <br>
+          <br>   
         </div>
 
         <div>
           <p>Capacidad</p>
           <mat-form-field class="full">
-            <input matInput placeholder="capacidad" formControlName="capacityZone">
+            <input type="text" oninput="this.value = this.value.replace(/[^0-9]/g, '')" matInput placeholder="capacidad" formControlName="capacityZone">
           </mat-form-field>
         
-          <br>   <br>
+          <br> 
         </div>
         
         <div class="col-md-6"> 
@@ -212,14 +212,14 @@
       <div>
 
         <div class="col-md-6" id="button-left"> 
-          <br>
+
           <button class="botton1" (click)="volverHome();" mat-fab extended>Cancelar</button>
         </div>
 
 
         <div class="col-md-6" id="button-right" >
-          <br>
-          <button class="botton2"  (click)="saveZoneEvent();"  mat-fab extended [disabled]="myForm.invalid">Crear Evento</button>
+
+          <button class="botton2" [disabled]="SaveBool" (click)="saveZoneEvent();"  mat-fab extended [disabled]="myForm.invalid">Crear Evento</button>
           <br>     
         </div>
       </div>   

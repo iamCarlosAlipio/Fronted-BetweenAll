@@ -1,0 +1,22 @@
+#column-right{
+    width: 50%;
+    float: right;
+    padding: 3%;
+    font-weight: bold;
+}
+
+#column-left{
+    width: 50%;
+    float: left;
+    padding: 3%;
+    font-weight: bold;
+
+}
+
+.bordered-image {
+    border: 25px solid #A32DE3; /* Cambia el color y el grosor del borde según tus necesidades */
+  }
+.bordered-table {
+  border: 10px solid #A32DE3; /* Cambia el color y el grosor del borde según tus necesidades */
+}
+  
