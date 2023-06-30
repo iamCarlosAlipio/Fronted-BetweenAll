@@ -33,7 +33,7 @@ export class AddSocialEventComponent {
   DateEnd!: DateSocialEvent;
   ZoneData!: ZoneEvent;
   TheDate!: DateSocialEvent;
-  
+  SaveBool:Boolean=true;
   categories!:Category[];
   SocialsEvents!: SocialEvent[];
   DatesSocialsEvents!:DateSocialEvent[];
@@ -78,33 +78,22 @@ export class AddSocialEventComponent {
           this.LoadSocialEvents();
           break;
         case 1:
-          this.LoadSocialEvents();
+          this.LoadSocialEvents();this.LoadSocialEvents();this.LoadSocialEvents();this.LoadSocialEvents();
+          this.LoadSocialEvents();this.LoadSocialEvents();this.LoadSocialEvents();this.LoadSocialEvents();
           this.saveSocialEvent();
-          this.LoadSocialEvents();
-          this.LoadSocialEvents();
-          this.LoadSocialEvents();
-          this.LoadSocialEvents();
-          this.LoadSocialEvents();
-          this.LoadSocialEvents();
-          this.LoadSocialEvents();
-          this.LoadSocialEvents();
-          this.LoadSocialEvents();
-          this.LoadSocialEvents();
-          this.LoadSocialEvents();
-          this.LoadSocialEvents();
+          this.LoadSocialEvents();this.LoadSocialEvents();this.LoadSocialEvents();this.LoadSocialEvents();
+          this.LoadSocialEvents();this.LoadSocialEvents();this.LoadSocialEvents();this.LoadSocialEvents();
           console.log(this.EventEnd);
           break;
         case 2: 
-          this.LoadSocialEvents();
-          this.LoadSocialEvents();
-          this.LoadSocialEvents();
-          this.LoadSocialEvents();
+          this.LoadSocialEvents();this.LoadSocialEvents();this.LoadSocialEvents();this.LoadSocialEvents();
+          this.LoadSocialEvents();this.LoadSocialEvents();this.LoadSocialEvents();this.LoadSocialEvents();
+          this.LoadSocialEvents();this.LoadSocialEvents();this.LoadSocialEvents();this.LoadSocialEvents();
+          this.LoadSocialEvents();this.LoadSocialEvents();this.LoadSocialEvents();this.LoadSocialEvents();
           console.log(this.EventEnd);
           this.saveDateSocialEvent();
-          this.LoadSocialEvents();
-          this.LoadSocialEvents();
-          this.LoadSocialEvents();
-          this.LoadSocialEvents();
+          this.LoadSocialEvents();this.LoadSocialEvents();this.LoadSocialEvents();this.LoadSocialEvents();
+          this.LoadSocialEvents();this.LoadSocialEvents();this.LoadSocialEvents();this.LoadSocialEvents();
           console.log(this.DateEnd);
           break;
         // Agrega más casos según el número de pestañas que tengas
@@ -192,7 +181,8 @@ export class AddSocialEventComponent {
         console.log("no llega");
       }
     });
-    
+    this.LoadSocialEvents();this.LoadSocialEvents();this.LoadSocialEvents();this.LoadSocialEvents();
+    this.LoadSocialEvents();this.LoadSocialEvents();this.LoadSocialEvents();this.LoadSocialEvents();
   }
 
   volverHome():void {
@@ -248,10 +238,9 @@ export class AddSocialEventComponent {
         }
       });
     }
- 
-
-
-    //console.log("el ultimo fecha es: "+this.TheDate.id);
+    this.SaveBool=false;
+    this.LoadSocialEvents();this.LoadSocialEvents();this.LoadSocialEvents();this.LoadSocialEvents();
+    this.LoadSocialEvents();this.LoadSocialEvents();this.LoadSocialEvents();this.LoadSocialEvents();
   }
 
   //GUARDAR ZONAS DE EVENTO
@@ -266,6 +255,7 @@ export class AddSocialEventComponent {
   idNumberZone:number=0;
   myFormZone!:FormGroup;
   agregarZone(){
+
     this.NumberZone.push(
       {
         id: this.idNumberZone,
@@ -278,7 +268,12 @@ export class AddSocialEventComponent {
     this.cargarZonas();
     this.idNumberZone++;
     console.log(this.NumberZone);
-
+    this.LoadSocialEvents();
+    this.LoadSocialEvents();
+    this.LoadSocialEvents();
+    this.LoadSocialEvents();
+    this.LoadSocialEvents();
+    this.LoadSocialEvents();
   }
 
   cargarZonas(): void{
@@ -294,6 +289,12 @@ export class AddSocialEventComponent {
 
   saveZoneEvent():void {
     this.LoadSocialEvents();
+    this.LoadSocialEvents();
+    this.LoadSocialEvents();
+    this.LoadSocialEvents();
+    this.LoadSocialEvents();
+    this.LoadSocialEvents();
+
     for(let i:number=0;i<this.events.length;i++){
       for(let j:number=0;i<this.NumberZone.length;i++){
         const zoneEvent:ZoneEvent = {

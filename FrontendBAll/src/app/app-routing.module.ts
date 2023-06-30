@@ -43,7 +43,7 @@ const routes: Routes = [
   {path: 'tickets/:id', component:TicketsComponent},
   {path: 'addEditGroups/:id', component:AddEditGroupsComponent},
   {path: 'eventConfirm1', component:EventCreate1Component},
-  {path: 'purchase/:id/user/:idUser', component:PurchaseComponent},
+  {path: 'purchase/event/:idEvent/user/:idUser', component:PurchaseComponent},
   {path: 'profile/:id', component:ProfileUserComponent},
   {path: 'eventsAssisted/:id', component:EventsAssistedComponent},
 
