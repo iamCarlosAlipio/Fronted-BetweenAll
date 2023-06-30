@@ -91,7 +91,11 @@
                     </mat-option>
                   </mat-select>
                 </mat-form-field>
-                <button mat-raised-button [disabled]="insert" style="background-color:#A32DE3; color:white; width: 20%; margin-left: 10%;" (click)="saveUserCategory()" >Agregar</button>
+                <button mat-raised-button [disabled]="insert" class="w-10" 
+                style="background-color:#A32DE3; color:white; margin-left: 10%; margin-top: 2%;" (click)="saveUserCategory()" >Agregar</button>
+                <button style="margin-left: 10%;" mat-icon-button routerLink="/pay/{{idUser}}">
+                  <mat-icon >credit_card</mat-icon>
+                </button>
               </div>
             </div>
             <div>

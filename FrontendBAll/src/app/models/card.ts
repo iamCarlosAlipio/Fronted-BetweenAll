@@ -1,9 +1,9 @@
 export interface Card {
     id: number;
     name: string;
-    nunber:number;
+    number:number;
     idUser:number;
     cvv: number;
-    dueDate: Date;
+    dueDate: string;
     state: string;
   }

@@ -45,7 +45,6 @@ export class AddUserComponent {
     }
 
     reactiveForm():void {
-    
       this.addUserForm1 = this.FormBuilder.group({
           id:[""],
           name:["",[Validators.required, Validators.maxLength(60),Validators.pattern('^[a-zA-Z]+$')]],

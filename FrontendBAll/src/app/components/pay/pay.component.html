@@ -1,39 +1,49 @@
 <app-navbar></app-navbar>
-<div class="container" style="margin-top: 5%;">
-    <div class="row">
-        <div class="col-md-6">
-            <br>
-            <label>Datos del pago</label>
-            <br>
-            <mat-form-field class="w-100">
-                <mat-label>Número de Tarjeta</mat-label>
-                <input matInput>
-            </mat-form-field>
-            <div class="d-flex">
-                <mat-form-field appearance="fill" class="w-50 me-2">
-                    <mat-label>MM/YYYY</mat-label>
-                    <input matInput>
-                  </mat-form-field>
-                <mat-form-field appearance="fill" class="w-50 ms-2">
-                    <mat-label>CVV</mat-label>
-                    <input matInput>
-                  </mat-form-field>
+<div class="container" style="display: flex;">
+        <form [formGroup]="fromulario">
+            <div class="col-md-10">
+                <div class="mt-5">
+                    <label>DATOS DE MI TARJETA</label>
+                </div>
+                <div class="mt-3">
+                    <mat-form-field class="w-100">
+                        <mat-label>Nombre de tarjeta</mat-label>
+                        <input matInput  formControlName="name">
+                    </mat-form-field>
+                </div>
+                <div>
+                    <mat-form-field class="w-100">
+                        <mat-label>Número de Tarjeta</mat-label>
+                        <input matInput  formControlName="number">
+                    </mat-form-field>
+                </div>
+                <div class="d-flex">
+                    <mat-form-field appearance="fill" class="w-50 me-2">
+                        <mat-label>MM/YYYY</mat-label>
+                        <input matInput  formControlName="dueDate">
+                      </mat-form-field>
+                    <mat-form-field appearance="fill" class="w-50 ms-2">
+                        <mat-label>CVV</mat-label>
+                        <input matInput  formControlName="cvv">
+                      </mat-form-field>
+                </div>
+                <div class="condition">
+                    <mat-checkbox>He leído y acepto los Terminos y Condiciones</mat-checkbox>
+                    <mat-checkbox>¿Usted ha leído y acepta los términos y condiciones para el tratamiento de sus datos personales contenidos en la Politicas de privacidad Web?</mat-checkbox>
+                    <mat-checkbox>¿Desea que BetweenAll use su información para enviarle ofertas o promociones de eventos</mat-checkbox>
+              </div>
+              <div >
+                <br>
+                <button mat-fab extended style=" background-color:#A32DE3;" class="text-white w-100" (click)="saveOrUpdateCard()">PAGAR</button>
             </div>
-            <div class="condition">
-                <mat-checkbox>He leído y acepto los Terminos y Condiciones</mat-checkbox>
-                <mat-checkbox>¿Usted ha leído y acepta los términos y condiciones para el tratamiento de sus datos personales contenidos en la Politicas de privacidad Web?</mat-checkbox>
-                <mat-checkbox>¿Desea que BetweenAll use su información para enviarle ofertas o promociones de eventos</mat-checkbox>
-          </div>
-          <div >
-            <br>
-            <button routerLink="/pay" mat-fab extended style=" background-color:#A32DE3;" class="text-white w-100">PAGAR</button>
-        </div>
-        </div>
-        <div class="col-md-6">
-            <div class="text-center">
-                <img class="w-100" mat-card-image src= "https://cdn.teleticket.com.pe/especiales/morat-per22/images/event-artista-res.jpg">
-
             </div>
-        </div>
-    </div>
+        </form>
+        <form [formGroup]="fromulario">
+            <div class="col mt-3">
+                <div class="text-center">
+                    <img class="w-10" mat-card-image src= "https://cdn-icons-png.flaticon.com/512/60/60378.png">
+    
+                </div>
+            </div>
+        </form>
 </div>
