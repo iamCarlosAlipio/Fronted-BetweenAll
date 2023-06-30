@@ -38,15 +38,6 @@
         </mat-grid-tile>
         <mat-grid-tile [colspan]="1" [rowspan]="1">
           <mat-form-field class="ancho">
-            <mat-label>Amount of Participants</mat-label>
-            <input matInput formControlName="amountParticipants" placeholder="Enter amount of participants...">
-            <div *ngIf="myForm.get('amountParticipants')?.hasError('required') && myForm.get('amountParticipants')?.touched">
-                <span style="color: red;"> This field is required</span>
-            </div>
-          </mat-form-field>
-        </mat-grid-tile>
-        <mat-grid-tile [colspan]="1" [rowspan]="1">
-          <mat-form-field class="ancho">
             <mat-label>Description</mat-label>
             <input matInput formControlName="description" placeholder="Enter description...">
             <div *ngIf="myForm.get('description')?.hasError('required') && myForm.get('description')?.touched">
@@ -58,10 +49,7 @@
           <mat-form-field class="ancho">
             <mat-label>Category</mat-label>
               <mat-select placeholder="Select category" matInput formControlName = "category">
-                <mat-option value="Teatro">Teatro</mat-option>
-                <mat-option value="Musica">Musica</mat-option>
-                <mat-option value="Rap">Rap</mat-option>
-                <mat-option value="Arte">Arte</mat-option>
+                <mat-option *ngFor="let category of categories" [value]="category.id">{{category.name}}</mat-option>
               </mat-select>
           </mat-form-field>
         </mat-grid-tile>

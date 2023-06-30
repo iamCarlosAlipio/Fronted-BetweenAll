@@ -14,7 +14,7 @@
           <mat-label>Filtro</mat-label>
           <input placeholder="Ingrese filtro..." matInput (keyup)="filterGroups($event)" #input>
         </mat-form-field>
-        <button routerLink="/add-group" mat-raised-button color="primary" style="background-color: #A32DE3;">CREAR GRUPO</button>
+        <button routerLink="/add-group/{{id}}/group" mat-raised-button color="primary" style="background-color: #A32DE3;">CREAR GRUPO</button>
       </div>
 
       <div class="tablepag">

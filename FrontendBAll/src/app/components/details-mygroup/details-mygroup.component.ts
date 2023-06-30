@@ -4,6 +4,11 @@ import { GroupsComponent } from '../groups/groups.component';
 import { GroupsService } from './../../services/groups.service';
 import { Group } from 'src/app/models/group';
 import {FormBuilder, FormGroup, Validators} from '@angular/forms';
+import { CategoryService } from 'src/app/services/category.service';
+import { MatSnackBar } from '@angular/material/snack-bar';
+import { UserServiceService } from 'src/app/services/user-service.service';
+import { DtoGroupParticipantsSummary } from 'src/app/models/dtoGroupParticipantsSummary';
+import { User } from 'src/app/models/user';
 
 @Component({
   selector: 'app-details-mygroup',
@@ -12,54 +17,68 @@ import {FormBuilder, FormGroup, Validators} from '@angular/forms';
 })
 export class DetailsMygroupComponent implements OnInit {
   constructor(private formBuilder:FormBuilder, private groupService: GroupsService, private router: Router,
-    private activatedRouter: ActivatedRoute) {
+    private activatedRouter: ActivatedRoute,private categoryService:CategoryService,private snack: MatSnackBar, private UserServiceService: UserServiceService) {
   }
 
   group!: Group;
   detailsForm!:FormGroup;
   id!:number;
-  TheGroup!: Group;
+  TheGroup!: DtoGroupParticipantsSummary;
+
+  users!: User[];
+  dtoGroupParticipantsSummary!: DtoGroupParticipantsSummary;
 
   ngOnInit() {
-    this.reactiveForm();
+    this.id = this.activatedRouter.snapshot.params["idGroup"];
+    this.reactiveForm(this.id);
+    this.ListParticipants(this.id);
   }
-    reactiveForm():void {
-      this.detailsForm = this.formBuilder.group({
-        id:[""],
-        name:["",[Validators.required, Validators.maxLength(60)]],
-        amountParticipants:["",[Validators.required, Validators.maxLength(50), Validators.minLength(2)]],
-        description:["",[Validators.required, , Validators.maxLength(200)]],
-        category:["",[Validators.required]],
-        image:["",[Validators.required]]
+  reactiveForm(id: number):void {
+    this.detailsForm = this.formBuilder.group({
+      //id:[""],
+      name:["",[Validators.required, Validators.maxLength(60)]],
+      amountParticipants:["",[Validators.required, Validators.maxLength(50), Validators.minLength(1)]],
+      description:["",[Validators.required, , Validators.maxLength(200)]],
+      category:["",[Validators.required]],
+      image:["",[Validators.required]]
+    });
+
+    if (this.id!=0 && this.id!=undefined) {
+      this.groupService.getGroupParticipantsSummary(id).subscribe({
+        next: (data:DtoGroupParticipantsSummary) => {
+          this.dtoGroupParticipantsSummary = data;
+
+          this.detailsForm.get("name")?.setValue(data.nameGroup);;
+          this.detailsForm.get("amountParticipants")?.setValue(data.amountParticipants);;
+          this.detailsForm.get("description")?.setValue(data.descriptionGroup);;
+          this.detailsForm.get("category")?.setValue(data.categoryGroup);;
+          this.detailsForm.get("image")?.setValue(data.imageGroup);;
+        },
+        error: (err) => {
+          console.log(err);
+        }
       });
+    }
 
-      this.id = this.activatedRouter.snapshot.params["id"];
-      if (this.id!=0 && this.id!=undefined) {
-        this.groupService.getGroup(this.id).subscribe({
-          next: (data:Group) => {
-            this.detailsForm.get("id")?.setValue(data.id);
-            this.detailsForm.get("name")?.setValue(data.name);;
-            this.detailsForm.get("amountParticipants")?.setValue(data.amountParticipants);;
-            this.detailsForm.get("description")?.setValue(data.description);;
-            this.detailsForm.get("category")?.setValue(data.idCategory);
-            this.detailsForm.get("image")?.setValue(data.image);;
-          },
-          error: (err) => {
-            console.log(err);
-          }
-        });
+    this.groupService.getGroupParticipantsSummary(id).subscribe(
+    (group: DtoGroupParticipantsSummary) =>
+    {this.TheGroup = group;});
+  }
 
+  ListParticipants(id: number):void{
+    this.groupService.getGroupParticipantsSummary(id).subscribe({
+      next: (data:DtoGroupParticipantsSummary) => {
+        this.dtoGroupParticipantsSummary = data;
+        this.users = data.userList;
+      },
+      error: (err) => {
+        console.log(err);
       }
+    });
+  }
 
-      this.id = this.activatedRouter.snapshot.params["id"];
-      this.groupService.getGroup(this.id).subscribe(
-      (group: Group) =>
-      {this.TheGroup = group;});
-
-    }
-
-    deleteGroup(id: number):void {
-      this.groupService.deleteGroup(id).subscribe({
-      });
-    }
+  deleteGroup(id: number):void {
+    this.groupService.deleteGroup(id).subscribe({
+    });
+  }
 }
