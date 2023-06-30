@@ -37,7 +37,7 @@
             </mat-form-field>
           </mat-grid-tile>
           <mat-grid-tile [colspan]="4" [rowspan]="1">
-            <button routerLink="/groups" (click)="deleteGroup(id)" mat-raised-button color="primary" style="background-color: #A32DE3;">DELETE GROUP</button>
+            <!--<button routerLink="/groups" (click)="deleteGroup(id)" mat-raised-button color="primary" style="background-color: #A32DE3;">DELETE GROUP</button>-->
             <button mat-raised-button color="secondary" routerLink="/edit-groups/{{idUser}}/group/{{id}}">EDIT GROUP</button>
           </mat-grid-tile>
         </mat-grid-list>
@@ -62,6 +62,9 @@
               <mat-card-subtitle>{{ user.city }}</mat-card-subtitle>
               <div class="button-container">
                 <button routerLink="/profile/{{user.id}}" mat-raised-button color="primary" style="background-color: #A32DE3;">Ver Perfil</button>
+              </div>
+              <div class="button-container">
+                <button  (click)="deleteUserByGroup()" mat-raised-button color="secondary" >Eliminar</button>
               </div>
             </div>
           </mat-card-header>

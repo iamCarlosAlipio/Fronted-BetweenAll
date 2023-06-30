@@ -10,6 +10,7 @@ import { UserServiceService } from 'src/app/services/user-service.service';
 import { DtoGroupParticipantsSummary } from 'src/app/models/dtoGroupParticipantsSummary';
 import { User } from 'src/app/models/user';
 import { GroupUserService } from 'src/app/services/group-user.service';
+import { group } from '@angular/animations';
 
 @Component({
   selector: 'app-details-mygroup',
@@ -78,19 +79,23 @@ export class DetailsMygroupComponent implements OnInit {
       }
     });
   }
-  deleteUserByGroup():void{
-    this.groupUserService.deleteGroupUserByUserAndGroup(this.idUser,this.id).subscribe({
-      next:(data)=>{
-        console.log("ELIMINA");
-        this.router.navigate(["/details-mygroup/" + this.idUser+"/group/"+this.id]);
-      },
-      error:(err)=>{
-        console.log(err);
-      }
-    });
-  }
   deleteGroup(id: number):void {
     this.groupService.deleteGroup(id).subscribe({
     });
+  }
+
+  leaveGrupo(): void{
+
+    this.groupUserService.deleteGroupUser(this.idUser).subscribe({
+      next: () => {
+        this.snack.open('Saliste con exito', 'OK', { duration: 5000 })
+        this.router.navigate(["/group/" + this.idUser]);
+      },
+      error: (err) => {
+        console.log(err);
+      }
+    });
+    
+
   }
 }

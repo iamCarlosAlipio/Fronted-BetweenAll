@@ -37,7 +37,7 @@
             </mat-form-field>
           </mat-grid-tile>
           <mat-grid-tile [colspan]="4" [rowspan]="1">
-            <button  (click)="deleteUserByGroup()" mat-raised-button color="primary" style="background-color: #A32DE3;">LEAVE GROUP</button>
+            <button mat-raised-button color="primary" (click)="leaveGrupo()" style="background-color: #A32DE3;">LEAVE GROUP</button>
           </mat-grid-tile>
         </mat-grid-list>
       </form>
@@ -63,10 +63,6 @@
                 <button routerLink="/profile/{{user.id}}" mat-raised-button color="primary" style="background-color: #A32DE3;">Ver Perfil</button>
               </div>
               &nbsp;&nbsp;
-              <div class="button-container">
-                <button  (click)="deleteUserByGroup()" mat-raised-button color="secondary" >Eliminar</button>
-                
-              </div>
             </div>
           </mat-card-header>
         </mat-card>

@@ -9,6 +9,7 @@ import { MatSnackBar } from '@angular/material/snack-bar';
 import { UserServiceService } from 'src/app/services/user-service.service';
 import { DtoGroupParticipantsSummary } from 'src/app/models/dtoGroupParticipantsSummary';
 import { User } from 'src/app/models/user';
+import { GroupUserService } from 'src/app/services/group-user.service';
 
 @Component({
   selector: 'app-details-mygroupcreated',
@@ -17,7 +18,8 @@ import { User } from 'src/app/models/user';
 })
 export class DetailsMygroupcreatedComponent {
   constructor(private formBuilder:FormBuilder, private groupService: GroupsService, private router: Router,
-    private activatedRouter: ActivatedRoute,private categoryService:CategoryService,private snack: MatSnackBar, private UserServiceService: UserServiceService) {
+    private activatedRouter: ActivatedRoute,private snack: MatSnackBar, 
+    private groupUserService: GroupUserService,private categoryService:CategoryService) {
   }
 
   group!: Group;
@@ -83,6 +85,18 @@ export class DetailsMygroupcreatedComponent {
 
     deleteGroup(id: number):void {
       this.groupService.deleteGroup(id).subscribe({
+      });
+    }
+
+    deleteUserByGroup():void{
+      this.groupUserService.deleteGroupUserByUserAndGroup(this.idUser,this.id).subscribe({
+        next:(data)=>{
+          console.log("ELIMINA");
+          this.router.navigate(["/details-mygroup/" + this.idUser+"/group/"+this.id]);
+        },
+        error:(err)=>{
+          console.log(err);
+        }
       });
     }
 }

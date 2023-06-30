@@ -124,6 +124,7 @@ export class PurchaseComponent {
     });
     this.LoadPurchase();this.LoadPurchase();this.LoadPurchase();this.LoadPurchase();
     this.LoadPurchase();this.LoadPurchase();this.LoadPurchase();this.LoadPurchase();
+  
 
     console.log(this.endPurchase);
     this.PurchaseBool=true;
