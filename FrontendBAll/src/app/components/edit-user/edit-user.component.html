@@ -1,86 +1,130 @@
 <app-navbar></app-navbar>
-<div class="UpdateUser">    
-    <div class="container1">
+<div class="body vh-85 " style="display: flex;">
+  <div class="container">
+    <div class="m-5">
       <div>
-      <form [formGroup]="editUserForm1" style="margin-right: 10%;margin-left: 10%;">
-          <div style="margin-top: 5%;">
-            <img src="./assets/img/PERFILVACIO.png" alt="logo" width="30%" class="image" />
-            <br>
-            <br>
-            <button mat-raised-button class="botton2" style="background-color:#A32DE3; color:white;">Cambiar</button>
-          </div>
-          <div style="margin-top: 10%;">
-            <p class="text-4">Correo electronico</p>
-            <mat-form-field class="full" >
-                <input matInput formControlName="email" [value]="user.email">
-            </mat-form-field>
-          </div>
-          <div>
-            <p class="text-4">contraseña</p>
-            <mat-form-field class="full">
-                <input matInput formControlName="password" [value]="user.password">
-            </mat-form-field>
+        <div>
+          <p class="text-center" style="color:#A32DE3" >INFORMACION PERSONAL</p>
+        </div>
+        <div>
+          <img [src]="auxUser.image"  *ngIf="auxUser" alt="logo" width="20%" class="image" />
+        </div>
+      <div class="form">
+        <form [formGroup]="editUserForm1" autocomplete="off" class="mt-4" >
+          <div class="row">
+            <div class="col-md-6">
+              <mat-form-field class="w-100">
+                <mat-label >Nombre</mat-label>
+                <input matInput formControlName="name">
+              </mat-form-field>
+            </div>
+            <div class="col-md-6">
+              <mat-form-field class="w-100">
+                <mat-label >Apellido</mat-label>
+                <input matInput formControlName="lastname">
+              </mat-form-field>
+            </div>
+            <div>
+              <mat-form-field class="w-100">
+                <mat-label>Correo electronico</mat-label>
+                <input matInput formControlName="email">
+              </mat-form-field>
+            </div>
+            <div>
+              <mat-form-field class="w-100">
+                <mat-label>Contraseña</mat-label>
+                <input matInput formControlName="password">
+              </mat-form-field>
+            </div>
+            <div class="col-md-6">
+              <mat-form-field class="w-100">
+                <mat-label >Tipo de Documento</mat-label>
+                <mat-select matInput  formControlName = "typeDocument">
+                  <mat-option value="DNI">DNI</mat-option>
+                  <mat-option value="Tarjeta de extrangeria">Tarjeta de extrangeria</mat-option>
+                </mat-select>
+              </mat-form-field>
+            </div>
+            <div class="col-md-6">
+              <mat-form-field class="w-100">
+                <mat-label >Numero</mat-label>
+                <input matInput formControlName="numberDocument">
+              </mat-form-field>
+            </div>
+
           </div>
         </form>
       </div>
     </div>
-    <div class="container1">
-        <form [formGroup]="editUserForm1" style="margin-right: 10%;margin-left: 10%;">
-                <div style="margin-top: 5%; display: flex;" >
-                    <mat-form-field class class="form-container-1">
-                        <label class="text-4">Nombre</label>
-                      <input matInput formControlName="name">
-                    </mat-form-field>
-                    <mat-form-field class="form-container-1" style="margin-left: 2%;">
-                        <label class="text-4">Apellido</label>
-                      <input matInput formControlName="lastname">
-                    </mat-form-field>
-                </div>
-                <div style=" display: flex;">
-                    <mat-form-field class="form-container-1">
-                        <label class="text-4">Tipo de docuemento</label>
-                        <mat-select formControlName = "typeDocument">
-                            <mat-option value="DNI">DNI</mat-option>
-                            <mat-option value="Tarjeta de extrangeria">Tarjeta de extrangeria</mat-option>
-                        </mat-select>
-                    </mat-form-field>
-                    <mat-form-field class="form-container-1" style="margin-left: 2%;">
-                        <label class="text-4">Numero de docuemento</label>
-                      <input matInput [value]="user.numberDocument" formControlName="numberDocument">
-                    </mat-form-field>
-                </div>
-                <div style="display: flex;">
-                    <mat-form-field style="width: 60%;">
-                        <label class="text-4">Categorias</label>
-                      <mat-select  formControlName="category" (selectionChange)="changeButton($event)">
-                        <mat-option *ngFor="let category of categories" [value]="category.name">
-                          {{category.name}}
-                        </mat-option>
-                      </mat-select>
-                    </mat-form-field>
-                    <button mat-raised-button [disabled]="insert" style="background-color:#A32DE3; color:white; width: 20%; margin-left: 6%" (click)="saveUserCategory()" >Agregar</button>
-                    <button mat-raised-button [disabled]="delete" style="background-color:white; color:black; width: 20%; margin-left: 10%;" (click)="deleteUserCategory()">Quitar</button>
-                </div>  
-                <div>
-                    <label class="text-4">Telefono</label>
-                  <mat-form-field class="full">
-                    <input matInput [value]="user.phone" formControlName="phone">
-                  </mat-form-field>
-                </div>
-                <div>
-                    <label class="text-4">Ciudad</label>
-                    <mat-form-field class="full">
-                      <input matInput [value]="user.city" formControlName="city">
-                    </mat-form-field>
-                </div>
-                <div style="display: block;">
-                    <button mat-raised-button style="background-color:#A32DE3; color:white; width: 100%;" (click)="updateUser()">Actuaizar datos</button>
-                </div>
+  </div>
+  </div>
+  <div class="container">
+    <div class="m-5">
+      <div>
+      <div class="form">
+        <form [formGroup]="editUserForm1" autocomplete="off" class="mt-4" >
+          <div class="row">
+            <div class="col-md-6">
+              <mat-form-field class="w-100">
+                <mat-label >Ciudad</mat-label>
+                <input matInput formControlName="city">
+              </mat-form-field>
+            </div>
+            <div class="col-md-6">
+              <mat-form-field class="w-100">
+                <mat-label >Telefono</mat-label>
+                <input matInput formControlName="phone">
+              </mat-form-field>
+            </div>
+            <div>
+              <mat-form-field class="w-100">
+                <mat-label>Imagen</mat-label>
+                <input matInput formControlName="image">
+              </mat-form-field>
+            </div>
+            <div>
+              <div style="display: flex;">
+                <mat-form-field class="form-container-1">
+                  <mat-select placeholder="Categoria" formControlName="category" (selectionChange)="change($event)">
+                    <mat-option *ngFor="let category of categories" [value]="category.id">
+                      {{category.name}}
+                    </mat-option>
+                  </mat-select>
+                </mat-form-field>
+                <button mat-raised-button [disabled]="insert" style="background-color:#A32DE3; color:white; width: 20%; margin-left: 10%;" (click)="saveUserCategory()" >Agregar</button>
+              </div>
+            </div>
+            <div>
+              <div class="category-list">
+                  <label>CATEGORIAS FAVORITAS</label>
+                <mat-table [dataSource]="dataSource">
+                  <!-- Columna para el nombre de la categoría -->
+                  <ng-container matColumnDef="nameCategory">
+                    <mat-header-cell *matHeaderCellDef>Nombre</mat-header-cell>
+                    <mat-cell *matCellDef="let category">{{ category.nameCategory }}</mat-cell>
+                  </ng-container>
+      
+                  <ng-container matColumnDef="action1">
+                    <mat-header-cell *matHeaderCellDef>Eliminar</mat-header-cell>
+                    <mat-cell *matCellDef="let category">
+                      <a style="cursor: pointer;" (click)="deleteUserCategory(category.idUserCategory)">
+                        <mat-icon>delete</mat-icon>
+                      </a>   
+                    </mat-cell>
+                  </ng-container>
+                  <mat-header-row *matHeaderRowDef="displayedColumns"></mat-header-row>
+                  <mat-row *matRowDef="let row; columns: displayedColumns;"></mat-row>
+                </mat-table>
+              </div>
+            </div>
+            <div>
+              <button mat-raised-button routerLink="/home/{{idUser}}" class="w-100 mb-3" style="background-color:white; color:#A32DE3">Regresar</button>
+              <button mat-raised-button class="w-100" style="background-color:#A32DE3; color:white" (click)="updateUser()">Actualizar</button>
+            </div>
+          </div>
         </form>
+      </div>
     </div>
+  </div>
+  </div>
 </div>
-  
-  
-  
-  
-
