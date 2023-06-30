@@ -101,7 +101,7 @@ export class AddEditGroupsComponent {
   }
 
   backGroups():void {
-    this.router.navigate(["/groups"]);
+    this.router.navigate(["/groups/"+this.id]);
   }
 
   loadCatergories(): void {
