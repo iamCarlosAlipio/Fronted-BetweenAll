@@ -31,7 +31,7 @@ const routes: Routes = [
   {path: 'pay/:id', component:PayComponent},
   {path: 'confirmPage1', component:ConfirmBuy1Component},
   {path: 'confirmEvent', component:ConfirmEventComponent},
-  {path: 'logout', component:LogoutComponent},
+  {path: 'logout/:id', component:LogoutComponent},
   {path: 'add-group/:id/group', component:AddEditGroupsComponent},
   {path: 'edit-groups/:id/group/:idGroup', component:AddEditGroupsComponent},
   {path: 'details-group/:id/group/:idGroup', component: DetailsGroupComponent},

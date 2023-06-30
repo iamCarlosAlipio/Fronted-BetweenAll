@@ -9,6 +9,8 @@ import { MatSnackBar } from '@angular/material/snack-bar';
 import { CategoryService } from 'src/app/services/category.service';
 import { UserCategoryService } from 'src/app/services/user-category.service';
 import { userCategory } from 'src/app/models/userCategory';
+import { DtoUserCategorySummary } from 'src/app/models/dtoUserCategorySummary';
+import { MatTableDataSource } from '@angular/material/table';
 
 @Component({
   selector: 'app-edit-user',
@@ -17,15 +19,16 @@ import { userCategory } from 'src/app/models/userCategory';
 })
 export class EditUserComponent {
 
-  user!:User;
+
   editUserForm1!:FormGroup;
   insert:boolean=true;
-  delete:boolean=true;
   categories!:Category[];
   auxUsers!:User[];
   idUser:number=this.activated.snapshot.params['id'];
-  idcategory!:number;
-
+  displayedColumns: string[]=['nameCategory', 'action1'];
+  dtoUserCategories!:DtoUserCategorySummary[];
+  dataSource = new MatTableDataSource<DtoUserCategorySummary>();
+  auxUser!:User;
 
   constructor(private FormBuilder:FormBuilder, private userService:UserServiceService, 
     private router: Router, private stardRouter: ActivatedRoute,private categoryService:CategoryService,
@@ -33,8 +36,8 @@ export class EditUserComponent {
     
     ngOnInit():void{
       this.loadCatergories();
-      this.findUser()
       this.reactiveForm();
+      this.loadTable();
     }
     reactiveForm():void {
       this.editUserForm1 = this.FormBuilder.group({
@@ -48,10 +51,12 @@ export class EditUserComponent {
           phone:["",[Validators.required]],
           city:["",[Validators.required]],
           category:["",[Validators.required]],
+          image:["",[Validators.required]]
       });
 
       this.userService.getUser(this.idUser).subscribe({
         next: (data:User) => {
+          this.auxUser=data;
           this.editUserForm1.get("id")?.setValue(data.id);
           this.editUserForm1.get("name")?.setValue(data.name);
           this.editUserForm1.get("lastname")?.setValue(data.lastname);
@@ -60,7 +65,8 @@ export class EditUserComponent {
           this.editUserForm1.get("typeDocument")?.setValue(data.typeDocument);
           this.editUserForm1.get("numberDocument")?.setValue(data.numberDocument);      
           this.editUserForm1.get("phone")?.setValue(data.phone);
-          this.editUserForm1.get("city")?.setValue(data.city);             
+          this.editUserForm1.get("city")?.setValue(data.city);
+          this.editUserForm1.get('image')?.setValue(data.image);
         },
         error: (err) => {
           console.log(err);
@@ -68,38 +74,6 @@ export class EditUserComponent {
       });
   
     }
-
-  changeButton(event:MatSelectChange):void{
-
-    this.snack.open(this.editUserForm1.get("category")!.value, 'OK', { duration: 5000 })
-    let auxCategory = this.categories.find(x => x.name == this.editUserForm1.get("category")!.value);
-    if(auxCategory){
-      this.snack.open('if', 'OK', { duration: 5000 })
-      let idCatg =auxCategory.id;
-      this.userCategoryService.getUserCategories().subscribe({
-      next: (data:userCategory[]) => {
-        if(data.length!=0){
-          for(let i = 0; i < data.length ; i++){
-            if(data[i].idCategory== idCatg && data[i].idUser==this.idUser){
-              this.snack.open('son iguales', 'OK', { duration: 5000 })
-              this.insert=true;
-              this.delete=false;
-            }else{
-              this.insert=false;
-              this.delete=true;
-            }
-          }
-        }else{
-          this.insert=false;
-          this.delete=true;
-        }
-      },
-      error: (err) => {
-        console.log(err);
-      }
-    });
-    }
-  }
 
   loadCatergories(): void {
     this.categoryService.getCartegories().subscribe(
@@ -107,74 +81,36 @@ export class EditUserComponent {
         this.categories = data;
     });
   }
-  
-  deleteUserCategory():void{
 
-    let auxCategory = this.categories.find(x => x.name == this.editUserForm1.get("category")!.value);
-    if(auxCategory){
-      let idCatg =auxCategory.id;
-      this.userCategoryService.getUserCategories().subscribe({
-        next: (data:userCategory[]) => {
-          for(let i = 0; i < data.length ; i++){
-            if(data[i].idCategory== idCatg && data[i].idUser==this.idUser){
-              this.userCategoryService.deleteUserCategory(data[i].id).subscribe({
-                next: (data)  => {
-                  this.snack.open('eliminado', 'OK', { duration: 5000 })
-                  this.insert=false;
-                  this.delete=true;
-                },
-                error: (err) => {
-                  console.log(err);
-                }
-              });
-            }
-          }
-        },
-        error: (err) => {
-          console.log(err);
-        }
-      });
-    }
-
-  }
 
   saveUserCategory():void {
       
-    let auxCategory = this.categories.find(x => x.name == this.editUserForm1.get("category")!.value);
-    if(auxCategory){
-      this.idcategory=auxCategory.id
-    }
     const userCatg:userCategory = {
-      id: parseInt(this.editUserForm1.get("id")!.value),
+      id:0,
       idUser:this.idUser,
-      idCategory: this.idcategory
+      idCategory: this.editUserForm1.get("category")!.value,
     }
+    console.log(userCatg);
+
     this.userCategoryService.insertUserCategory(userCatg).subscribe({
-      next: (data)  => {
-        this.insert=true;
-        this.delete=false;
+      next: ()  => {
       },
       error: (err) => {
         console.log(err);
       }
     });
-
-  }
-
-  findUser():void{
-    this.userService.getUsers().subscribe(
-      (data: User[]) => {
-        let auxUser = data.find(x => x.id == this.idUser);
-        if (auxUser) {
-          this.user=auxUser;
-        }
-    });
-  }
-
-  updateUser():void{
     
-    const axuser:User = {
-      id: this.idUser+1,
+    this.ngOnInit();
+    this.ngOnInit();
+    this.ngOnInit();
+    this.ngOnInit();
+
+  }
+
+  updateUser():void {
+
+    const user:User = {
+      id: this.idUser,
       name: this.editUserForm1.get("name")!.value,
       lastname: this.editUserForm1.get("lastname")!.value,
       email: this.editUserForm1.get("email")!.value,
@@ -183,19 +119,62 @@ export class EditUserComponent {
       city: this.editUserForm1.get("city")!.value,
       numberDocument: parseInt(this.editUserForm1.get("numberDocument")!.value),
       typeDocument: this.editUserForm1.get("typeDocument")!.value,
-      image:"./assets/img/PERFILVACIO.png"
+      image:this.editUserForm1.get("image")!.value
     }
-    
-    this.userService.updateUser(axuser).subscribe({
-      next: (data)  => {
-        this.snack.open("El empleado se actualizó correctamente","OK",{duration:3000});
+
+    console.log(user);
+
+    this.userService.updateUser(user).subscribe({
+      next: ()  => {
+        this.router.navigate(["home/" + this.idUser]);
       },
       error: (err) => {
         console.log(err);
-        this.snack.open("El no empleado se actualizó correctamente","OK",{duration:3000});
       }
     });
-    
+  }
+
+  loadTable():void{
+    this.userCategoryService.getUserCategoriesDTO(this.idUser).subscribe({
+      next: (data)  => {
+        this.dataSource = new MatTableDataSource(data);
+        this.dtoUserCategories=data;
+        console.log(data);
+      },
+      error: (err) => {
+        console.log(err);
+      }
+    });
+
+  }
+
+
+  deleteUserCategory(id:number):void{
+
+    this.userCategoryService.deleteUserCategory(id).subscribe({
+      next: ()  => {
+        this.snack.open('eliminado', 'OK', { duration: 5000 })
+      },
+      error: (err) => {
+        console.log(err);
+      }
+    });
+
+    this.ngOnInit();
+    this.ngOnInit();
+    this.ngOnInit();
+    this.ngOnInit();
+  }
+
+  change(event:MatSelectChange):void{
+
+    let aux=this.dtoUserCategories.find(x=>x.idCategory==this.editUserForm1.get("category")!.value)
+
+    if(aux){
+      this.insert=true;
+    }else{
+      this.insert=false;
+    }
   }
 
 

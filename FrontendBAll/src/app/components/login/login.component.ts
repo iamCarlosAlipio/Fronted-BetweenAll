@@ -30,7 +30,7 @@ export class LoginComponent {
     
     this.form = this.FormBuilder.group({
         email:["",[Validators.required, Validators.maxLength(30)]],
-        password:["",[Validators.required, Validators.maxLength(10)]],
+        password:["",[Validators.required, Validators.maxLength(30)]],
     });
   }
 
@@ -39,15 +39,16 @@ export class LoginComponent {
     this.mensaje = true;
     this.email = this.form.get('email')?.value;
     this.password = this.form.get('password')?.value;
-    this.user.getUserPassword(this.password,this.email).subscribe(
-      (data: User) => {
-        if (data) {
-          this.router.navigate(["home/" + data.id]);
-        }
-        else{
-          this.snack.open('El usuario no existe', 'OK', { duration: 5000 })
-        }
+    this.user.getUserPassword(this.password,this.email).subscribe({
+      next: (data:User)  => {
+        this.router.navigate(["home/" + data.id]);
+      },
+      error: (err) => {
+        this.snack.open('El usuario no existe', 'OK', { duration: 5000 })
+
+      }
     });
+      
     this.mensaje = false;
   }
 }

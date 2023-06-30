@@ -30,7 +30,7 @@ export class AddUserComponent {
   dataSource = new MatTableDataSource<DtoUserCategorySummary>();
   displayedColumns: string[]=['nameCategory', 'action1'];
   dtoUserCategories!:DtoUserCategorySummary[];
-  insert:boolean=true;
+  insert:boolean=false;
   auxUser!:User;
   
   constructor(private FormBuilder:FormBuilder, private userService:UserServiceService, 
@@ -48,21 +48,22 @@ export class AddUserComponent {
     
       this.addUserForm1 = this.FormBuilder.group({
           id:[""],
-          name:["",[Validators.required, Validators.maxLength(60)]],
-          lastname:["",[Validators.required, Validators.maxLength(20)]],
-          email:["",[Validators.required, Validators.maxLength(30)]],
+          name:["",[Validators.required, Validators.maxLength(60),Validators.pattern('^[a-zA-Z]+$')]],
+          lastname:["",[Validators.required, Validators.maxLength(20),Validators.pattern('^[a-zA-Z]+$')]],
+          email:["",[Validators.required, Validators.maxLength(30),Validators.pattern(/^[\w-]+(\.[\w-]+)*@([\w-]+\.)+[a-zA-Z]{2,7}$/)]],
           password:["",[Validators.required, Validators.maxLength(7)]],
       });
 
       this.addUserForm2 = this.FormBuilder.group({
         typeDocument:new FormControl("",[Validators.required]),
-        numberDocument:new FormControl("",[Validators.required]),
-        phone:new FormControl("",[Validators.required]),
-        city:new FormControl("",[Validators.required]),
+        numberDocument:new FormControl("",[Validators.required,Validators.pattern('^[0-9]+$')]),
+        phone:new FormControl("",[Validators.required,Validators.maxLength(9),Validators.pattern('^[0-9]+$')]),
+        city:new FormControl("",[Validators.required,Validators.pattern('^[a-zA-Z]+$')]),
      });
      this.addUserForm3 = this.FormBuilder.group({
-      category:new FormControl("",[Validators.required]),
+      category:new FormControl(""),
    });
+   
     }
 
     saveUser():void { 
@@ -105,7 +106,8 @@ export class AddUserComponent {
         typeDocument: this.addUserForm2.get("typeDocument")!.value,
         image:"./assets/img/PERFILVACIO.png"
       }
-
+      console.log("hola");
+      console.log(user);
       this.userService.updateUser(user).subscribe({
         next: (data)  => {
           console.log(data);
@@ -134,10 +136,14 @@ export class AddUserComponent {
         }
       });
       
-      this.ngOnInit();
-      this.ngOnInit();
-      this.ngOnInit();
-      this.ngOnInit();
+      this.loadTable();
+      this.loadTable();
+      this.loadTable();
+      this.loadTable();
+      this.loadTable();
+      this.loadTable();
+      this.loadTable();
+      this.loadTable();
       
     }
 
@@ -172,18 +178,20 @@ export class AddUserComponent {
       this.hide=!this.hide;
     }
 
-    changeButton(event:MatSelectChange):void{
+    change(event:MatSelectChange):void{
 
-      this.userCategoryService.getUserCategoriesDTO(this.auxUser.id).subscribe({
-        next: (data)  => {
-          this.dataSource = new MatTableDataSource(data);
-          this.dtoUserCategories=data;
-          console.log(data);
-        },
-        error: (err) => {
-          console.log(err);
-        }
-      });
+      this.loadTable();
+      this.loadTable();
+      this.loadTable();
+  
+      let aux=this.dtoUserCategories.find(x=>x.idCategory==this.addUserForm3.get("category")!.value)
+      console.log(aux);
+  
+      if(aux){
+        this.insert=true;
+      }else{
+        this.insert=false;
+      }
     }
     
     deleteUserCategory(id:number):void{
@@ -197,10 +205,14 @@ export class AddUserComponent {
         }
       });
 
-      this.ngOnInit();
-      this.ngOnInit();
-      this.ngOnInit();
-      this.ngOnInit();
+      this.loadTable();
+      this.loadTable();
+      this.loadTable();
+      this.loadTable();
+      this.loadTable();
+      this.loadTable();
+      this.loadTable();
+
     }
     deleteAll():void{
 
@@ -230,7 +242,6 @@ export class AddUserComponent {
         next: (data)  => {
           this.dataSource = new MatTableDataSource(data);
           this.dtoUserCategories=data;
-          console.log(data);
         },
         error: (err) => {
           console.log(err);

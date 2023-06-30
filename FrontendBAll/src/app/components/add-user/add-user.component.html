@@ -104,23 +104,26 @@
   </div>
   <div *ngIf="!fristPart" class="container1" style=" overflow: hidden;">
     <form [formGroup]="addUserForm3" class="space">
+      <div class="Encabezado">
+        <p class="text-2" style="margin-top: 0.5%;">Mis Preferencias</p>
+      </div>
       <div class="mt-4">
-        <p class="text-4">Elige tus categorias</p>
             <div style="display: flex;">
               <mat-form-field class="form-container-1">
-                <mat-select placeholder="Categoria" formControlName="category" (selectionChange)="changeButton($event)">
+                <mat-select placeholder="Categoria" formControlName="category" (selectionChange)="change($event)">
                   <mat-option *ngFor="let category of categories" [value]="category.id">
                     {{category.name}}
                   </mat-option>
                 </mat-select>
               </mat-form-field>
-              <button mat-raised-button [disabled]="false" style="background-color:#A32DE3; color:white; width: 20%; margin-left: 10%;" (click)="saveUserCategory()" >Agregar</button>
+              <button mat-raised-button [disabled]="insert" style="background-color:#A32DE3; color:white; width: 20%; margin-left: 10%;" (click)="saveUserCategory()" >Agregar</button>
             </div>
       </div>
-      <div class="col-md-6">
-        <div class="category-list">
-            <label>CATEGORIAS FAVORITAS</label>
-
+      <div class="col justify-content">
+        <div class="category-list" style="margin-top: 0.5%;">
+            <label>Mi Colección de Categorias</label>
+            <br>
+            <br>
           <mat-table [dataSource]="dataSource">
             <!-- Columna para el nombre de la categoría -->
             <ng-container matColumnDef="nameCategory">
