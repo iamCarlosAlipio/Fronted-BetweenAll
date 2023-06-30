@@ -27,9 +27,10 @@ import { throwToolbarMixedModesError } from '@angular/material/toolbar';
 
 export class PurchaseComponent {
   addPurchaseForm!:FormGroup;
-  addTicketForm!:FormGroup;
+  //addTicketForm!:FormGroup;
   
   TheEvent!: SocialEvent;
+  TheTicket!: Ticket;
   DatesEvent!: DateSocialEvent[];
   ZoneEvents!: ZoneEvent[];
   idUser:number = this.activatedRoute.snapshot.params['idUser'];
@@ -42,8 +43,10 @@ export class PurchaseComponent {
     private ticketsService:TicketsService, private userServiceService:UserServiceService) {
 
   }
-  total!:number;
-  totaltickets!:number;
+  total:number=0;
+  price:number=0;
+  id:number=0;
+  totalprice!:number;
 
   ngOnInit() {
     this.reactiveForm();
@@ -51,17 +54,16 @@ export class PurchaseComponent {
     console.log(this.idEvent);
     
     this.ListDatesEvents();
-    /*this.ListTickets();*/
-    this.ListZoneEvents();
-    
   }
   
   reactiveForm():void {
     
-    /*this.addPurchaseForm = this.formBuilder.group({
-        quantityForm:["",[Validators.required]],
-        totalForm:["",[Validators.required]],
-    });*/
+    this.addPurchaseForm = this.formBuilder.group({
+        quantityForm:[""],
+        totalForm:[""],
+        Fecha:[""],
+        Zone:[""]
+    });
 
     /*this.addTicketForm = this.formBuilder.group({
       id:[""],
@@ -73,22 +75,36 @@ export class PurchaseComponent {
     console.log(this.idZoneEvent);
   }*/
 
-  /*getTotal(total:string):void{
-    this.totaltickets=parseInt(total);
-    this.total=this.totaltickets*this.TheZoneEvents[this.idZoneEvent-1].price;
+  getTotal(cant:number):void{
+    this.total= cant;
     console.log(this.total);
-  }*/
+    this.totalprice=this.total*this.price;
+  }
+  getPrice(id:number):void{
+    this.id=id;
+    console.log(this.id);
+    this.totalprice=this.total*this.price;
+  }
+  getZone(){
+    for(let i=0;i<this.ZoneEvents.length;i++){
+      if(this.ZoneEvents[i].id==this.id){
+        this.price=this.ZoneEvents[i].price;
+      }
+    }
+    console.log(this.price);
+    this.totalprice=this.total*this.price;
+  }
 
   /*UpdateTotal():void{
     this.total=this.totaltickets*this.TheZoneEvents[this.idZoneEvent-1].price;
   }*/
 
-  /*savePurchase():void {
+  savePurchase():void {
     const purchase:Purchase = {
       id:0,
       date: new Date(2023,2,2),
-      quantity:1,
-      total:1,
+      quantity:this.total,
+      total:this.total*this.price,
       idUser: this.idUser,
       idCard: 1, 
     }
@@ -98,13 +114,13 @@ export class PurchaseComponent {
       
       next: (data)  => {
         this.router.navigate(["home/" + this.idUser]);
-        this.snackBar.open("La compra se ingresó correctamente","OK",{duration:3000});
+        this.snackBar.open("La compra se ingresó correctamente","OK",{duration:3000});     
       },
       error: (err) => {
         console.log(err);
       }
     });
-  }*/
+  }
 
   /*ListTickets():void{
     this.purchasesService.getPurchases().subscribe(
@@ -116,37 +132,28 @@ export class PurchaseComponent {
   }*/
 
   
+  
+  saveTickets():void {
 
-  /*saveTickets():void {
-    let idpurchase:number=0;
-
-    for(let i=0;i<this.endPurchase.length;i++){
-      if(this.endPurchase[i].id>idpurchase){
-        idpurchase=this.endPurchase[i].id;
-      }
-    }
-    console.log(this.endPurchase);
-
-    console.log(idpurchase);
     const ticket:Ticket = {
-      id:parseInt(this.addTicketForm.get("id")!.value),
-      idPurchase: idpurchase+1,
-      idZoneEvent: this.idZoneEvent,
+      id:0,
+      idPurchase: 2,
+      idZoneEvent:3,
     }
 
-    for(let i=0;i<this.totaltickets;i++){
-      this.ticketsService.addTicket(ticket).subscribe({
+    for(let i=0;i<this.total;i++){
+      this.ticketsService.addTicket(ticket,ticket.idPurchase,ticket.idZoneEvent).subscribe({
       
-        next: (data)  => {
-          this.snackBar.open("Los tickets se regitraron correctamente ingresó correctamente","OK",{duration:3000});
-        },
-        error: (err) => {
-          console.log(err);
-        }
-      });
+      next: (data)  => {
+        this.snackBar.open("Los tickets se regitraron correctamente ingresó correctamente","OK",{duration:3000});
+
+      },
+      error: (err) => {
+        console.log(err);  
+      }
+    });
     }
-    
-  }*/
+  }
   
   
 
@@ -157,31 +164,17 @@ export class PurchaseComponent {
 
     this.datesocialeventsService.getDateSocialEventByEvent(this.idEvent).subscribe(
       (data: DateSocialEvent[]) => 
-      { this.DatesEvent=data;});  
-      console.log(this.DatesEvent);
+      { this.DatesEvent=data;
+
+        this.zoneeventservice.getZoneEventByDate(data[0].id).subscribe(
+          (data: ZoneEvent[])=>
+          {this.ZoneEvents=data;})
+
+      });  
   }
 
-  ListZoneEvents(): void{
 
-    this.zoneeventservice.getZoneEventByDate(3).subscribe(
-      (data: ZoneEvent[])=>
-      {this.ZoneEvents=data;})
-    console.log(this.ZoneEvents);
-  }
-
-  /*changePay():void{
-    this.router.navigate(["pay/" + this.idUser]);
-  }*/
-  
-  /*ListZoneEvent(id:number): void{
-    for(let i=0;i<this.DatesEvent.length;i++){
-      this.zoneeventservice.getZoneEventByDate(this.DatesEvent[0].id).subscribe(
-        (zone:ZoneEvent[])=>
-        {this.ZoneEvents=zone;});
-    }
-  }*/
-
-  cants: string[] = ["1","2","3","4"];
+  cants: number[] = [1,2,3,4];
   
 }
 

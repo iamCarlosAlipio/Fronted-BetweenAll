@@ -27,20 +27,29 @@ export class AddSocialEventComponent {
   myForm2!:FormGroup;
   myForm3!:FormGroup;
   id!:number;
+  idEvent!:number;
+  EventData!: SocialEvent;
+  DateData!: DateSocialEvent;
+  ZoneData!: ZoneEvent;
+  TheDate!: DateSocialEvent;
+  
   categories!:Category[];
-  socialevents!:SocialEvent[];
-  datesocialevents!:DateSocialEvent[];
+  SocialsEvents!: SocialEvent[];
+  DatesSocialsEvents!:DateSocialEvent[];
   constructor(private formBuilder:FormBuilder, private socialEventsService:SocialEventsService,
     private datesocialeventsService:DatesocialeventsService, private zoneeventsService:ZoneeventsService,
     private router: Router, private activatedRouter: ActivatedRoute,
     private snackBar:MatSnackBar, private categoryService:CategoryService){}
 
   ngOnInit(){
+      this.id = this.activatedRouter.snapshot.params["id"];  
       this.reactiveForm();
       this.reactiveForm2();
       this.reactiveForm3();
+
       this.loadCatergories();
-      this.id = this.activatedRouter.snapshot.params["id"];  
+      this.LoadSocialEvents();
+     
   }
   
   //REACTIVE FORM PARA CREAR LOS DETALLES DEL EVENTO
@@ -53,7 +62,6 @@ export class AddSocialEventComponent {
         descriptionDetail:[""],
         category:[""],
     });
-     
   }
 
   //REACTIVE FORM PARA CREAR LAS FECHAS DEL EVENTO
@@ -78,32 +86,30 @@ export class AddSocialEventComponent {
   }
   
 
-  loadCatergories(): void {
-    
+  loadCatergories(): void {  
     this.categoryService.getCartegories().subscribe(
       (data: Category[]) => {
-        this.categories = data;
-    });
-   
-    /*this.socialEventsService.getSocialEvents().subscribe(
-      (data: SocialEvent[])=>{
-        this.socialevents=data;
-        
-      }
-      );
-    this.datesocialeventsService.getDateSocialEvents().subscribe(
-      (data: DateSocialEvent[])=>{
-        this.datesocialevents=data;
-      });
-      console.log(this.socialevents);
-  */
+        this.categories = data;});
   }
+
+  LoadSocialEvents():void{
+    /*this.socialEventsService.getSocialEventEnd().subscribe(
+      (data: SocialEvent) => 
+        {this.TheEvent = data;});
+    this.datesocialeventsService.getDateSocialEventEnd().subscribe(
+      (data: DateSocialEvent) => 
+        {this.TheDate = data;});
+    */
+  }
+
+ 
   //GUARDAR DETALLES DE EVENTO SOCIAL
   //GUARDAR DETALLES DE EVENTO SOCIAL
   //GUARDAR DETALLES DE EVENTO SOCIAL
 
   saveSocialEvent():void {
-
+    //this.LoadSocialEvents();
+    let eventData:number;
     const socialEvent:SocialEvent = {
       id: 0,
       name: this.myForm.get("nameDetail")!.value,
@@ -118,12 +124,16 @@ export class AddSocialEventComponent {
       next: (data)  => {
         this.router.navigate(["/home/"+this.id]);
         this.snackBar.open("El evento se registró correctamente","OK",{duration:3000});
-        console.log("evento guardado");
+        this.EventData=data;
+        this.saveDateSocialEvent(this.EventData.id);
+        console.log("id del evento :"+this.EventData.id);
       },
       error: (err) => {
         console.log(err);
+        console.log("no llega");
       }
     });
+    
   }
 
   volverHome():void {
@@ -142,7 +152,6 @@ export class AddSocialEventComponent {
       this.events.push(date);
     }
     this.cargarFecha();
-    
   }
 
   displayedColumns2: string[] = ['dDate', 'actions'];
@@ -150,6 +159,7 @@ export class AddSocialEventComponent {
   
   cargarFecha(): void{
     this.dataSource2=new MatTableDataSource(this.events);
+    
   }
   
   deleteFecha(id: number):void {
@@ -157,28 +167,34 @@ export class AddSocialEventComponent {
     this.cargarFecha();
   }
 
+  
 
-  saveDateSocialEvent():void {
-    
+  saveDateSocialEvent(idEvent:number):void {
+    console.log(this.EventData.id);
     for(let i:number=0;i<this.events.length;i++){
       const dateSocialEvent:DateSocialEvent = {
         id:0,
-        idSocialEvent: this.socialEventsService.getSocialEvents.length,
+        idSocialEvent: idEvent,
         date: this.events[i],
         starTime: this.myForm2.get("startDate")!.value,
         endTime: this.myForm2.get("endDate")!.value,
       }
-  
+      
       this.datesocialeventsService.addDateSocialEvent(dateSocialEvent,dateSocialEvent.idSocialEvent).subscribe({
         next: (data)  => {
           this.router.navigate(["/home/"+this.id]);
           this.snackBar.open("La fecha del evento se registró correctamente","OK",{duration:3000});
+
         },
         error: (err) => {
           console.log(err);
         }
       });
     }
+ 
+
+
+    //console.log("el ultimo fecha es: "+this.TheDate.id);
   }
 
   //GUARDAR ZONAS DE EVENTO
@@ -198,19 +214,21 @@ export class AddSocialEventComponent {
         id: this.idNumberZone,
         name: this.myForm3.get("nameZone")!.value,
         price: parseInt(this.myForm3.get("priceZone")!.value),
-        idDateSocialEvent: 0,
+        idDateSocialEvent: this.DateData.id,
         capacity: parseInt(this.myForm3.get("capacityZone")!.value)
       }
     );  
     this.cargarZonas();
     this.idNumberZone++;
     console.log(this.NumberZone);
+
   }
 
   cargarZonas(): void{
     this.dataSource=new MatTableDataSource(this.NumberZone);
     console.log(this.dataSource.data);
     console.log(this.NumberZone.length);
+    
   }
   
   deleteZone(id: number):void {
@@ -220,14 +238,14 @@ export class AddSocialEventComponent {
   }
 
   saveZoneEvent():void {
-
+    this.LoadSocialEvents();
     for(let i:number=0;i<this.events.length;i++){
       for(let j:number=0;i<this.NumberZone.length;i++){
         const zoneEvent:ZoneEvent = {
           id: 0,
           name: this.NumberZone[j].name,
           price: this.NumberZone[j].price,
-          idDateSocialEvent:this.datesocialeventsService.getDateSocialEvents.length+i+1,
+          idDateSocialEvent:this.TheDate.id+i,
           capacity: this.NumberZone[j].capacity
         }
     
@@ -245,7 +263,7 @@ export class AddSocialEventComponent {
     }
   }
 
-  
+
 
 
 } 

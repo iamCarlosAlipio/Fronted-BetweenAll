@@ -51,7 +51,7 @@
         <div style="display: flex;">
           <mat-form-field class="form-container-1">
             <mat-select placeholder="Categoria" formControlName="category" (selectionChange)="($event)">
-              <mat-option *ngFor="let category of categories" [value]="category.id">
+              <mat-option *ngFor="let category of categories" [value]="category.id" >
                 {{category.name}}
               </mat-option>
             </mat-select>
@@ -210,6 +210,7 @@
 <form >
 
       <div>
+
         <div class="col-md-6" id="button-left"> 
           <br>
           <button class="botton1" (click)="volverHome();" mat-fab extended>Cancelar</button>
@@ -218,9 +219,11 @@
 
         <div class="col-md-6" id="button-right" >
           <br>
-          <button class="botton2" (click)="saveSocialEvent(); saveDateSocialEvent(); saveZoneEvent();volverHome(); "  mat-fab extended [disabled]="myForm.invalid">Crear Evento</button>
+          <button class="botton2"  (click)="saveSocialEvent();"  mat-fab extended [disabled]="myForm.invalid">Crear Evento</button>
+          <br>
+          <button class="botton2"  (click)="saveSocialEvent();"  mat-fab extended [disabled]="myForm.invalid">Crear Evento</button>
+          <br>
         </div>
-
       </div>   
 </form>
 

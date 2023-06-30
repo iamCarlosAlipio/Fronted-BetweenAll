@@ -48,53 +48,59 @@
     </div>
     <div class="col-md-6" >
       <label style="margin-top: 10%;">Datos del evento</label>
-      <mat-form-field class="w-100" >
+  
+      <div>
+        
+    <div class="d-flex" >
+
+      <form [formGroup]="addPurchaseForm" class="space" >
+        
+        <mat-form-field class="form-container-1" >
           <mat-label>Fecha</mat-label>
-          <mat-select>
-            <mat-option *ngFor="let item of DatesEvent" [value]="item.date">
+            <mat-select placeholder="Fecha" formControlName="Fecha" (selectionChange)="($event)" click="ListZoneEvents()">
+            <mat-option *ngFor="let item of DatesEvent" [value]="item.id">
               {{item.date|date:"dd/MM/YYYY"}}
             </mat-option>
           </mat-select>
-      </mat-form-field>
+        </mat-form-field>
 
-      <mat-form-field class="w-100">
-          <mat-label>Zona</mat-label>
-          <mat-select>
-            <mat-option *ngFor="let item of ZoneEvents" [value]="item.name" >
-              {{item.name}}
-            </mat-option>
-          </mat-select>
-      </mat-form-field>
-      <div class="d-flex" >
-
-        <form [formGroup]="addPurchaseForm" class="space" >
-          <mat-form-field>
-            <p>Cantidad de entradas</p>
-            <mat-select appearance="fill" >
-              <mat-option type="text" formControlName="quantityForm" placeholder="Cantidad de entradas"
-               *ngFor="let cant of cants" [value]="cant"  >
-                {{cant}}
+        <mat-form-field class="form-container-1">
+            <mat-label>Zona</mat-label>
+            <mat-select placeholder="Zone" formControlName="Zone" (selectionChange)="($event)" >
+              <mat-option *ngFor="let item of ZoneEvents" [value]="item.id" (click)="getPrice(item.id);getZone();" >
+                {{item.name}}
               </mat-option>
             </mat-select>
-          </mat-form-field>
-          
-        </form>
+        </mat-form-field>
 
-          <mat-form-field appearance="fill" class="w-50 ms-2">
-              <mat-label>Monto</mat-label>
-              <input type="text" matInput readonly="true" formControlName="totalForm">
-              <p>{{total}}</p>
-            </mat-form-field>
-      </div>
+        <mat-form-field>
+          <p>Cantidad de entradas</p>
+          <mat-select appearance="fill" >
+            <mat-option type="text" formControlName="quantityForm" placeholder="quantityForm"
+             *ngFor="let cant of cants" [value]="cant"  (click)="getTotal(cant);">
+              {{cant}}
+            </mat-option>
+          </mat-select>
+        </mat-form-field>
+        
+      </form>
+
+        <mat-form-field appearance="fill" class="w-50 ms-2">
+            <mat-label>Monto</mat-label>
+            <input type="text" matInput readonly="true" formControlName="totalForm" placeholder="totalForm">
+            <p>{{totalprice}}</p>
+          </mat-form-field>
+    </div>
+  </div>
+    
       <br>
-      
       <div >
           <br>
-          <button mat-fab extended style=" background-color:#A32DE3;" class="text-white w-100">IR A PAGAR</button>
+          <button mat-fab extended style=" background-color:#A32DE3;" class="text-white w-100" (click)="savePurchase();saveTickets();">IR A PAGAR</button>
       </div>
   </div>
 </div>
-  </div>
+</div>
 
   
 
