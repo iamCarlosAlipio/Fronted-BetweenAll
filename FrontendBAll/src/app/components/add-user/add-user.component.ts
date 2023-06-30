@@ -30,7 +30,7 @@ export class AddUserComponent {
   dataSource = new MatTableDataSource<DtoUserCategorySummary>();
   displayedColumns: string[]=['nameCategory', 'action1'];
   dtoUserCategories!:DtoUserCategorySummary[];
-  insert:boolean=true;
+  insert:boolean=false;
   auxUser!:User;
   
   constructor(private FormBuilder:FormBuilder, private userService:UserServiceService, 
@@ -63,6 +63,7 @@ export class AddUserComponent {
      this.addUserForm3 = this.FormBuilder.group({
       category:new FormControl("",[Validators.required]),
    });
+   
     }
 
     saveUser():void { 
@@ -172,18 +173,18 @@ export class AddUserComponent {
       this.hide=!this.hide;
     }
 
-    changeButton(event:MatSelectChange):void{
+    change(event:MatSelectChange):void{
 
-      this.userCategoryService.getUserCategoriesDTO(this.auxUser.id).subscribe({
-        next: (data)  => {
-          this.dataSource = new MatTableDataSource(data);
-          this.dtoUserCategories=data;
-          console.log(data);
-        },
-        error: (err) => {
-          console.log(err);
-        }
-      });
+      this.loadTable();
+  
+      let aux=this.dtoUserCategories.find(x=>x.idCategory==this.addUserForm3.get("category")!.value)
+      console.log(aux);
+  
+      if(aux){
+        this.insert=true;
+      }else{
+        this.insert=false;
+      }
     }
     
     deleteUserCategory(id:number):void{
@@ -230,7 +231,6 @@ export class AddUserComponent {
         next: (data)  => {
           this.dataSource = new MatTableDataSource(data);
           this.dtoUserCategories=data;
-          console.log(data);
         },
         error: (err) => {
           console.log(err);

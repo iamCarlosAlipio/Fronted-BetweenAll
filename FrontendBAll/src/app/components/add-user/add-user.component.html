@@ -110,13 +110,13 @@
       <div class="mt-4">
             <div style="display: flex;">
               <mat-form-field class="form-container-1">
-                <mat-select placeholder="Categoria" formControlName="category" (selectionChange)="changeButton($event)">
+                <mat-select placeholder="Categoria" formControlName="category" (selectionChange)="change($event)">
                   <mat-option *ngFor="let category of categories" [value]="category.id">
                     {{category.name}}
                   </mat-option>
                 </mat-select>
               </mat-form-field>
-              <button mat-raised-button [disabled]="false" style="background-color:#A32DE3; color:white; width: 20%; margin-left: 10%;" (click)="saveUserCategory()" >Agregar</button>
+              <button mat-raised-button [disabled]="insert" style="background-color:#A32DE3; color:white; width: 20%; margin-left: 10%;" (click)="saveUserCategory()" >Agregar</button>
             </div>
       </div>
       <div class="col-md-6 justify-content">
