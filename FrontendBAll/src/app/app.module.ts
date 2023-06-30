@@ -27,6 +27,8 @@ import { DetailsMygroupComponent } from './components/details-mygroup/details-my
 import { DetailsMygroupcreatedComponent } from './components/details-mygroupcreated/details-mygroupcreated.component';
 import { ProfileUserComponent } from './components/profile-user/profile-user.component';
 import { EventsAssistedComponent } from './components/events-assisted/events-assisted.component';
+import { DetailsTicketComponent } from './components/details-ticket/details-ticket.component';
+import { TicketsComponent } from './components/tickets/tickets.component';
 
 @NgModule({
   declarations: [
@@ -51,7 +53,9 @@ import { EventsAssistedComponent } from './components/events-assisted/events-ass
     DetailsMygroupComponent,
     DetailsMygroupcreatedComponent,
     ProfileUserComponent,
-    EventsAssistedComponent
+    EventsAssistedComponent,
+    DetailsTicketComponent,
+    TicketsComponent
   ],
   imports: [
     BrowserModule,

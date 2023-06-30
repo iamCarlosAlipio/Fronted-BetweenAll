@@ -7,6 +7,7 @@ import{ ViewChild } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
 import { DtoGroupParticipantsSummary } from 'src/app/models/dtoGroupParticipantsSummary';
 import { DtoGroupsCreatedSummary } from 'src/app/models/dtoGroupsCreatedSummary';
+import { DtoMyGroupUsersSummary } from 'src/app/models/dtoMyGroupUsersSummary';
 
 
 @Component({
@@ -16,11 +17,13 @@ import { DtoGroupsCreatedSummary } from 'src/app/models/dtoGroupsCreatedSummary'
 })
 export class GroupsComponent {
   dataSource = new MatTableDataSource<DtoGroupParticipantsSummary>();
+  dataSource2=new MatTableDataSource<DtoMyGroupUsersSummary>();
   displayedColumns: string[]=["image","name","amountParticipants","description","category","actions"];
 
   dataSource3 = new MatTableDataSource<DtoGroupsCreatedSummary>();
   displayedColumns3: string[]=["image","name","amountParticipants","description","category","actions"];
 
+  displayedColumns2:string[]=["imageGroup","nameGroup","amountParticipants","descriptionGroup","nameCategory","actions"];
   @ViewChild('paginator')
   paginator!: MatPaginator;
 
@@ -35,6 +38,7 @@ export class GroupsComponent {
     this.id = this.activatedRoute.snapshot.params["id"];
     this.loadGroups();
     this.loadCreatedGroups();
+    this.loadMyGroups(this.id);
   }
 
   filterGroups(event: Event) {
@@ -67,6 +71,17 @@ export class GroupsComponent {
         this.dataSource3.paginator = this.paginator3;
 
         console.log(data);
+      }});
+    }
+  loadMyGroups(idUser:number): void {
+
+    this.groupService.getListMyGroupUsersSummary(idUser).subscribe({
+      next: (data2:DtoMyGroupUsersSummary[]) => {
+
+        this.dataSource2 = new MatTableDataSource(data2);
+        this.dataSource2.paginator = this.paginator;
+
+        console.log(data2);
       },
       error: (err) => {
         console.log(err);
