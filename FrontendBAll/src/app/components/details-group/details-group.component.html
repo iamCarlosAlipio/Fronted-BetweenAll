@@ -59,8 +59,9 @@
               <mat-card-subtitle>{{ user.lastname }}</mat-card-subtitle>
               <mat-card-title>Ciudad</mat-card-title>
               <mat-card-subtitle>{{ user.city }}</mat-card-subtitle>
-              <div class="button-container">
-                <button routerLink="/profile/{{user.id}}" mat-raised-button color="primary" style="background-color: #A32DE3;">Ver Perfil</button>
+              <div class="button-container col" >
+                <button mat-raised-button color="primary" style="background-color: #A32DE3;"
+                  [routerLink]="'/profile/' + user.id">Ver Perfil</button>
               </div>
             </div>
           </mat-card-header>

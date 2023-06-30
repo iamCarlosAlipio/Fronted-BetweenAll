@@ -40,7 +40,6 @@ export class DetailsGroupComponent implements OnInit {
     this.ListParticipants(this.id);
   }
 
-
     reactiveForm(id: number):void {
       this.detailsForm = this.formBuilder.group({
         //id:[""],
