@@ -25,6 +25,10 @@ export class GroupUserService {
     return this.http.delete(this.ruta_servidor +"/"+this.recurso + "/" + id.toString());
   }
 
+  deleteGroupUserByUserAndGroup(idUser: number,idGroup:number) {
+    return this.http.delete(this.ruta_servidor +"/"+this.recurso + "/Group/" + idUser.toString()+"/"+idGroup.toString());
+  }
+  
   getListMyGroupUsersSummary(id:number){
     return this.http.get<DtoMyGroupUsersSummary[]>(this.ruta_servidor+"/"+this.recurso +"/summary/"+id.toString())
   }

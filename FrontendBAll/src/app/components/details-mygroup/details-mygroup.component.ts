@@ -9,6 +9,7 @@ import { MatSnackBar } from '@angular/material/snack-bar';
 import { UserServiceService } from 'src/app/services/user-service.service';
 import { DtoGroupParticipantsSummary } from 'src/app/models/dtoGroupParticipantsSummary';
 import { User } from 'src/app/models/user';
+import { GroupUserService } from 'src/app/services/group-user.service';
 
 @Component({
   selector: 'app-details-mygroup',
@@ -17,19 +18,20 @@ import { User } from 'src/app/models/user';
 })
 export class DetailsMygroupComponent implements OnInit {
   constructor(private formBuilder:FormBuilder, private groupService: GroupsService, private router: Router,
-    private activatedRouter: ActivatedRoute,private categoryService:CategoryService,private snack: MatSnackBar, private UserServiceService: UserServiceService) {
+    private activatedRouter: ActivatedRoute,private groupUserService:GroupUserService,private categoryService:CategoryService,private snack: MatSnackBar, private UserServiceService: UserServiceService) {
   }
 
   group!: Group;
   detailsForm!:FormGroup;
   id!:number;
   TheGroup!: DtoGroupParticipantsSummary;
-
+  idUser!:number;
   users!: User[];
   dtoGroupParticipantsSummary!: DtoGroupParticipantsSummary;
 
   ngOnInit() {
     this.id = this.activatedRouter.snapshot.params["idGroup"];
+    this.idUser = this.activatedRouter.snapshot.params["id"];
     this.reactiveForm(this.id);
     this.ListParticipants(this.id);
   }
@@ -76,7 +78,17 @@ export class DetailsMygroupComponent implements OnInit {
       }
     });
   }
-
+  deleteUserByGroup():void{
+    this.groupUserService.deleteGroupUserByUserAndGroup(this.idUser,this.id).subscribe({
+      next:(data)=>{
+        console.log("ELIMINA");
+        this.router.navigate(["/details-mygroup/" + this.idUser+"/group/"+this.id]);
+      },
+      error:(err)=>{
+        console.log(err);
+      }
+    });
+  }
   deleteGroup(id: number):void {
     this.groupService.deleteGroup(id).subscribe({
     });
