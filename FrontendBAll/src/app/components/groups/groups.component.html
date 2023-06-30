@@ -82,7 +82,7 @@
           <mat-label>Filtro</mat-label>
           <input placeholder="Ingrese filtro..." matInput (keyup)="filterGroups($event)" #input>
         </mat-form-field>
-        <button routerLink="/add-group" mat-raised-button color="primary" style="background-color: #A32DE3;">CREAR GRUPO</button>
+        <button routerLink="/add-group/{{id}}/group" mat-raised-button color="primary" style="background-color: #A32DE3;">CREAR GRUPO</button>
       </div>
 
       <div class="tablepag">
@@ -90,48 +90,51 @@
           <table mat-table [dataSource]="dataSource2">
 
              <!-- Position Column -->
-          
-          <ng-container matColumnDef="imageGroup">
-            <th mat-header-cell *matHeaderCellDef> Image </th>
-            <td mat-cell *matCellDef="let item"> <img mat-card-image src= {{item.imageGroup}}></td>
-          </ng-container>
 
-          <ng-container matColumnDef="nameGroup">
-            <th mat-header-cell *matHeaderCellDef> Name </th>
-            <td mat-cell *matCellDef="let item"> {{item.nameGroup}} </td>
-          </ng-container>
+             <ng-container matColumnDef="id">
+              <th mat-header-cell *matHeaderCellDef> ID </th>
+              <td mat-cell *matCellDef="let item"> {{item.idGroup}} </td>
+            </ng-container>
 
-          <ng-container matColumnDef="amountParticipants">
-            <th mat-header-cell *matHeaderCellDef> Amount of Participants </th>
-            <td mat-cell *matCellDef="let item"> {{item.amountParticipants}} </td>
-          </ng-container>
+            <ng-container matColumnDef="name">
+              <th mat-header-cell *matHeaderCellDef> Name </th>
+              <td mat-cell *matCellDef="let item"> {{item.nameGroup}} </td>
+            </ng-container>
 
-          <ng-container matColumnDef="descriptionGroup">
-            <th mat-header-cell *matHeaderCellDef> Description </th>
-            <td mat-cell *matCellDef="let item"> {{item.descriptionGroup}}  </td>
-          </ng-container>
+            <ng-container matColumnDef="amountParticipants">
+              <th mat-header-cell *matHeaderCellDef> Amount of Participants </th>
+              <td mat-cell *matCellDef="let item"> {{item.amountParticipants}} </td>
+            </ng-container>
 
-          <ng-container matColumnDef="nameCategory">
-            <th mat-header-cell *matHeaderCellDef> Category</th>
-            <td mat-cell *matCellDef="let item">{{item.nameCategory}}</td>
-          </ng-container>
+            <ng-container matColumnDef="description">
+              <th mat-header-cell *matHeaderCellDef> Description </th>
+              <td mat-cell *matCellDef="let item"> {{item.descriptionGroup}} </td>
+            </ng-container>
+
+            <ng-container matColumnDef="category">
+              <th mat-header-cell *matHeaderCellDef> Category </th>
+              <td mat-cell *matCellDef="let item"> {{item.categoryGroup}}  </td>
+            </ng-container>
+
+            <ng-container matColumnDef="image">
+              <th mat-header-cell *matHeaderCellDef> Image </th>
+              <td mat-cell *matCellDef="let item"> <img mat-card-image src= {{item.imageGroup}}></td>
+            </ng-container>
 
             <ng-container matColumnDef="actions">
               <th mat-header-cell *matHeaderCellDef>Acciones</th>
               <td mat-cell *matCellDef="let item">
                   <a>
-                    <button routerLink="/details-mygroup/{{item.id}}" mat-raised-button color="primary" style="background-color: #A32DE3;">SEE DETAILS</button>
+                    <button routerLink="/details-mygroup/{{id}}/group/{{item.idGroup}}" mat-raised-button color="primary" style="background-color: #A32DE3;">SEE DETAILS</button>
                   </a>
               </td>
             </ng-container>
-            
-          
-          
+
           <tr mat-header-row *matHeaderRowDef="displayedColumns2"></tr>
           <tr mat-row *matRowDef="let row; columns: displayedColumns2"></tr>
           </table>
-          
-          <mat-paginator [pageSizeOptions]="[5, 10, 15, 20]" #paginator></mat-paginator>
+
+          <mat-paginator [pageSizeOptions]="[5, 10, 15, 20]" #paginator2></mat-paginator>
         </div>
       </div>
     </mat-tab>

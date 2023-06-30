@@ -8,6 +8,7 @@ import { ActivatedRoute } from '@angular/router';
 import { DtoGroupParticipantsSummary } from 'src/app/models/dtoGroupParticipantsSummary';
 import { DtoGroupsCreatedSummary } from 'src/app/models/dtoGroupsCreatedSummary';
 import { DtoMyGroupUsersSummary } from 'src/app/models/dtoMyGroupUsersSummary';
+import { GroupUserService } from 'src/app/services/group-user.service';
 
 
 @Component({
@@ -17,28 +18,33 @@ import { DtoMyGroupUsersSummary } from 'src/app/models/dtoMyGroupUsersSummary';
 })
 export class GroupsComponent {
   dataSource = new MatTableDataSource<DtoGroupParticipantsSummary>();
-  dataSource2=new MatTableDataSource<DtoMyGroupUsersSummary>();
   displayedColumns: string[]=["image","name","amountParticipants","description","category","actions"];
 
   dataSource3 = new MatTableDataSource<DtoGroupsCreatedSummary>();
   displayedColumns3: string[]=["image","name","amountParticipants","description","category","actions"];
 
-  displayedColumns2:string[]=["imageGroup","nameGroup","amountParticipants","descriptionGroup","nameCategory","actions"];
+  dataSource2=new MatTableDataSource<DtoMyGroupUsersSummary>();
+  displayedColumns2:string[]=["image","name","amountParticipants","description","category","actions"];
+
+
   @ViewChild('paginator')
   paginator!: MatPaginator;
+
+  @ViewChild('paginator2')
+  paginator2!: MatPaginator;
 
   @ViewChild('paginator3')
   paginator3!: MatPaginator;
 
   id!: number;
 
-  constructor(private groupService: GroupsService, private activatedRoute:ActivatedRoute) {}
+  constructor(private groupService: GroupsService, private groupUserService: GroupUserService,private activatedRoute:ActivatedRoute) {}
 
   ngOnInit() {
     this.id = this.activatedRoute.snapshot.params["id"];
     this.loadGroups();
     this.loadCreatedGroups();
-    this.loadMyGroups(this.id);
+    this.loadMyGroups();
   }
 
   filterGroups(event: Event) {
@@ -73,15 +79,16 @@ export class GroupsComponent {
         console.log(data);
       }});
     }
-  loadMyGroups(idUser:number): void {
 
-    this.groupService.getListMyGroupUsersSummary(idUser).subscribe({
-      next: (data2:DtoMyGroupUsersSummary[]) => {
+  loadMyGroups(): void {
 
-        this.dataSource2 = new MatTableDataSource(data2);
-        this.dataSource2.paginator = this.paginator;
+    this.groupUserService.getListMyGroupUsersSummary(this.id).subscribe({
+      next: (data:DtoMyGroupUsersSummary[]) => {
 
-        console.log(data2);
+        this.dataSource2 = new MatTableDataSource(data);
+        this.dataSource2.paginator = this.paginator2;
+
+        console.log(data);
       },
       error: (err) => {
         console.log(err);

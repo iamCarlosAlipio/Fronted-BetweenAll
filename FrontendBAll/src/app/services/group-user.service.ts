@@ -1,6 +1,7 @@
 import { Injectable } from '@angular/core';
 import { HttpClient} from '@angular/common/http';
 import { GroupUser } from './../models/groupUser';
+import { DtoMyGroupUsersSummary } from '../models/dtoMyGroupUsersSummary';
 
 @Injectable({
   providedIn: 'root'
@@ -22,6 +23,10 @@ export class GroupUserService {
 
   deleteGroupUser(id: number) {
     return this.http.delete(this.ruta_servidor +"/"+this.recurso + "/" + id.toString());
+  }
+
+  getListMyGroupUsersSummary(id:number){
+    return this.http.get<DtoMyGroupUsersSummary[]>(this.ruta_servidor+"/"+this.recurso +"/summary/"+id.toString())
   }
 
 }
