@@ -27,8 +27,8 @@ export class TicketsService {
     return this.http.get<Ticket>(this.RutaServidor+"/"+this.Recurso+"/"+id.toString()+"/"+this.RecursoUsuario+"/"+idUser.toString());
 }
 
-  addTicket(ticket:Ticket){
-    return this.http.post<Ticket>(this.RutaServidor+"/"+this.Recurso,ticket);
+  addTicket(ticket:Ticket,idPurchase:number,idZoneEvent:number){
+    return this.http.post<Ticket>(this.RutaServidor+"/"+this.Recurso+"/"+idPurchase.toString()+"/"+idZoneEvent.toString(),ticket);
   }
 
   getTicketByUserSummary(idUser:number){

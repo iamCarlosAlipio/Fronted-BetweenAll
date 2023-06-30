@@ -14,20 +14,20 @@ export class SocialEventsService {
   constructor(private http:HttpClient) { }
 
   getList(){
-    return this.http.get<SocialEvent[]>(this.RutaServidor+ "/" + this.Recurso);}
+    return this.http.get<SocialEvent[]>(this.RutaServidor+"/"+this.Recurso);}
     
   getSocialEvents(){
     return this.http.get<SocialEvent[]>(this.RutaServidor+"/"+this.Recurso);
   }
   
-  getSocialEventEnd(): Observable<SocialEvent>{
-    return this.http.get<SocialEvent[]>(this.RutaServidor+"/"+this.Recurso).pipe(map(socialevents=>socialevents[socialevents.length-1]));
-  }
-
   getSocialEvent(id:number){
       return this.http.get<SocialEvent>(this.RutaServidor+"/"+this.Recurso+"/"+id.toString());
   }
-  
+
+  getSocialEventEnd(){
+    return this.http.get<SocialEvent>(this.RutaServidor+"/"+this.Recurso+"/End");
+  }
+
   addSocialEvent(socialevent:SocialEvent,idCategory:number,idUser:number){
     return this.http.post<SocialEvent>(this.RutaServidor+"/"+this.Recurso+"/"+idCategory.toString()+"/"+idUser.toString(),socialevent);
   }

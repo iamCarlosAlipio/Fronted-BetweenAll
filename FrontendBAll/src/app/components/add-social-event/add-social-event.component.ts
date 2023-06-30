@@ -14,6 +14,7 @@ import {MatChipEditedEvent, MatChipInputEvent} from '@angular/material/chips';
 import { MatTableDataSource } from '@angular/material/table';
 import { identity } from 'rxjs';
 import { Category } from 'src/app/models/category';
+import { MatTabChangeEvent, MatTabGroup } from '@angular/material/tabs';
 
 @Component({
   selector: 'app-add-social-event',
@@ -27,21 +28,93 @@ export class AddSocialEventComponent {
   myForm2!:FormGroup;
   myForm3!:FormGroup;
   id!:number;
+  idEvent!:number;
+  EventEnd!: SocialEvent;
+  DateEnd!: DateSocialEvent;
+  ZoneData!: ZoneEvent;
+  TheDate!: DateSocialEvent;
+  
   categories!:Category[];
-  socialevents!:SocialEvent[];
-  datesocialevents!:DateSocialEvent[];
+  SocialsEvents!: SocialEvent[];
+  DatesSocialsEvents!:DateSocialEvent[];
   constructor(private formBuilder:FormBuilder, private socialEventsService:SocialEventsService,
     private datesocialeventsService:DatesocialeventsService, private zoneeventsService:ZoneeventsService,
     private router: Router, private activatedRouter: ActivatedRoute,
     private snackBar:MatSnackBar, private categoryService:CategoryService){}
 
   ngOnInit(){
+      this.id = this.activatedRouter.snapshot.params["id"];  
       this.reactiveForm();
       this.reactiveForm2();
       this.reactiveForm3();
+
       this.loadCatergories();
-      this.id = this.activatedRouter.snapshot.params["id"];  
+      this.LoadSocialEvents();
+     
   }
+  //------------------------------------------------
+  selectedTabs: boolean[] = [true, false, true]; // Inicialmente todas las pestañas están habilitadas
+  matTabGroup!:MatTabGroup;
+  previousTabIndex: number = 0;
+
+  onTabChange(event: MatTabChangeEvent) {
+    const selectedIndex = event.index;
+
+    if (this.selectedTabs[selectedIndex]) {
+      this.matTabGroup.selectedIndex = this.previousTabIndex;
+    } else {
+      if(selectedIndex==1){
+        this.selectedTabs[2] = false;
+        this.selectedTabs[1] = true;
+        this.previousTabIndex = selectedIndex;
+      }
+      else{
+        this.selectedTabs[selectedIndex] = true;
+        //this.selectedTabs[selectedIndex+1] = true;
+        this.previousTabIndex = selectedIndex;
+      }
+      switch (selectedIndex) {
+        case 0:
+          this.LoadSocialEvents();
+          break;
+        case 1:
+          this.LoadSocialEvents();
+          this.saveSocialEvent();
+          this.LoadSocialEvents();
+          this.LoadSocialEvents();
+          this.LoadSocialEvents();
+          this.LoadSocialEvents();
+          this.LoadSocialEvents();
+          this.LoadSocialEvents();
+          this.LoadSocialEvents();
+          this.LoadSocialEvents();
+          this.LoadSocialEvents();
+          this.LoadSocialEvents();
+          this.LoadSocialEvents();
+          this.LoadSocialEvents();
+          console.log(this.EventEnd);
+          break;
+        case 2: 
+          this.LoadSocialEvents();
+          this.LoadSocialEvents();
+          this.LoadSocialEvents();
+          this.LoadSocialEvents();
+          console.log(this.EventEnd);
+          this.saveDateSocialEvent();
+          this.LoadSocialEvents();
+          this.LoadSocialEvents();
+          this.LoadSocialEvents();
+          this.LoadSocialEvents();
+          console.log(this.DateEnd);
+          break;
+        // Agrega más casos según el número de pestañas que tengas
+        default:
+          break;
+      }
+    
+    }
+  }
+  //_--------------------------------------------------
   
   //REACTIVE FORM PARA CREAR LOS DETALLES DEL EVENTO
 
@@ -53,7 +126,6 @@ export class AddSocialEventComponent {
         descriptionDetail:[""],
         category:[""],
     });
-     
   }
 
   //REACTIVE FORM PARA CREAR LAS FECHAS DEL EVENTO
@@ -78,32 +150,29 @@ export class AddSocialEventComponent {
   }
   
 
-  loadCatergories(): void {
-    
+  loadCatergories(): void {  
     this.categoryService.getCartegories().subscribe(
       (data: Category[]) => {
-        this.categories = data;
-    });
-   
-    /*this.socialEventsService.getSocialEvents().subscribe(
-      (data: SocialEvent[])=>{
-        this.socialevents=data;
-        
-      }
-      );
-    this.datesocialeventsService.getDateSocialEvents().subscribe(
-      (data: DateSocialEvent[])=>{
-        this.datesocialevents=data;
-      });
-      console.log(this.socialevents);
-  */
+        this.categories = data;});
   }
+
+  LoadSocialEvents():void{
+    this.socialEventsService.getSocialEventEnd().subscribe(
+      (data: SocialEvent) => 
+        {this.EventEnd = data;});
+    this.datesocialeventsService.getDateSocialEventEnd().subscribe(
+      (data: DateSocialEvent) => 
+        {this.DateEnd = data;});
+  }
+
+ 
   //GUARDAR DETALLES DE EVENTO SOCIAL
   //GUARDAR DETALLES DE EVENTO SOCIAL
   //GUARDAR DETALLES DE EVENTO SOCIAL
 
   saveSocialEvent():void {
-
+    //this.LoadSocialEvents();
+    let eventData:number;
     const socialEvent:SocialEvent = {
       id: 0,
       name: this.myForm.get("nameDetail")!.value,
@@ -116,14 +185,14 @@ export class AddSocialEventComponent {
 
     this.socialEventsService.addSocialEvent(socialEvent,socialEvent.idCategory,socialEvent.idOrganizer).subscribe({
       next: (data)  => {
-        this.router.navigate(["/home/"+this.id]);
-        this.snackBar.open("El evento se registró correctamente","OK",{duration:3000});
-        console.log("evento guardado");
+        this.snackBar.open("Ahora cree las fechas para su evento","OK",{duration:3000});
       },
       error: (err) => {
         console.log(err);
+        console.log("no llega");
       }
     });
+    
   }
 
   volverHome():void {
@@ -142,7 +211,6 @@ export class AddSocialEventComponent {
       this.events.push(date);
     }
     this.cargarFecha();
-    
   }
 
   displayedColumns2: string[] = ['dDate', 'actions'];
@@ -150,6 +218,7 @@ export class AddSocialEventComponent {
   
   cargarFecha(): void{
     this.dataSource2=new MatTableDataSource(this.events);
+    
   }
   
   deleteFecha(id: number):void {
@@ -157,28 +226,32 @@ export class AddSocialEventComponent {
     this.cargarFecha();
   }
 
+  
 
   saveDateSocialEvent():void {
-    
     for(let i:number=0;i<this.events.length;i++){
       const dateSocialEvent:DateSocialEvent = {
         id:0,
-        idSocialEvent: this.socialEventsService.getSocialEvents.length,
+        idSocialEvent: this.EventEnd.id,
         date: this.events[i],
         starTime: this.myForm2.get("startDate")!.value,
         endTime: this.myForm2.get("endDate")!.value,
       }
-  
+      
       this.datesocialeventsService.addDateSocialEvent(dateSocialEvent,dateSocialEvent.idSocialEvent).subscribe({
         next: (data)  => {
-          this.router.navigate(["/home/"+this.id]);
           this.snackBar.open("La fecha del evento se registró correctamente","OK",{duration:3000});
+
         },
         error: (err) => {
           console.log(err);
         }
       });
     }
+ 
+
+
+    //console.log("el ultimo fecha es: "+this.TheDate.id);
   }
 
   //GUARDAR ZONAS DE EVENTO
@@ -198,13 +271,14 @@ export class AddSocialEventComponent {
         id: this.idNumberZone,
         name: this.myForm3.get("nameZone")!.value,
         price: parseInt(this.myForm3.get("priceZone")!.value),
-        idDateSocialEvent: 0,
+        idDateSocialEvent: this.DateEnd.id,
         capacity: parseInt(this.myForm3.get("capacityZone")!.value)
       }
     );  
     this.cargarZonas();
     this.idNumberZone++;
     console.log(this.NumberZone);
+
   }
 
   cargarZonas(): void{
@@ -216,18 +290,17 @@ export class AddSocialEventComponent {
   deleteZone(id: number):void {
     this.NumberZone.splice(id,1);
     this.cargarZonas();
-    
   }
 
   saveZoneEvent():void {
-
+    this.LoadSocialEvents();
     for(let i:number=0;i<this.events.length;i++){
       for(let j:number=0;i<this.NumberZone.length;i++){
         const zoneEvent:ZoneEvent = {
           id: 0,
           name: this.NumberZone[j].name,
           price: this.NumberZone[j].price,
-          idDateSocialEvent:this.datesocialeventsService.getDateSocialEvents.length+i+1,
+          idDateSocialEvent:this.DateEnd.id+i,
           capacity: this.NumberZone[j].capacity
         }
     
