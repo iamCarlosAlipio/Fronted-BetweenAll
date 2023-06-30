@@ -77,7 +77,7 @@ export class AddEditGroupsComponent {
     console.log(group);
 
     if (this.IsInsert) {
-        this.groupService.addGroup(group, this.id,1).subscribe({
+        this.groupService.addGroup(group, this.id,parseInt(this.myForm.get("category")!.value)).subscribe({
           next: (data)  => {
             //this.router.navigate(["/home"]);
             this.snackBar.open("El grupo se ingresó correctamente","OK",{duration:3000});

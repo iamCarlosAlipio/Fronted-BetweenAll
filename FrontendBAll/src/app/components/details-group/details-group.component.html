@@ -60,7 +60,7 @@
               <mat-card-title>Ciudad</mat-card-title>
               <mat-card-subtitle>{{ user.city }}</mat-card-subtitle>
               <div class="button-container">
-                <button mat-raised-button color="primary" style="background-color: #A32DE3;">Ver Perfil</button>
+                <button routerLink="/profile/{{user.id}}" mat-raised-button color="primary" style="background-color: #A32DE3;">Ver Perfil</button>
               </div>
             </div>
           </mat-card-header>
