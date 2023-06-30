@@ -19,6 +19,7 @@ import { DetailsMygroupComponent } from './components/details-mygroup/details-my
 import { DetailsMygroupcreatedComponent } from './components/details-mygroupcreated/details-mygroupcreated.component';
 import { ProfileUserComponent } from './components/profile-user/profile-user.component';
 import { EventsAssistedComponent } from './components/events-assisted/events-assisted.component';
+import { TicketsComponent } from './components/tickets/tickets.component';
 
 const routes: Routes = [
   {path: '', component:LoginComponent},
@@ -39,6 +40,7 @@ const routes: Routes = [
   {path: 'details-mygroupcreated/:id/group/:idGroup', component: DetailsMygroupcreatedComponent},
   {path: 'editProfile/:id', component:EditUserComponent},
   {path: 'groups/:id', component:GroupsComponent},
+  {path: 'tickets/:id', component:TicketsComponent},
   {path: 'addEditGroups/:id', component:AddEditGroupsComponent},
   {path: 'eventConfirm1', component:EventCreate1Component},
   {path: 'purchase/:id/user/:idUser', component:PurchaseComponent},

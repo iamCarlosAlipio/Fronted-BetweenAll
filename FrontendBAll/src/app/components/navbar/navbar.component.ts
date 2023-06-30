@@ -19,7 +19,7 @@ export class NavbarComponent {
     this.router.navigate(["groups/" + this.idUser]);
   }
   changeTickets():void{
-    this.router.navigate(["home/" + this.idUser]);
+    this.router.navigate(["tickets/" + this.idUser]);
   }
   changeProfile():void{
     this.router.navigate(["editProfile/" + this.idUser]);

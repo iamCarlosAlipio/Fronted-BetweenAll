@@ -3,6 +3,7 @@ import { HttpClient} from '@angular/common/http';
 import { Group } from './../models/group';
 import { DtoGroupParticipantsSummary } from '../models/dtoGroupParticipantsSummary';
 import { DtoGroupsCreatedSummary } from '../models/dtoGroupsCreatedSummary';
+import { DtoMyGroupUsersSummary } from '../models/dtoMyGroupUsersSummary';
 
 
 
@@ -48,4 +49,7 @@ export class GroupsService {
     return this.http.get<DtoGroupsCreatedSummary[]>(this.ruta_servidor+"/"+this.recurso+"/groupsCreatedSummary/"+id.toString())
   }
 
+  getListMyGroupUsersSummary(idUser:number){
+    return this.http.get<DtoMyGroupUsersSummary[]>(this.ruta_servidor+"/groupUsers/summary/"+idUser.toString())
+  }
 }

@@ -1,6 +1,7 @@
 import { Injectable } from '@angular/core';
 import { HttpClient} from '@angular/common/http';
 import { Ticket } from '../models/ticket';
+import { DTOTicketSummary } from '../models/dtoTicketSummary';
 @Injectable({
   providedIn: 'root'
 })
@@ -8,7 +9,7 @@ export class TicketsService {
 
   RutaServidor : string = "http://localhost:8080/api";
   Recurso: string ="tickets";
-  RecursoUsuario: string="users";
+  RecursoUsuario: string="tickets";
   constructor(private http:HttpClient) { }
 
   getList(){
@@ -28,5 +29,9 @@ export class TicketsService {
 
   addTicket(ticket:Ticket){
     return this.http.post<Ticket>(this.RutaServidor+"/"+this.Recurso,ticket);
+  }
+
+  getTicketByUserSummary(idUser:number){
+    return this.http.get<DTOTicketSummary[]>(this.RutaServidor+"/"+this.Recurso+"/summary/"+idUser.toString());
   }
 }

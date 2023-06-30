@@ -1,0 +1,64 @@
+<app-navbar></app-navbar>
+<div class="container">
+    <mat-toolbar>
+        <span>MIS ENTRADAS</span>
+      </mat-toolbar>
+    <div class="row">
+        
+        <div class="filterbutt">
+            <mat-form-field>
+              <mat-label>Filtro</mat-label>
+              <input placeholder="Ingrese filtro..." matInput (keyup)="filterGroups($event)" #input>
+            </mat-form-field>
+          </div>
+    </div>
+    <div class="mat-elevation-z8">
+        <table mat-table [dataSource]="dataSource">
+            
+            <ng-container matColumnDef="idTicket">
+                <th mat-header-cell *matHeaderCellDef> Código </th>
+                <td mat-cell *matCellDef="let item"> {{item.idTicket}} </td>
+              </ng-container>
+
+              <ng-container matColumnDef="nameUser">
+                <th mat-header-cell *matHeaderCellDef> Usuario </th>
+                <td mat-cell *matCellDef="let item"> {{item.nameUser}} </td>
+              </ng-container>
+
+              <ng-container matColumnDef="nameSocialEvent">
+                <th mat-header-cell *matHeaderCellDef> Evento </th>
+                <td mat-cell *matCellDef="let item"> {{item.nameSocialEvent}} </td>
+              </ng-container>
+
+              <ng-container matColumnDef="nameZoneEvent">
+                <th mat-header-cell *matHeaderCellDef> Zona </th>
+                <td mat-cell *matCellDef="let item"> {{item.nameZoneEvent}} </td>
+              </ng-container>
+              
+              <ng-container matColumnDef="dateSocialEvent">
+                <th mat-header-cell *matHeaderCellDef> Fecha </th>
+                <td mat-cell *matCellDef="let item"> <span>{{item.dateSocialEvent |date:"dd/MM/YYYY"}}</span> </td>
+            </ng-container>
+            
+              <ng-container matColumnDef="locationSocialEvent">
+                <th mat-header-cell *matHeaderCellDef> Lugar </th>
+                <td mat-cell *matCellDef="let item"> {{item.locationSocialEvent}} </td>
+              </ng-container>
+
+              <ng-container matColumnDef="emailUser">
+                <th mat-header-cell *matHeaderCellDef> email </th>
+                <td mat-cell *matCellDef="let item"> {{item.emailUser}} </td>
+              </ng-container>
+              
+              <ng-container matColumnDef="amountPurchase">
+                <th mat-header-cell *matHeaderCellDef> Monto </th>
+                <td mat-cell *matCellDef="let item"> {{item.amountPurchase}} </td>
+              </ng-container>
+
+              <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
+              <tr mat-row *matRowDef="let row; columns: displayedColumns"></tr>
+              
+        </table>
+    </div>
+    <mat-paginator [pageSizeOptions]="[5, 10, 15, 20]" #paginator></mat-paginator>
+</div>
