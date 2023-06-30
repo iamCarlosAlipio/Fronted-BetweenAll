@@ -29,7 +29,7 @@ export class PayComponent {
       this.fromulario = this.FormBuilder.group({
           id:[""],
           number:["",[Validators.required, Validators.maxLength(60),Validators.pattern('^[a-zA-Z]+$')]],
-          name:["",[Validators.required, Validators.maxLength(20),Validators.pattern('^[a-zA-Z]+$')]],
+          name:["",[Validators.required, Validators.maxLength(20)]],
           dueDate:["",[Validators.required, Validators.maxLength(30)]],
           cvv:["",[Validators.required, Validators.maxLength(7)]],
       });
