@@ -38,7 +38,7 @@
           </mat-grid-tile>
           <mat-grid-tile [colspan]="4" [rowspan]="1">
             <button routerLink="/groups" (click)="deleteGroup(id)" mat-raised-button color="primary" style="background-color: #A32DE3;">DELETE GROUP</button>
-            <button mat-raised-button color="secondary" routerLink="/edit-groups/{{id}}">EDIT GROUP</button>
+            <button mat-raised-button color="secondary" routerLink="/edit-groups/{{idUser}}/group/{{id}}">EDIT GROUP</button>
           </mat-grid-tile>
         </mat-grid-list>
       </form>

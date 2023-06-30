@@ -33,7 +33,7 @@ const routes: Routes = [
   {path: 'confirmEvent', component:ConfirmEventComponent},
   {path: 'logout', component:LogoutComponent},
   {path: 'add-group/:id/group', component:AddEditGroupsComponent},
-  {path: 'edit-groups/:id', component:AddEditGroupsComponent},
+  {path: 'edit-groups/:id/group/:idGroup', component:AddEditGroupsComponent},
   {path: 'details-group/:id/group/:idGroup', component: DetailsGroupComponent},
   {path: 'details-mygroup/:id/group/:idGroup', component: DetailsMygroupComponent},
   {path: 'details-mygroupcreated/:id/group/:idGroup', component: DetailsMygroupcreatedComponent},

@@ -28,8 +28,8 @@ export class GroupsService {
     return this.http.post<Group>(this.ruta_servidor +"/"+this.recurso+"/"+ id.toString() + "/" + idcategory.toString(),group);
   }
 
-  updateGroup(group: Group) {
-    return this.http.put<Group>(this.ruta_servidor +"/"+this.recurso + "/" + group.id.toString(), group);
+  updateGroup(group: Group, id:number, idcategory:number, idgroup: number) {
+    return this.http.put<Group>(this.ruta_servidor +"/"+this.recurso + "/" + id.toString() + "/" + idcategory.toString() + "/" + idgroup.toString(), group);
   }
 
   deleteGroup(id: number) {

@@ -36,7 +36,7 @@ export class AddEditGroupsComponent {
     this.myForm = this.formBuilder.group({
         id:[""],
         name:["",[Validators.required, Validators.maxLength(60)]],
-        description:["",[Validators.required, , Validators.maxLength(200)]],
+        description:["",[Validators.required, Validators.maxLength(200)]],
         category:["",[Validators.required]],
         image:["",[Validators.required]]
     });
@@ -87,7 +87,7 @@ export class AddEditGroupsComponent {
           }
         });
     } else {
-      this.groupService.updateGroup(group).subscribe({
+      this.groupService.updateGroup(group, this.id, parseInt(this.myForm.get("category")!.value), this.idGroup).subscribe({
         next: (data)  => {
           //this.router.navigate(["/groups"]);
           this.snackBar.open("El grupo se actualizó correctamente","OK",{duration:3000});

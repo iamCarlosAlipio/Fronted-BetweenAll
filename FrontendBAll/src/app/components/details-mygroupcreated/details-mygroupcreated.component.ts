@@ -23,6 +23,7 @@ export class DetailsMygroupcreatedComponent {
   group!: Group;
   detailsForm!:FormGroup;
   id!:number;
+  idUser!:number;
   TheGroup!: DtoGroupParticipantsSummary;
 
   users!: User[];
@@ -30,6 +31,7 @@ export class DetailsMygroupcreatedComponent {
 
   ngOnInit() {
     this.id = this.activatedRouter.snapshot.params["idGroup"];
+    this.idUser = this.activatedRouter.snapshot.params["id"];
     this.reactiveForm(this.id);
     this.ListParticipants(this.id);
   }
