@@ -30,7 +30,7 @@ export class LoginComponent {
     
     this.form = this.FormBuilder.group({
         email:["",[Validators.required, Validators.maxLength(30)]],
-        password:["",[Validators.required, Validators.maxLength(10)]],
+        password:["",[Validators.required, Validators.maxLength(30)]],
     });
   }
 
