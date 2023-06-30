@@ -5,7 +5,7 @@ import { FormGroup, FormBuilder, Validators } from '@angular/forms';
 import { MatTableDataSource } from '@angular/material/table';
 import { ActivatedRoute } from '@angular/router';
 import { UserServiceService } from 'src/app/services/user-service.service';
-import { DTOUserCategorySummary } from 'src/app/models/dtoUserCategorySummary';
+import { DtoUserCategorySummary } from 'src/app/models/dtoUserCategorySummary';
 
 @Component({
   selector: 'app-profile-user',
@@ -14,7 +14,7 @@ import { DTOUserCategorySummary } from 'src/app/models/dtoUserCategorySummary';
 })
 export class ProfileUserComponent {
 
-  dataSource = new MatTableDataSource<DTOUserCategorySummary>();
+  dataSource = new MatTableDataSource<DtoUserCategorySummary>();
 
   form!: FormGroup;
   isEditMode: boolean = false;
@@ -42,8 +42,8 @@ export class ProfileUserComponent {
   }
 
   ListCategory(id: number):void{
-    this.usercategoryService.getUserCategorySummary(id).subscribe({
-      next: (data:DTOUserCategorySummary[]) => {
+    this.usercategoryService.getUserCategoriesDTO(id).subscribe({
+      next: (data:DtoUserCategorySummary[]) => {
         this.dataSource = new MatTableDataSource(data);
       },
       error: (err) => {
