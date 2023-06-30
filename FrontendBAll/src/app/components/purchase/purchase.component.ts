@@ -27,16 +27,19 @@ import { throwToolbarMixedModesError } from '@angular/material/toolbar';
 
 export class PurchaseComponent {
   addPurchaseForm!:FormGroup;
-  //addTicketForm!:FormGroup;
-  
+
   TheEvent!: SocialEvent;
   TheTicket!: Ticket;
   DatesEvent!: DateSocialEvent[];
   ZoneEvents!: ZoneEvent[];
   idUser:number = this.activatedRoute.snapshot.params['idUser'];
   idEvent:number = this.activatedRoute.snapshot.params["idEvent"];
-  endPurchase: Purchase[]=[];
+  endPurchase!: Purchase;
   idSelectDate!:number;
+
+  TicketBool:Boolean=true;
+  PurchaseBool:Boolean=false;
+
   constructor(private formBuilder:FormBuilder,private zoneeventservice: ZoneeventsService, private activatedRoute: ActivatedRoute, 
     private socialEventsService: SocialEventsService, private datesocialeventsService:DatesocialeventsService
     , private router:Router, private purchasesService:PurchasesService,private snackBar:MatSnackBar,
@@ -46,23 +49,23 @@ export class PurchaseComponent {
   total:number=0;
   price:number=0;
   id:number=0;
+  idPurchase:number=0;
   totalprice!:number;
 
   ngOnInit() {
     this.reactiveForm();
     console.log(this.idUser);
     console.log(this.idEvent);
-    
+    this.LoadPurchase();
     this.ListDatesEvents();
   }
   
   reactiveForm():void {
     
     this.addPurchaseForm = this.formBuilder.group({
-        quantityForm:[""],
-        totalForm:[""],
-        Fecha:[""],
-        Zone:[""]
+      //quantityForm:[""],
+      DateEvent:[""],
+      ZoneEvent:[""],
     });
 
     /*this.addTicketForm = this.formBuilder.group({
@@ -108,37 +111,34 @@ export class PurchaseComponent {
       idUser: this.idUser,
       idCard: 1, 
     }
-
+    
 
     this.purchasesService.addPurchase(purchase,purchase.idUser,purchase.idCard).subscribe({
       
       next: (data)  => {
-        this.router.navigate(["home/" + this.idUser]);
         this.snackBar.open("La compra se ingresó correctamente","OK",{duration:3000});     
       },
       error: (err) => {
         console.log(err);
       }
     });
+    this.LoadPurchase();this.LoadPurchase();this.LoadPurchase();this.LoadPurchase();
+    this.LoadPurchase();this.LoadPurchase();this.LoadPurchase();this.LoadPurchase();
+
+    console.log(this.endPurchase);
+    this.PurchaseBool=true;
+    this.TicketBool=false;
   }
 
-  /*ListTickets():void{
-    this.purchasesService.getPurchases().subscribe(
-      (date:Purchase[])=>
-      {
-        this.endPurchase=date;
-      }
-    )
-  }*/
-
-  
   
   saveTickets():void {
+    this.LoadPurchase();this.LoadPurchase();this.LoadPurchase();this.LoadPurchase();
+    this.LoadPurchase();this.LoadPurchase();this.LoadPurchase();this.LoadPurchase();
 
     const ticket:Ticket = {
       id:0,
-      idPurchase: 2,
-      idZoneEvent:3,
+      idPurchase: this.endPurchase.id,
+      idZoneEvent: parseInt(this.addPurchaseForm.get("ZoneEvent")!.value),
     }
 
     for(let i=0;i<this.total;i++){
@@ -146,16 +146,22 @@ export class PurchaseComponent {
       
       next: (data)  => {
         this.snackBar.open("Los tickets se regitraron correctamente ingresó correctamente","OK",{duration:3000});
-
+        this.router.navigate(["home/" + this.idUser]);
       },
       error: (err) => {
         console.log(err);  
       }
     });
     }
+    
   }
   
-  
+  LoadPurchase(){
+    this.purchasesService.getPurchaseEnd().subscribe(
+      (data: Purchase)=>
+      {this.endPurchase=data}
+    );
+  }
 
   ListDatesEvents(): void {
     this.socialEventsService.getSocialEvent(this.idEvent).subscribe(
@@ -171,6 +177,12 @@ export class PurchaseComponent {
           {this.ZoneEvents=data;})
 
       });  
+    this.purchasesService.getPurchaseEnd().subscribe(
+      (data: Purchase)=>
+      {this.endPurchase=data}
+    );
+
+    console.log(this.endPurchase);
   }
 
 

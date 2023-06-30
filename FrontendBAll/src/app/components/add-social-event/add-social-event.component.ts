@@ -14,6 +14,7 @@ import {MatChipEditedEvent, MatChipInputEvent} from '@angular/material/chips';
 import { MatTableDataSource } from '@angular/material/table';
 import { identity } from 'rxjs';
 import { Category } from 'src/app/models/category';
+import { MatTabChangeEvent, MatTabGroup } from '@angular/material/tabs';
 
 @Component({
   selector: 'app-add-social-event',
@@ -28,8 +29,8 @@ export class AddSocialEventComponent {
   myForm3!:FormGroup;
   id!:number;
   idEvent!:number;
-  EventData!: SocialEvent;
-  DateData!: DateSocialEvent;
+  EventEnd!: SocialEvent;
+  DateEnd!: DateSocialEvent;
   ZoneData!: ZoneEvent;
   TheDate!: DateSocialEvent;
   
@@ -51,6 +52,69 @@ export class AddSocialEventComponent {
       this.LoadSocialEvents();
      
   }
+  //------------------------------------------------
+  selectedTabs: boolean[] = [true, false, true]; // Inicialmente todas las pestañas están habilitadas
+  matTabGroup!:MatTabGroup;
+  previousTabIndex: number = 0;
+
+  onTabChange(event: MatTabChangeEvent) {
+    const selectedIndex = event.index;
+
+    if (this.selectedTabs[selectedIndex]) {
+      this.matTabGroup.selectedIndex = this.previousTabIndex;
+    } else {
+      if(selectedIndex==1){
+        this.selectedTabs[2] = false;
+        this.selectedTabs[1] = true;
+        this.previousTabIndex = selectedIndex;
+      }
+      else{
+        this.selectedTabs[selectedIndex] = true;
+        //this.selectedTabs[selectedIndex+1] = true;
+        this.previousTabIndex = selectedIndex;
+      }
+      switch (selectedIndex) {
+        case 0:
+          this.LoadSocialEvents();
+          break;
+        case 1:
+          this.LoadSocialEvents();
+          this.saveSocialEvent();
+          this.LoadSocialEvents();
+          this.LoadSocialEvents();
+          this.LoadSocialEvents();
+          this.LoadSocialEvents();
+          this.LoadSocialEvents();
+          this.LoadSocialEvents();
+          this.LoadSocialEvents();
+          this.LoadSocialEvents();
+          this.LoadSocialEvents();
+          this.LoadSocialEvents();
+          this.LoadSocialEvents();
+          this.LoadSocialEvents();
+          console.log(this.EventEnd);
+          break;
+        case 2: 
+          this.LoadSocialEvents();
+          this.LoadSocialEvents();
+          this.LoadSocialEvents();
+          this.LoadSocialEvents();
+          console.log(this.EventEnd);
+          this.saveDateSocialEvent();
+          this.LoadSocialEvents();
+          this.LoadSocialEvents();
+          this.LoadSocialEvents();
+          this.LoadSocialEvents();
+          console.log(this.DateEnd);
+          break;
+        // Agrega más casos según el número de pestañas que tengas
+        default:
+          break;
+      }
+    
+    }
+  }
+  //_--------------------------------------------------
   
   //REACTIVE FORM PARA CREAR LOS DETALLES DEL EVENTO
 
@@ -93,13 +157,12 @@ export class AddSocialEventComponent {
   }
 
   LoadSocialEvents():void{
-    /*this.socialEventsService.getSocialEventEnd().subscribe(
+    this.socialEventsService.getSocialEventEnd().subscribe(
       (data: SocialEvent) => 
-        {this.TheEvent = data;});
+        {this.EventEnd = data;});
     this.datesocialeventsService.getDateSocialEventEnd().subscribe(
       (data: DateSocialEvent) => 
-        {this.TheDate = data;});
-    */
+        {this.DateEnd = data;});
   }
 
  
@@ -122,11 +185,7 @@ export class AddSocialEventComponent {
 
     this.socialEventsService.addSocialEvent(socialEvent,socialEvent.idCategory,socialEvent.idOrganizer).subscribe({
       next: (data)  => {
-        this.router.navigate(["/home/"+this.id]);
-        this.snackBar.open("El evento se registró correctamente","OK",{duration:3000});
-        this.EventData=data;
-        this.saveDateSocialEvent(this.EventData.id);
-        console.log("id del evento :"+this.EventData.id);
+        this.snackBar.open("Ahora cree las fechas para su evento","OK",{duration:3000});
       },
       error: (err) => {
         console.log(err);
@@ -169,12 +228,11 @@ export class AddSocialEventComponent {
 
   
 
-  saveDateSocialEvent(idEvent:number):void {
-    console.log(this.EventData.id);
+  saveDateSocialEvent():void {
     for(let i:number=0;i<this.events.length;i++){
       const dateSocialEvent:DateSocialEvent = {
         id:0,
-        idSocialEvent: idEvent,
+        idSocialEvent: this.EventEnd.id,
         date: this.events[i],
         starTime: this.myForm2.get("startDate")!.value,
         endTime: this.myForm2.get("endDate")!.value,
@@ -182,7 +240,6 @@ export class AddSocialEventComponent {
       
       this.datesocialeventsService.addDateSocialEvent(dateSocialEvent,dateSocialEvent.idSocialEvent).subscribe({
         next: (data)  => {
-          this.router.navigate(["/home/"+this.id]);
           this.snackBar.open("La fecha del evento se registró correctamente","OK",{duration:3000});
 
         },
@@ -214,7 +271,7 @@ export class AddSocialEventComponent {
         id: this.idNumberZone,
         name: this.myForm3.get("nameZone")!.value,
         price: parseInt(this.myForm3.get("priceZone")!.value),
-        idDateSocialEvent: this.DateData.id,
+        idDateSocialEvent: this.DateEnd.id,
         capacity: parseInt(this.myForm3.get("capacityZone")!.value)
       }
     );  
@@ -228,13 +285,11 @@ export class AddSocialEventComponent {
     this.dataSource=new MatTableDataSource(this.NumberZone);
     console.log(this.dataSource.data);
     console.log(this.NumberZone.length);
-    
   }
   
   deleteZone(id: number):void {
     this.NumberZone.splice(id,1);
     this.cargarZonas();
-    
   }
 
   saveZoneEvent():void {
@@ -245,7 +300,7 @@ export class AddSocialEventComponent {
           id: 0,
           name: this.NumberZone[j].name,
           price: this.NumberZone[j].price,
-          idDateSocialEvent:this.TheDate.id+i,
+          idDateSocialEvent:this.DateEnd.id+i,
           capacity: this.NumberZone[j].capacity
         }
     
@@ -263,7 +318,7 @@ export class AddSocialEventComponent {
     }
   }
 
-
+  
 
 
 } 

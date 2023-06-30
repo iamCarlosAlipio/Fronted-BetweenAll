@@ -2,8 +2,8 @@
         
 
           
-<mat-tab-group>
-  <mat-tab label="Ingrese los datos del evento"> 
+<mat-tab-group (selectedTabChange)="onTabChange($event)">
+  <mat-tab label="Ingrese los datos del evento" [disabled]="selectedTabs[0]"> 
     <form [formGroup]="myForm">
       <div>
         <div id="column-left" >    
@@ -68,7 +68,7 @@
       </div>
     </form>
   </mat-tab>
-  <mat-tab label="Fechas y Zonas">
+  <mat-tab label="Fechas y Zonas"  [disabled]="selectedTabs[1]">
     
     <form [formGroup]="myForm2">
       <div id="column-left" > 
@@ -130,7 +130,7 @@
     </form>
 
   </mat-tab>
-  <mat-tab label="Zonas de Evento"> 
+  <mat-tab label="Zonas de Evento"  [disabled]="selectedTabs[2]"> 
 
     <form [formGroup]="myForm3">
 
@@ -219,10 +219,8 @@
 
         <div class="col-md-6" id="button-right" >
           <br>
-          <button class="botton2"  (click)="saveSocialEvent();"  mat-fab extended [disabled]="myForm.invalid">Crear Evento</button>
-          <br>
-          <button class="botton2"  (click)="saveSocialEvent();"  mat-fab extended [disabled]="myForm.invalid">Crear Evento</button>
-          <br>
+          <button class="botton2"  (click)="saveZoneEvent();"  mat-fab extended [disabled]="myForm.invalid">Crear Evento</button>
+          <br>     
         </div>
       </div>   
 </form>

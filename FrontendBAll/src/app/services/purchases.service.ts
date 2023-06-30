@@ -24,6 +24,10 @@ export class PurchasesService {
       return this.http.get<Purchase>(this.RutaServidor+"/"+this.Recurso+"/"+id.toString());
   }
   
+  getPurchaseEnd(){
+    return this.http.get<Purchase>(this.RutaServidor+"/"+this.Recurso+"/End");
+}
+
   getSocialEventPurchase(id:number,idUser:number){
     return this.http.get<Purchase>(this.RutaServidor+"/"+this.Recurso+"/"+id.toString()+"/"+this.RecursoUsuario+"/"+idUser.toString());
 }
