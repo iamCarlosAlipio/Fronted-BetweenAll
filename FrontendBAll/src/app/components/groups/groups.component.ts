@@ -55,7 +55,7 @@ export class GroupsComponent {
 
   loadMyGroups(idUser:number): void {
 
-    this.groupService.getListMyGroupUsersSummary(idUser,1).subscribe({
+    this.groupService.getListMyGroupUsersSummary(idUser).subscribe({
       next: (data2:DtoMyGroupUsersSummary[]) => {
 
         this.dataSource2 = new MatTableDataSource(data2);

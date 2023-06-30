@@ -44,7 +44,7 @@ export class GroupsService {
     return this.http.get<DtoGroupParticipantsSummary[]>(this.ruta_servidor+"/"+this.recurso+"/groupsSummary")
   }
 
-  getListMyGroupUsersSummary(idUser:number,idGroup:number){
-    return this.http.get<DtoMyGroupUsersSummary[]>(this.ruta_servidor+"/groupUsers/summary/"+idUser.toString()+"/"+idGroup.toString())
+  getListMyGroupUsersSummary(idUser:number){
+    return this.http.get<DtoMyGroupUsersSummary[]>(this.ruta_servidor+"/groupUsers/summary/"+idUser.toString())
   }
 }
